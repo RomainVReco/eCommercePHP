@@ -16,7 +16,7 @@
             <div class="zone-2-upper">
               <div class="bloc-image-entete">
                 <a href="/index.html">
-                  <img src="/images/logo_guit_hub_long.png" alt="" class="img-logo">
+                  <img src="" alt="" class="img-logo">
                 </a>
               </div>
             </div>
