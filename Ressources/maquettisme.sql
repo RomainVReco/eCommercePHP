@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost
--- Généré le : mar. 16 jan. 2024 à 17:01
+-- Généré le : mer. 17 jan. 2024 à 11:26
 -- Version du serveur : 10.4.28-MariaDB
 -- Version de PHP : 8.2.4
 
@@ -96,15 +96,16 @@ CREATE TABLE `pays` (
 --
 
 CREATE TABLE `produits` (
-  `id_maquette` int(11) NOT NULL,
-  `nom_maquette` varchar(255) NOT NULL,
+  `id_produit` int(11) NOT NULL,
+  `nom_produit` varchar(255) NOT NULL,
   `echelle` varchar(10) DEFAULT NULL,
   `id_categorie` int(11) NOT NULL,
   `quantite` int(11) NOT NULL,
   `prix` float(8,2) NOT NULL,
   `id_marque` int(11) NOT NULL,
   `description` text NOT NULL,
-  `age_recommande` varchar(4) NOT NULL
+  `age_recommande` varchar(4) NOT NULL,
+  `reference_image` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -157,7 +158,8 @@ ALTER TABLE `pays`
 -- Index pour la table `produits`
 --
 ALTER TABLE `produits`
-  ADD PRIMARY KEY (`id_maquette`);
+  ADD PRIMARY KEY (`id_produit`),
+  ADD UNIQUE KEY `reference_image` (`reference_image`);
 
 --
 -- Index pour la table `roles`
@@ -191,7 +193,7 @@ ALTER TABLE `marques`
 -- AUTO_INCREMENT pour la table `produits`
 --
 ALTER TABLE `produits`
-  MODIFY `id_maquette` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_produit` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT pour la table `roles`
