@@ -13,7 +13,7 @@
               <div class="container-menu-div">
                 <div class="h3-close-menu">
                   <h3>Menu</h3>
-                  <button id="button-close" class="style-button-close"><img src="/ressources_entete/bx-x-36px.svg"
+                  <button id="button-close" class="style-button-close"><img src="./bx-x-36pxRessources.svg"
                       alt="close-icon"></button>
                   <!-- <input type="checkbox" name="check-close" id="close" onclick="close()"> -->
                 </div>
