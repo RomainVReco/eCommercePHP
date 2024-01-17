@@ -1,6 +1,17 @@
 <?php
-echo "Test";
+try {
+    $dbh = new PDO('mysql:host=127.0.0.1;dbname=maquettisme;port=3306;charset=utf8mb4', 'root', '');
+    //$stmt = $dbh->query('SELECT * FROM categories');
+    $stmt = $dbh->query('SELECT * FROM produits WHERE id_produit = "13"');
+    $les_categories = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    $dbh = null;
+    var_dump($les_categories).PHP_EOL;
+} catch (Exception $e) {
+    $message = $e->getMessage();
+    echo ''. $message .'';
+}
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
