@@ -1,0 +1,44 @@
+.fil_ariane {
+    display: flex;
+    gap: 5px;
+    margin-left: 10px;
+    margin-bottom: 10px;
+    margin-left: 5%;
+    transform: skew(-25deg);
+    /* On incline les cases de 25 degrés */
+    position: sticky;
+    top: 1px;
+    opacity: initial;
+    z-index: 999;
+}
+
+.fil_ariane div {
+    background: lightgrey;
+}
+
+.fil_ariane div:hover {
+    background: darkgrey;
+    color: black;
+}
+
+.fil_ariane a {
+    display: block;
+    padding: 0.5em 2em;
+    text-decoration: none;
+    font-size: 1rem;
+    transform: skew(25deg);
+    /* On red/resse le texte des cases du fil d'ariane de 25 degrés */
+}
+
+
+.fil_ariane div:first-child {
+    border-radius: 7px 0 0 7px;
+    /* arrondis de case sur les bords extérieurs de la première case */
+}
+.fil_ariane div:last-child {
+    border-right: none;
+    border-radius: 0 7px 7px 0;
+    /* arrondis de case sur les bords extérieurs de la dernière case */
+}
+
+

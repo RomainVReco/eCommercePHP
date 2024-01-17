@@ -1,0 +1,217 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+}
+
+html body{
+    font-family: Mooli;
+}
+
+.filter-options-container{
+    width: 400px;
+    height:750px;
+    display:none;
+    position:fixed;
+    top:1px;
+    background-color: white;
+    z-index: 999;
+    border-top: 1px solid white;
+    overflow:scroll;
+}
+
+
+.filter-options-extra-container{
+    margin-top:1rem;
+    margin-left: 2rem ;
+    height:80%;
+}
+
+.h3-close-menu{
+    display: flex;
+    margin-right: 2rem;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.style-button-close {
+    background: white;
+    border: none;
+    cursor: pointer;
+}
+
+.container-item-box{
+    margin-bottom: 2rem;
+    font-size: 1rem;
+
+}
+
+.separator {
+    margin-top: 1rem;
+    margin-bottom: 1.5rem;
+    border:1px solid gray;
+    width: 80%;
+}
+
+.titre-filtre{
+    margin-bottom: 1rem;
+    font-size:x-large;
+}
+
+.item-box{
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.input-price,
+.input-frette,
+.input-puissance,
+.input-canaux{
+    height:46px;
+    width: 78px;
+    border-radius: 5px;
+    border:solid 1px lightgrey;
+    align-self: center;
+    text-align: center;
+}
+
+/* 
+Chrome, Safari, Edge, Opera 
+Permet la supp/ression des flèches +/- 
+*/
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+  text-align: center;
+
+}
+
+/* 
+Firefox 
+Permet la supp/ression des flèches +/- 
+*/
+input[type=number] {
+  -moz-appearance: textfield;
+  text-align: center;
+}
+
+.evaluation{
+    display: inline;
+    margin-left: 5px;
+}
+
+.evaluation img{
+    height: 1rem;
+}
+
+.choix-optionnels{
+    margin-top: 1rem;
+}
+
+.liste-deroulante{
+    margin-top: 1rem;
+}
+
+.liste-deroulante li{
+    list-style-type: none;
+    width: 100%;
+    border-radius: 8px;
+}
+
+.liste-deroulante li .label-bloc-optionnel{
+    display: inline;
+    align-items: center;
+    font-size: large;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.checkbox-lvl-1{
+    display: none;
+}
+
+label,
+input[type="checkbox"]{
+    cursor: pointer;
+    margin-left: 5px;
+}
+
+label:hover,
+input[type="checkbox"]:hover{
+    cursor: pointer;
+    opacity: 60%;
+}
+
+
+.label-bloc-optionnel::before {
+    content:'+';
+    margin-right: 10px;
+    font-size: 24px;
+    font-weight: 600;
+}
+
+.label-bloc-optionnel:hover{
+    color: blueviolet;
+    opacity: 100%;
+}
+
+.liste-deroulante .content{
+    max-height: 0;
+    overflow: hidden;
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+.liste-deroulante .checkbox-lvl-1:checked + label + .content{
+    max-height:400px;
+}
+
+.liste-deroulante .checkbox-lvl-1:checked + label::before{
+    content: '-';
+}
+
+.bloc-submit-reset{
+    margin: 0.5rem 0;;
+    margin-right: 0.5rem;
+    padding-bottom: 50px;
+}
+
+.valider-filtres,
+.reset-filtres{
+    border: none;
+    text-align: center;
+    cursor: pointer;
+    text-transform: uppercase;
+    outline: none;
+    overflow: hidden;
+    position: relative;
+    color: #eeeeee;
+    background-color: black;
+    font-weight: 600;
+    width: 160px;
+    height: 35px;
+    border-radius: 2vw;
+    border: 1px solid white;
+    font-size: 0.6rem;
+}
+
+.valider-filtres span,
+.reset-filtres span {
+    position: relative;
+    z-index: 1;
+}
+
+.valider-filtres:hover,
+.reset-filtres:hover {
+    opacity: 80%;
+}
+
+@media (width <= 650px){
+    .filter-options-container {
+        width: 100vw;
+        height: 100vh;
+    }
+}

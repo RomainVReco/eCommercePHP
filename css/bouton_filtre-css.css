@@ -1,0 +1,44 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.container-button-filtre{
+    display: flex;
+    position: sticky;
+    align-items: center;
+    margin-left: 4.5%;
+    z-index: 999;
+    top: 45px;
+    margin-bottom: 1rem;
+}
+
+.button-filtre {
+    border: 1px solid black;
+    display: block;
+    text-align: center;
+    cursor: pointer;
+    text-transform: uppercase;
+    outline: none;
+    overflow: hidden;
+    position: relative;
+    color: black;
+    font-weight: 600;
+    font-size: 0.5vw;
+    background-color: rgb(255, 255, 255);
+    border-radius: 10px;
+    font-size: 1rem;
+    width:80px;
+    height: 25px;
+
+}
+
+.button-filtre:hover{
+    background-color: blueviolet;
+}
+
+.img-filtre{
+    width: 24px;
+    height: 24px;
+}

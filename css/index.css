@@ -1,0 +1,136 @@
+ol > a{
+    color: white;
+
+}
+
+.categories a:visited{
+  color: black;
+}
+
+p{
+  z-index: 1;
+}
+
+::-webkit-scrollbar {
+    width: 0.6vw;
+    background: lightgray;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    border: solid 10px transparent;
+    background-color: black;
+  }
+
+
+    /*------Button ajouter au panier section meilleurs-ventes------ */
+.space {
+  height: 300px;
+  background-color: #eeeeee;
+}
+.container-button-meilleurs-ventes{
+    margin: 0.5vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.button-meilleurs-ventes {
+    border: none;
+    display: block;
+    text-align: center;
+    cursor: pointer;
+    text-transform: uppercase;
+    outline: none;
+    overflow: hidden;
+    position: relative;
+    color: #eeeeee;
+    font-weight: 600;
+    font-size: 0.5vw;
+    background-color: black;
+    padding: 0.5vw 1vw;
+    border-radius: 2vw;
+    font-size: 0.7vw;
+}
+  
+.button-meilleurs-ventes span{
+    position: relative;
+    z-index: 1;
+    font-size: 0.5vw;
+}
+
+.button-meilleurs-ventes:after{
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 470%;
+    width: 140%;
+    background: blueviolet;
+    -webkit-transition: all 0.5s ease-in-out;
+    transition: all 0.5s ease-in-out;
+    -webkit-transform: translateX(-100%) translateY(-25%) rotate(45deg);
+    transform: translateX(-100%) translateY(-25%) rotate(45deg);
+}
+.button-meilleurs-ventes:hover:after {
+    -webkit-transform: translateX(-9%) translateY(-25%) rotate(25deg); 
+    transform: translateX(-9%) translateY(-25%) rotate(25deg); 
+}
+
+
+        /*------Button ajouter au panier section nouveautés------ */
+
+
+
+.container-button-nouveautes{
+            margin: 0.5vw;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+}
+
+.button-nouveautes{
+            border: none;
+            display: block;
+            text-align: center;
+            cursor: pointer;
+            text-transform: uppercase;
+            outline: none;
+            overflow: hidden;
+            position: relative;
+            color: #eeeeee;
+            font-weight: 600;
+            font-size: 0.5vw;
+            background-color: black;
+            padding: 0.5vw 1vw;
+            border-radius: 2vw;
+            font-size: 0.7vw;
+}
+          
+.button-nouveautes span{
+            position: relative;
+            z-index: 1;
+}
+        
+.button-nouveautes:after{
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 470%;
+            width: 140%;
+            background: blueviolet;
+            -webkit-transition: all 0.5s ease-in-out;
+            transition: all 0.5s ease-in-out;
+            -webkit-transform: translateX(-100%) translateY(-25%) rotate(45deg);
+            transform: translateX(-100%) translateY(-25%) rotate(45deg);
+          }
+          .button-nouveautes:hover:after {
+            -webkit-transform: translateX(-9%) translateY(-25%) rotate(25deg); 
+            transform: translateX(-9%) translateY(-25%) rotate(25deg); 
+          }
+@media (max-width: 426px){
+.button-meilleurs-ventes span{
+  font-size: 2vw;
+}
+}
+
+
