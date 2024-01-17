@@ -12,20 +12,31 @@ ol > a{
 .container-category{
   margin: 1em;
   display: grid;
-  grid-template-columns:1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: 1fr 1fr;
   gap: 1em;
-  background-color: blue;
+  background-color: lightblue;
   color: chocolate;
 }
 
 .main-category{
+  margin: 1em;
   background-color: yellow;
   grid-column: 1/ span 2;
 }
 
+.simple-1-category{
+  margin: 1em;
+}
+
+.simple-2-category{
+  margin: 1em;
+  grid-column: 1/span 1;
+}
+
 .other-category{
-  grid-column: 2/span 2;
+  margin: 1em;
+  grid-column: 2 /span 3;
   justify-content: center;
   background-color: darkseagreen;
 }
