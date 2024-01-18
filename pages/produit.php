@@ -1,14 +1,15 @@
 <?php
-                    try {
-                        $dbh = new PDO('mysql:host=127.0.0.1;dbname=maquettisme;port=3306;charset=utf8mb4', 'root', '');
-                        $stmt = $dbh->query('SELECT * FROM produits WHERE id_produit = "13"');
-                        $row = $stmt->fetch(PDO::FETCH_ASSOC); // Récupère la première ligne du résultat
-                        $dbh = null;
-                    } catch (Exception $e) {
-                        $message = $e->getMessage();
-                        echo ''. $message .'';
-                    }
-                    ?>
+    //Récupération d'informations dans la base
+    try {
+        $dbh = new PDO('mysql:host=127.0.0.1;dbname=maquettisme;port=3306;charset=utf8mb4', 'root', '');
+        $stmt = $dbh->query('SELECT * FROM produits WHERE id_produit = "13"');
+        $row = $stmt->fetch(PDO::FETCH_ASSOC); // Récupère la première ligne du résultat
+        $dbh = null;
+    } catch (Exception $e) {
+        $message = $e->getMessage();
+        echo ''. $message .'';
+    }
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -23,8 +24,6 @@
                 <div class=infos_generales>
                          
                 <?php
-                // Afficher le contenu du champ spécifique (par exemple, le champ 'nom')
-                            //echo "<h1>Nom article : " . $row['nom_produit'] . "</h1>";
                             echo "<h1>" . $row['nom_produit'] . "</h1>";
                             echo "<p>Référence article : " . $row['id_produit'] . "</p>";
                             echo "<p>Age recommandé : " . $row['age_recommande'] . " ans</p>";
@@ -48,7 +47,6 @@
         </div>
         <h1>Informations produit</h1>
     <?php
-
             echo "<p>Nom article : " . $row['nom_produit'] . "</p>";
             echo "<p>Référence article : " . $row['id_produit'] . "</p>";
             echo "<p>Description : </p>";
