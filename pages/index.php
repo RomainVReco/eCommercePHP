@@ -21,7 +21,6 @@ $tab_classe = ["main-category", "simple-1-category", "simple-2-category", "other
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ma quête de rêve</title>
     <?php require_once(__DIR__ . '/importCSS.php'); ?>
-
 </head>
 <body>
     <header>
