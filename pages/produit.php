@@ -16,9 +16,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ma Quête de Rêve</title>
-    <link rel="stylesheet" href="page_produit.css">
+    <link rel="stylesheet" href="./page_produit.css">
+    <?php require_once(__DIR__ . '/importCSS.php'); ?>
 </head>
 <body>
+    <header>
+        <?php require_once(__DIR__ . '/header.php'); ?>
+    </header>
         <div class=container>
                 <img itemprop="image" loading="lazy" src="https://cdn.simba-dickie-group.de/media_new/shop-tamiya/products/300024362/00/detail_desktop/1-24-subaru-brz-td8-300024362-fr_00.jpeg?v=1654855948" title="1:24 Subaru BRZ (TD8)" alt="1:24 Subaru BRZ (TD8)" />                        
                 <div class=infos_generales>
