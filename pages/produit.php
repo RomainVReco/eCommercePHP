@@ -4,8 +4,19 @@ try {
     //$stmt = $dbh->query('SELECT * FROM categories');
     $stmt = $dbh->query('SELECT * FROM produits WHERE id_produit = "13"');
     $les_categories = $stmt->fetchAll(PDO::FETCH_ASSOC);
-    $dbh = null;
+    //$dbh = null;
     var_dump($les_categories).PHP_EOL;
+    //echo ". $les_categories .";
+    //$row = $stmt->fetch(PDO::FETCH_ASSOC); // Récupère la première ligne du résultat
+        
+    /*
+        if ($row) {
+            // Afficher le contenu du champ spécifique (par exemple, le champ 'nom')
+            echo "<p>Contenu du champ 'nom_produit' : " . $row['nom_produit'] . "</p>";
+        } else {
+            echo "Aucun résultat trouvé pour cet ID de produit.";
+        }
+        */
 } catch (Exception $e) {
     $message = $e->getMessage();
     echo ''. $message .'';
@@ -21,6 +32,13 @@ try {
     <title>Produits</title>
 </head>
 <body>
+    <div>
+    <?php
+        //$les_categories = array("Catégorie 1", "Catégorie 2", "Catégorie 3");
+        //echo "<p>La première catégorie est : " . $les_categories[2] . "</p>";
+        //echo ''. $les_categories[1] .''.PHP_EOL;
+    ?>
+    </div>
             <div class="products__row">
                         <div class="row">
                             <div data-aos="fade-up" class="col-6 col-md-4 col-lg-6 col-xl-4" data-page="1">
