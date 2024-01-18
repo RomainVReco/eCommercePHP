@@ -57,13 +57,13 @@ require_once(__DIR__ . '/../../Connexion/connexionBDD.php');
                             <td><?= $produit["age_recommande"] ?></td>
                             <td><?= $produit["reference_image"] ?></td>
                             <td>
-                                <form action="./modifier-pays.php" method="post">
+                                <form action="./modifier-produit.php" method="post">
                                     <input type="hidden" name="id_produit" value="<?= $produit["id"] ?>">
                                     <button type="submit" class="btn btn-sm btn-info">Modifier</a>
                                 </form>
                             </td>
                             <td>
-                                <form action="./supprimer-pays-resultat.php" method="post">
+                                <form action="./supprimer-produit.php" method="post">
                                     <input type="hidden" name="id_produit" value="<?= $produit["id"] ?>">
                                     <button type="submit" class="btn btn-sm btn-danger">Supprimer</a>
                                 </form>

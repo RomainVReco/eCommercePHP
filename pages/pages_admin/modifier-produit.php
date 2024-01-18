@@ -1,20 +1,5 @@
 <?php
-require_once "./inc/outils.php";
-
-try {
-    $sql = "SELECT * FROM pays WHERE code=:code";
-
-    $code = $_POST['code'];
-    $dbh = new PDO('mysql:host=127.0.0.1;dbname=geographie;port=3306;charset=utf8mb4', 'marco', 'polo');
-    $stmt = $dbh->prepare($sql);
-    $stmt->bindValue(':code', $code);
-    $stmt->execute();
-    $un_pays = $stmt->fetch(PDO::FETCH_ASSOC);
-    $dbh = null;
-} catch (Exception $e) {
-    $message = $e->getMessage();
-    $feedback = alerte($message, 'alert-danger');
-}
+require_once(__DIR__ . '/../../Connexion/connexionBDD.php');
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -23,20 +8,15 @@ try {
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Modifier un pays</title>
         <!-- Bootstrap 5.1 CSS -->
-        <link href="./styles/bootstrap.min.css" rel="stylesheet" type="text/css">
-        <link href="./styles/geo.css" rel="stylesheet" type="text/css">
+        <link href="/Lotra3/css/styles/bootstrap.min.css" rel="stylesheet" type="text/css">
+        <link href="/Lotra3/css/styles/geo.css" rel="stylesheet" type="text/css">
     </head>
     <body>
         <div class="jumbotron text-center">
-            <h1>Modifier un pays</h1>
+            <h1>Modifier un produit</h1>
         </div>
         <div class="container-fluid">
-            <?php
-                if (isset($feedback)) {
-                    echo $feedback;
-                } else {
-            ?>
-                <form action="./modifier-pays-resultat.php" method="post">
+                <form action="" method="post">
                     <div class="row m-2">
                         <div class="col-sm-2">
                             <label class="form-label">Code :</label>
