@@ -1,65 +1,59 @@
 <?php
-try {
-    $dbh = new PDO('mysql:host=127.0.0.1;dbname=maquettisme;port=3306;charset=utf8mb4', 'root', '');
-    //$stmt = $dbh->query('SELECT * FROM categories');
-    $stmt = $dbh->query('SELECT * FROM produits WHERE id_produit = "13"');
-    $les_categories = $stmt->fetchAll(PDO::FETCH_ASSOC);
-    //$dbh = null;
-    var_dump($les_categories).PHP_EOL;
-    //echo ". $les_categories .";
-    //$row = $stmt->fetch(PDO::FETCH_ASSOC); // Récupère la première ligne du résultat
-        
-    /*
-        if ($row) {
-            // Afficher le contenu du champ spécifique (par exemple, le champ 'nom')
-            echo "<p>Contenu du champ 'nom_produit' : " . $row['nom_produit'] . "</p>";
-        } else {
-            echo "Aucun résultat trouvé pour cet ID de produit.";
-        }
-        */
-} catch (Exception $e) {
-    $message = $e->getMessage();
-    echo ''. $message .'';
-}
-?>
-
-
+                    try {
+                        $dbh = new PDO('mysql:host=127.0.0.1;dbname=maquettisme;port=3306;charset=utf8mb4', 'root', '');
+                        $stmt = $dbh->query('SELECT * FROM produits WHERE id_produit = "13"');
+                        $row = $stmt->fetch(PDO::FETCH_ASSOC); // Récupère la première ligne du résultat
+                        $dbh = null;
+                    } catch (Exception $e) {
+                        $message = $e->getMessage();
+                        echo ''. $message .'';
+                    }
+                    ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Produits</title>
+    <title>Ma Quête de Rêve</title>
+    <link rel="stylesheet" href="page_produit.css">
 </head>
 <body>
-    <div>
-    <?php
-        //$les_categories = array("Catégorie 1", "Catégorie 2", "Catégorie 3");
-        //echo "<p>La première catégorie est : " . $les_categories[2] . "</p>";
-        //echo ''. $les_categories[1] .''.PHP_EOL;
-    ?>
-    </div>
-            <div class="products__row">
-                        <div class="row">
-                            <div data-aos="fade-up" class="col-6 col-md-4 col-lg-6 col-xl-4" data-page="1">
-                                <div class="product">
-                                    <div class="product__image">
-                                        <!--<img loading="lazy" src="https://cdn.simba-dickie-group.de/media_new/shop-tamiya/products/300078007/00/overview_2020/1-350-us-cvn-65-enterprise-300078007-fr_00.jpeg?v=1585312601" title="1:350 US CVN-65 Enterprise" alt="1:350 US CVN-65 Enterprise" />
-                                        -->                                    
-                                    </div>
-                                    <div class="product__content">
-                                        <p class="product__subtitle">
-                                            Maquettes de bateaux 1/350</p>
-                                        <h3 class="product__title">1:350 US CVN-65 Enterprise</h3>
-                                        <small class="product__sku">300078007</small>
-                                            <p class="product__price">&euro;175.00</p>
-                                            <p class="product__text">Enterprise Warning! Not suitable for children under 14 years.</p>
-                                    </div>
-                                                                        <a class="product_main__link" quickfix="" href="/tamiya_fr/categories/maquettes-en-plastique/maquettes-de-bateaux/maquettes-de-bateaux-1-350/1-350-us-cvn-65-enterprise-300078007-fr.html" title="1:350 US CVN-65 Enterprise"></a>
-                                </div>
-                            </div>
-                        </div>
+        <div class=container>
+                <img itemprop="image" loading="lazy" src="https://cdn.simba-dickie-group.de/media_new/shop-tamiya/products/300024362/00/detail_desktop/1-24-subaru-brz-td8-300024362-fr_00.jpeg?v=1654855948" title="1:24 Subaru BRZ (TD8)" alt="1:24 Subaru BRZ (TD8)" />                        
+                <div class=infos_generales>
+                         
+                <?php
+                // Afficher le contenu du champ spécifique (par exemple, le champ 'nom')
+                            //echo "<h1>Nom article : " . $row['nom_produit'] . "</h1>";
+                            echo "<h1>" . $row['nom_produit'] . "</h1>";
+                            echo "<p>Référence article : " . $row['id_produit'] . "</p>";
+                            echo "<p>Age recommandé : " . $row['age_recommande'] . " ans</p>";
+                            echo "<p>Prix : " . $row['prix'] . " €</p>";
+                ?>
+                    <form>
+                        <label for="nombre">Qté :</label>
+                        <select id="nombre" name="nombre">
+                            <?php
+                            // Gérer l'ajout de 1 à 30 articles
+                            for ($i = 1; $i <= 30; $i++) {
+                                echo '<option value="' . $i . '">' . $i . '</option>';
+                            }
+                            ?>
+                        </select>
+                        <input type="submit" value="Ajouter au panier">
+                    </form>
+
+                </div>
             </div>
-                
+        </div>
+        <h1>Informations produit</h1>
+    <?php
+
+            echo "<p>Nom article : " . $row['nom_produit'] . "</p>";
+            echo "<p>Référence article : " . $row['id_produit'] . "</p>";
+            echo "<p>Description : </p>";
+            echo "<p>" . $row['description'] . "</p>";
+    ?>
+    
 </body>
 </html>
