@@ -16,7 +16,7 @@
             <h1>Admin Ma Quête de Rêve</h1>
         </div>
             <div class="admin-grid">
-            <a href="./produits.php" class="btn btn-info">Produits</a>
+            <a href="./produits_admin.php" class="btn btn-info">Produits</a>
             <a href="#" class="btn btn-info">Clients</a>
             <a href="#" class="btn btn-info">Commandes</a>
             <a href="#" class="btn btn-info">Catégories</a>
