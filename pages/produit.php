@@ -1,4 +1,9 @@
 <?php
+    if (isset($_GET["reference_article"])) {
+        $ref_article = intval($_GET["reference_article"]);
+    } else {
+        echo "Probleme de recuperation de la variable reference_article!";
+    }    
     //Récupération d'informations dans la base
     try {
         $dbh = new PDO('mysql:host=127.0.0.1;dbname=maquettisme;port=3306;charset=utf8mb4', 'root', '');
