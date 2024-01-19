@@ -1,5 +1,5 @@
 <?php
-    $_GET["reference_article"] = "20";
+    $_GET["reference_article"] = "21";
     if (isset($_GET["reference_article"])) {
         $ref_article = intval($_GET["reference_article"]);
     } else {
@@ -40,7 +40,7 @@
                                 echo "<h1>" . $row['nom_produit'] . "</h1>";
                                 echo "<p>Référence article : " . $row['id_produit'] . "</p>";
                                 echo "<p>Age recommandé : " . $row['age_recommande'] . " ans</p>";
-                                echo "<p>Prix : " . $row['prix'] . " €</p>";
+                                echo "<p>Prix : €" . $row['prix'] . " </p>";
                     ?>
                     <form>
                         <label for="nombre">Qté :</label>
