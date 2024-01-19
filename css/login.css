@@ -1,0 +1,11 @@
+.panneau-login {
+    display : flex;
+}
+
+.panneau-gauche {
+    width : 400px;
+}
+
+.panneau-droite {
+    width  : 400px;
+}
