@@ -8,7 +8,9 @@
     //Récupération d'informations dans la base
     try {
         $dbh = new PDO('mysql:host=127.0.0.1;dbname=maquettisme;port=3306;charset=utf8mb4', 'root', '');
-        $stmt = $dbh->query('SELECT * FROM produits WHERE id_produit = $ref_article');
+        $stmt = $dbh->prepare('SELECT * FROM produits WHERE id_produit = :ref_article');
+        $stmt->bindParam(':ref_article', $ref_article, PDO::PARAM_INT);
+        $stmt->execute();
         $row = $stmt->fetch(PDO::FETCH_ASSOC); // Récupère la première ligne du résultat
         $dbh = null;
     } catch (Exception $e) {
