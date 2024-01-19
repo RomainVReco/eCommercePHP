@@ -8,7 +8,7 @@
     //Récupération d'informations dans la base
     try {
         $dbh = new PDO('mysql:host=127.0.0.1;dbname=maquettisme;port=3306;charset=utf8mb4', 'root', '');
-        $stmt = $dbh->query('SELECT * FROM produits WHERE id_produit = "20"');
+        $stmt = $dbh->query('SELECT * FROM produits WHERE id_produit = $ref_article');
         $row = $stmt->fetch(PDO::FETCH_ASSOC); // Récupère la première ligne du résultat
         $dbh = null;
     } catch (Exception $e) {
@@ -22,8 +22,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ma Quête de Rêve</title>
-    <link rel="stylesheet" href="./page_produit.css">
-        <?php require_once(__DIR__ . '/importCSS.php'); ?>
+    <?php require_once(__DIR__ . '/importCSS.php'); ?>
+    <link href="../css/page_produit.css" rel="stylesheet"> 
 </head>
 <body>
     <header>
@@ -31,7 +31,7 @@
     </header>
         <div class=container>
             <div class="boite-image">
-                        <img src="../<?php echo $row['reference_image']; ?>" title="1:24 Subaru BRZ (TD8)" alt="1:24 Subaru BRZ (TD8)" />
+                        <img class="boite-image" src="../<?php echo $row['reference_image']; ?>" title="1:24 Subaru BRZ (TD8)" alt="1:24 Subaru BRZ (TD8)" />
             </div>
                 <div class=infos_generales>
                     <?php
@@ -39,8 +39,6 @@
                                 echo "<p>Référence article : " . $row['id_produit'] . "</p>";
                                 echo "<p>Age recommandé : " . $row['age_recommande'] . " ans</p>";
                                 echo "<p>Prix : " . $row['prix'] . " €</p>";
-                                echo "<p>Emplacement image : " . $row['reference_image'] . "</p>";
-                                echo "<p>Emplacement image : " . $row['reference_image'] . "</p>";
                     ?>
                     <form>
                         <label for="nombre">Qté :</label>
