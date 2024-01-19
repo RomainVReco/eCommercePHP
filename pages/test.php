@@ -35,11 +35,24 @@ require_once(__DIR__ . '/../Connexion/connexionBDD.php');
 </body>
 </html>
 <?php 
+// for ($i = 0; $i < count($query_result); $i++) {
+//     $tab_result[] = $query_result[$i];
+//     echo array_keys($query_result[$i]);
+// }
 
-for ($i = 0; $i < count($query_result); $i++) {
-    for ($j = 0; $j < count($query_result[$i]); $j++) {
-    echo $query_result[$i][""];
+foreach ($query_result as $key => $value){
+    echo $key.PHP_EOL;
+    for ($i = 0; $i < count($value); $i++) {
+        echo $value[$i].PHP_EOL;
+    }
+
+
+
 }
-}
+
+// var_dump($tab_result).PHP_EOL;   
+var_dump($query_result);
+
+
 ?>
 
