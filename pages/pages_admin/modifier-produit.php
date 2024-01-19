@@ -2,7 +2,6 @@
 require_once(__DIR__ . '/../../Connexion/connexionBDD.php');
 require_once(__DIR__ . '/../../Connexion/functions.php');
 
-$_GET["id_produit"] = 11;
 $hasBeenModified = false;
 
 if (isset($_POST["id"])) {
@@ -28,6 +27,7 @@ if (isset($_POST["id"])) {
         $hasBeenModified = true ;
         $back_button = "Revenir";
 } else {
+    var_dump($_GET);
     $id = $_GET["id_produit"];
     $sql = "SELECT p.id_produit as id, p.nom_produit as nom, p.echelle, c.nom_categorie as categorie, p.quantite, p.prix, m.nom_marque as marque,
     p.description, p.age_recommande, p.reference_image as image
@@ -156,7 +156,7 @@ if (isset($_POST["id"])) {
                         <div class="col-sm-2">
                         </div>
                         <div class="col-sm-10">
-                            <a href="./index_admin.php" class="btn btn-outline-info"><?=$back_button?></a>
+                            <a href="./produits_admin.php" class="btn btn-outline-info"><?=$back_button?></a>
                             <button type="submit" class="btn btn-info">Modifier</button>
                         </div>
                     </div>
