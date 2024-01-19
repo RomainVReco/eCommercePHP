@@ -21,7 +21,6 @@ $tab_classe = ["main-category", "simple-1-category", "simple-2-category", "other
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ma quête de rêve</title>
     <?php require_once(__DIR__ . '/importCSS.php'); ?>
-
 </head>
 <body>
     <header>
@@ -37,7 +36,7 @@ $tab_classe = ["main-category", "simple-1-category", "simple-2-category", "other
                     <?php echo $les_categories[$i]['nom_categorie']?>
                 </div>
                 <div class="category-image">
-                    <img src=<?=$les_categories[$i]['image_categorie']?> alt="">
+                    <img src="../<?=$les_categories[$i]['image_categorie']?>"alt="">
                 </div>
             </a>
         </div>
