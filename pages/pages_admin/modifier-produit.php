@@ -1,10 +1,16 @@
 <?php
 require_once(__DIR__ . '/../../Connexion/connexionBDD.php');
 require_once(__DIR__ . '/../../Connexion/functions.php');
+$js_path = __DIR__ .'/../../javascript/functions_js.js';
 
 $hasBeenModified = false;
 
+
 if (isset($_POST["id"])) {
+    if (isset($_FILES['ficphoto']) && ($_FILES["ficphoto"]["error"] == UPLOAD_ERR_OK)) {
+        
+
+    }
         $sql = "UPDATE produits SET nom_produit = :nom, echelle = :echelle, id_categorie= :categorie, 
             quantite = :quantite, prix = :prix, id_marque = :marque, description = :description,
             age_recommande = :age_recommande, reference_image = :reference_image
@@ -149,6 +155,7 @@ if (isset($_POST["id"])) {
                         </div>
                         <div class="col-sm-10">
                             <input type="text" class="form-control" id="image" name="image" value="<?= $value["image"] ?>" required>
+                            <input type="file" name="ficphoto" id="photo" accept="image/jpg, image/jpeg, image/png" required>
                         </div>
                     </div>
                     <?php endforeach; ?>
@@ -164,5 +171,6 @@ if (isset($_POST["id"])) {
         </div>
         <!-- Bootstrap Bundle with Popper -->
         <script src="./js/bootstrap.bundle.min.js"></script>
+        <script type="module" src="/Lotra3/javascript/functions_js.js"></script>
     </body>
 </html>

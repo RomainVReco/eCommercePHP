@@ -1,13 +1,8 @@
 <?php
-require_once(__DIR__ . '/../Connexion/connexionBDD.php');
-
-    $sql = "SELECT p.id_produit as id, p.nom_produit as nom, p.echelle, c.nom_categorie as categorie, p.quantite, p.prix, m.nom_marque as marque,
-    p.description, p.age_recommande, p.reference_image
-    FROM produits as p INNER JOIN categories as c ON p.id_categorie = c.id_categorie
-    INNER JOIN marques as m ON p.id_marque = m.id_marque";
-    $stmt = $mysqlClient->query($sql);
-    $query_result = $stmt->fetchAll();
 ?>
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,43 +11,59 @@ require_once(__DIR__ . '/../Connexion/connexionBDD.php');
     <title>Document</title>
 </head>
 <body>
-<?php foreach ($query_result as $key => $value): ?>
-                    <div class="product">
-                        <div class="product__image">
-                        <a class="product_main__link" quickfix="" href="/tamiya_fr/categories/maquettes-en-plastique/maquettes-de-voitures/maquettes-de-voitures-1-24/1-24-subaru-brz-td8-300024362-fr.html" title="1:24 Subaru BRZ (TD8)">
-                            <img class="product__image-box" loading="lazy" src="/Lotra3/Ressources/assets_categories/maquette-char.jpg" title="1:24 Subaru BRZ (TD8)" alt="1:24 Subaru BRZ (TD8)">
-                        </div>
-                        <div class="product__content">
-                            <p class="product__subtitle"><?=$value['nom_produit']?></p>
-                            <h3 class="product__title"><?=$value['nom_produit']?></h3>
-                            <small class="product__sku"><?=$value['id_produit']?></small>
-                            <p class="product__price"><?=$value['prix']." €" ?></p>
-                            <p class="product__text"></p> 
-                        </div>
-                        </a>
-                    </div>
-                <?php endforeach ?>
+    <h1>Quelle photo ?</h1>
+    <form action="resultat-upload.php" method="post" enctype="multipart/form-data">
+        <input type="hidden" name="MAX_FILE_SIZE" value="10485760" />
+        <label for="photo">Fichier contenant une photo</label>
+        <label for="fileNameInput">Edit file name:</label>
+        <input type="text" id="fileNameInput" name="fileName">
+        <input type="file" name="ficphoto" id="fileInput" accept="image/jpg, image/jpeg, image/png" onchange="updateFileName()" required>
+        <br/>
+        <br/>
+        <input type='submit' value='Téléverser la photo'>
+    </form>
+
+    <head>
+    <title>File Name Edit Example</title>
+    <script>
+        // JavaScript function to update the text input value when a file is selected
+        function updateFileName() {
+            var fileInput = document.getElementById('fileInput');
+            var fileNameInput = document.getElementById('fileNameInput');
+
+            console.log(fileInput)
+            console.log("value : "+fileInput.value+" "+ typeof(fileInput.value))
+            console.log("split : "+fileInput.value.split('\\')+typeof(fileInput.value))
+            console.log("split : "+fileInput.value.split('\\').pop()) 
+            console.log("count : "+fileInput.value.split('\\').length)
+
+
+            // Get the selected file name
+            var fileName = fileInput.value.split('\\').pop();
+
+            // Update the text input value
+            fileNameInput.value = fileName;
+        }
+    </script>
+</head>
+<body>
+
+<form method="post" action="process_upload.php" enctype="multipart/form-data">
+    <label for="fileInput">Choose a file:</label>
+    <input type="file" id="fileInput" name="userFile" onchange="updateFileName()">
+    
+    <br>
+    
+    <label for="fileNameInput">Edit file name:</label>
+    <input type="text" id="fileNameInput" name="fileName">
+
+    <br>
+
+    <input type="submit" value="Upload">
+</form>
+
 </body>
 </html>
-<?php 
-// for ($i = 0; $i < count($query_result); $i++) {
-//     $tab_result[] = $query_result[$i];
-//     echo array_keys($query_result[$i]);
-// }
-
-foreach ($query_result as $key => $value){
-    echo $key.PHP_EOL;
-    for ($i = 0; $i < count($value); $i++) {
-        echo $value[$i].PHP_EOL;
-    }
-
-
-
-}
-
-// var_dump($tab_result).PHP_EOL;   
-var_dump($query_result);
-
-
-?>
+</body>
+</html>
 
