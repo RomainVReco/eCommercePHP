@@ -1,16 +1,22 @@
 <?php
 require_once(__DIR__ . "/connexionBDD.php");
 
-selectorFromContent(getAllBrands($mysqlClient));
-
 function getAllBrands($mysqlClient) {
     $sql = "SELECT id_marque, nom_marque FROM marques;";
     $stmt = $mysqlClient->prepare($sql);
     $stmt->execute();
     $brands = $stmt->fetchAll(PDO::FETCH_NUM);  
-    var_dump($brands); 
     return $brands;
 }
+
+function getAllCategories($mysqlClient) {
+    $sql = "SELECT id_categorie, nom_categorie FROM categories;";
+    $stmt = $mysqlClient->prepare($sql);
+    $stmt->execute();
+    $categories = $stmt->fetchAll(PDO::FETCH_NUM);  
+    return $categories;
+}
+
 /*
 La fonction permet, à partir d'un résultat de requete SQL $content, de récupérer les deux premiers éléments de chaque tableau pour créer
 des balises <options> à placer dans une balise <selector>, soit l'id et et le nom.

@@ -2,16 +2,16 @@
 require_once(__DIR__ . '/../../Connexion/connexionBDD.php');
 require_once(__DIR__ . '/../../Connexion/functions.php');
 
-$_GET["id_produit"] = 10;
+$_GET["id_produit"] = 11;
 $hasBeenModified = false;
 
 if (isset($_POST["id"])) {
-    var_dump($_POST);
-
         $sql = "UPDATE produits SET nom_produit = :nom, echelle = :echelle, id_categorie= :categorie, 
             quantite = :quantite, prix = :prix, id_marque = :marque, description = :description,
-            age_recommande = :age_recommande, reference_image = :reference_image;";
+            age_recommande = :age_recommande, reference_image = :reference_image
+            WHERE id_produit = :id ;";
         $stmt = $mysqlClient->prepare($sql);
+        $stmt->bindValue(':id', $_POST["id"]);
         $stmt->bindValue(':nom', $_POST['nom']);
         $stmt->bindValue(':echelle', $_POST['echelle']);
         $stmt->bindValue(':categorie', $_POST['categorie']);
@@ -22,13 +22,15 @@ if (isset($_POST["id"])) {
         $stmt->bindValue(':age_recommande', $_POST['age_recommande']);
         $stmt->bindValue(':reference_image', $_POST['image']);
         $stmt->execute();
+        $query_result[] = $_POST;
     
-        $message = "Modification du produit : {$_POST['code']} . " - ". {$_POST['nom']}" ;
+        $message = "Modification effectuée avec succès du produit : {$_POST['id']} - {$_POST['nom']} " ;
         $hasBeenModified = true ;
+        $back_button = "Revenir";
 } else {
     $id = $_GET["id_produit"];
     $sql = "SELECT p.id_produit as id, p.nom_produit as nom, p.echelle, c.nom_categorie as categorie, p.quantite, p.prix, m.nom_marque as marque,
-    p.description, p.age_recommande, p.reference_image
+    p.description, p.age_recommande, p.reference_image as image
     FROM produits as p INNER JOIN categories as c ON p.id_categorie = c.id_categorie
     INNER JOIN marques as m ON p.id_marque = m.id_marque
     WHERE p.id_produit = :id";
@@ -36,8 +38,7 @@ if (isset($_POST["id"])) {
     $stmt->bindValue(":id", $id);
     $stmt->execute();
     $query_result = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-    var_dump($query_result);
+    $back_button = "Annuler";
 }
 
 ?>
@@ -90,7 +91,12 @@ if (isset($_POST["id"])) {
                             <label for="categorie" class="form-label">Catégorie :</label>
                         </div>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" id="categorie" name="categorie" value="<?= $value["categorie"] ?>" required>
+                            <select name="categorie" id="categorie" class="form-control">
+                                <?php 
+                                    $categories = getAllCategories($mysqlClient);
+                                    echo selectorFromContent($categories, $value["categorie"]);
+                                    ?>
+                            </select>
                         </div>
                     </div>
                     <div class="row m-2">
@@ -117,7 +123,7 @@ if (isset($_POST["id"])) {
                             <select name="marque" id="Marque" class="form-control">
                                 <?php 
                                     $brands = getAllBrands($mysqlClient);
-                                    echo selectorFromContent($brands,  $value["marque"]);
+                                    echo selectorFromContent($brands, $value["marque"]);
                                 ?>  
                             </select>
                         </div>
@@ -142,7 +148,7 @@ if (isset($_POST["id"])) {
                             <label for="image" class="form-label">Image :</label>
                         </div>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" id="image" name="image" value="<?= $value["reference_image"] ?>" required>
+                            <input type="text" class="form-control" id="image" name="image" value="<?= $value["image"] ?>" required>
                         </div>
                     </div>
                     <?php endforeach; ?>
@@ -150,7 +156,7 @@ if (isset($_POST["id"])) {
                         <div class="col-sm-2">
                         </div>
                         <div class="col-sm-10">
-                            <a href="./index_admin.php" class="btn btn-outline-info">Annuler</a>
+                            <a href="./index_admin.php" class="btn btn-outline-info"><?=$back_button?></a>
                             <button type="submit" class="btn btn-info">Modifier</button>
                         </div>
                     </div>
