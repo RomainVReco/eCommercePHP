@@ -11,10 +11,21 @@
     <header>
         <?php require_once(__DIR__ . '/header.php'); ?>
     </header>
-    <h2>Identifiez-vous ou créez un compte</h2>
+    <div class=partie-haute>
+        <h2>Identifiez-vous ou créez un compte</h2>
+        <div class = panneau-titre>
+            <div class=panneau-gauche>
+                <p class=encadrement-fonce-titre>Login client</p>
+            </div>
+            <div class=panneau-droite>
+                <br>
+                <p class=encadrement-clair-titre>Créer un compte utilisateur</p>
+            </div>
+        </div>
+    </div>
     <div class=panneau-login>
         <div class=panneau-gauche>
-            <form action="/action_page.php">
+            <form action="construction.html">
                 <div class="form-group">
                     <label for="email">Adresse mail*</label>
                     <input type="email" class="form-control" id="email">

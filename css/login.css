@@ -1,3 +1,30 @@
+.partie-haute {
+    background-color: #f2f2f2;
+}
+
+.panneau-titre {
+    display : flex;
+    padding: 20px;
+}
+
+.encadrement-fonce-titre {
+    background-color: blue;
+    color: white;
+    padding : 20px;
+    margin: 10px;
+    border-radius: 5%;
+    text-align: center;
+}
+
+.encadrement-clair-titre {
+    background-color: white;
+    color: black;
+    padding : 20px;
+    margin: 10px;
+    border-radius: 5%;
+    text-align: center;
+}
+
 .panneau-login {
     display : flex;
     padding: 20px;
