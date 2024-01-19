@@ -1,0 +1,11 @@
+.container {
+    display : flex;
+}
+
+.boite-image {
+    width : 400px;
+}
+
+.infos_generales {
+    width  : 400px;
+}
