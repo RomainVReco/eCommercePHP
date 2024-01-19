@@ -1,11 +1,21 @@
 .panneau-login {
     display : flex;
+    padding: 20px;
 }
 
 .panneau-gauche {
     width : 400px;
+    padding: 20px;
 }
 
 .panneau-droite {
     width  : 400px;
+}
+
+.bouton-bleu {
+    background-color: blue;
+    color:white;
+    width: 100px;
+    padding: 2%;
+    border-radius: 5%;
 }

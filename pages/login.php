@@ -11,7 +11,7 @@
     <header>
         <?php require_once(__DIR__ . '/header.php'); ?>
     </header>
-    <h1>Identifiez-vous ou créez un compte</h1>
+    <h2>Identifiez-vous ou créez un compte</h2>
     <div class=panneau-login>
         <div class=panneau-gauche>
             <form action="/action_page.php">
@@ -23,12 +23,20 @@
                     <label for="pwd">Mot de passe*</label>
                     <input type="password" class="form-control" id="pwd">
                 </div>
-                <button type="submit" class="btn btn-default">Submit</button>
+                <a href="construction.html" alt="Mot de passe oublié?">Mot de passe oublié?</a>
+                <br>
+                <button class=bouton-bleu type="submit" class="btn btn-default">Connexion</button>
+                <br>
+                <br>
+                <p>* Champs obligatoires</p>
             </form>
         </div>
         <div class=panneau-droit>
-            <h2>Avez-vous des questions concernant votre compte utilisateur?</h2>
+            <h3>Avez-vous des questions concernant votre compte utilisateur?</h3>
+            <br>
             <p>N'hésitez pas à nous appeler ou à nous écrire un e-mail.</p>
+            <p>Email: service@ma-quete-de-reve.com</p>
+            <p>Tél: +33 (0) 1 55 65 53 67 (ESIEE-IT)</p>
         </div>
 
     </div>
