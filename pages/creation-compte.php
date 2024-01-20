@@ -15,11 +15,11 @@
         <h2>Identifiez-vous ou créez un compte</h2>
         <div class = panneau-titre>
             <div class=panneau-gauche>
-                <p class=encadrement-fonce-titre>Login client</p>
+                <p class=encadrement-clair-titre>Login client</p>
             </div>
             <div class=panneau-droite>
                 <br>
-                <p class=encadrement-clair-titre>Créer un compte utilisateur</p>
+                <p class=encadrement-fonce-titre>Créer un compte utilisateur</p>
             </div>
         </div>
     </div>
@@ -27,16 +27,24 @@
         <div class=panneau-gauche>
             <form action="construction.html">
                 <div class="form-group">
-                    <label for="email">Adresse mail*</label>
+                    <label for="email">Prénom*</label>
                     <input type="email" class="form-control" id="email">
                 </div>
                 <div class="form-group">
-                    <label for="pwd">Mot de passe*</label>
-                    <input type="password" class="form-control" id="pwd">
+                    <label for="pwd">Prénom*</label>
+                    <input type="text" class="form-control" id="pwd">
                 </div>
-                <a href="construction.html">Mot de passe oublié?</a>
+                <div class="form-group">
+                    <label for="pwd">Nom*</label>
+                    <input type="" class="form-control" id="pwd">
+                </div>
+                <div class="form-group">
+                    <label for="email">Email*</label>
+                    <input type="email" class="form-control" id="email">
+                </div>
+                <a href="construction.html" alt="Mot de passe oublié?">Mot de passe oublié?</a>
                 <br>
-                <button class=bouton-bleu type="submit">Connexion</button>
+                <button class=bouton-bleu type="submit" class="btn btn-default">Connexion</button>
                 <br>
                 <br>
                 <p>* Champs obligatoires</p>
