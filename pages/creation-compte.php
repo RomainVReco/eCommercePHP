@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ma Quête de Rêve</title>
     <?php require_once(__DIR__ . '/importCSS.php'); ?>
-    <link href="../css/login.css" rel="stylesheet"> 
+    <link rel="stylesheet" type="text/css" href="../css/login.css"> 
 </head>
 <body>
     <header>
@@ -15,11 +15,17 @@
         <h2>Identifiez-vous ou créez un compte</h2>
         <div class = panneau-titre>
             <div class=panneau-gauche>
-                <p class=encadrement-clair-titre>Login client</p>
+                <!--<p class=encadrement-clair-titre>Login client</p> -->
+                <p class="encadrement-clair-titre">
+                    <a href="login.php" class="lien-sans-soulignement">Login client</a>
+                </p>
             </div>
             <div class=panneau-droite>
                 <br>
-                <p class=encadrement-fonce-titre>Créer un compte utilisateur</p>
+                <!--<p class=encadrement-fonce-titre>Créer un compte utilisateur</p> -->
+                <p class="encadrement-fonce-titre">
+                    <a href="creation-compte.php" class="lien-sans-soulignement">Créer un compte utilisateur</a>
+                </p>
             </div>
         </div>
     </div>

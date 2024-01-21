@@ -46,3 +46,7 @@
     padding: 2%;
     border-radius: 5%;
 }
+
+.lien-sans-soulignement {
+    text-decoration: none; /* Supprimer le soulignement */
+}

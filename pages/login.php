@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ma Quête de Rêve</title>
     <?php require_once(__DIR__ . '/importCSS.php'); ?>
-    <link href="../css/login.css" rel="stylesheet"> 
+    <link rel="stylesheet" type="text/css" href="../css/login.css"> 
 </head>
 <body>
     <header>
@@ -15,11 +15,19 @@
         <h2>Identifiez-vous ou créez un compte</h2>
         <div class = panneau-titre>
             <div class=panneau-gauche>
-                <p class=encadrement-fonce-titre>Login client</p>
+                <!--<p class=encadrement-fonce-titre>Login client</p>-->
+                <p class="encadrement-fonce-titre">
+                    <a href="login.php" class="lien-sans-soulignement">Login client</a>
+                </p>
+                <!--<a href="page_a_ouvrir.html" class=encadrement-fonce-titre label="Login client"><button style="background-color: blue; color: black;">Login client</button></a>
+                -->
             </div>
             <div class=panneau-droite>
                 <br>
-                <p class=encadrement-clair-titre>Créer un compte utilisateur</p>
+                <!--<p class=encadrement-clair-titre>Créer un compte utilisateur</p>-->
+                <p class="encadrement-clair-titre">
+                <a href="creation-compte.php" class="lien-sans-soulignement">Créer un compte utilisateur</a>
+            </p>
             </div>
         </div>
     </div>
@@ -48,7 +56,7 @@
             <br>
             <p>N'hésitez pas à nous appeler ou à nous écrire un e-mail.</p>
             <p>Email: service@ma-quete-de-reve.com</p>
-            <p>Tél: +33 (0) 1 55 65 53 67 (ESIEE-IT)</p>
+            <p>Tél: +33 (0) 1 23 45 67 89</p>
         </div>
 
     </div>
