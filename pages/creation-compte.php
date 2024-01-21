@@ -25,43 +25,35 @@
     </div>
     <div class=panneau-login>
         <div class=panneau-gauche>
-            <form action="construction.html">
-                <div class="form-group">
-                    <label for="email">Prénom*</label>
-                    <input type="email" class="form-control" id="email">
+            <form action="action_page.php" style="border:1px solid #ccc">
+            <div class="container">
+                <h1>Sign Up</h1>
+                <p>Please fill in this form to create an account.</p>
+                <hr>
+
+                <label for="email"><b>Email</b></label>
+                <input type="text" placeholder="Enter Email" name="email" required>
+
+                <label for="psw"><b>Password</b></label>
+                <input type="password" placeholder="Enter Password" name="psw" required>
+
+                <label for="psw-repeat"><b>Repeat Password</b></label>
+                <input type="password" placeholder="Repeat Password" name="psw-repeat" required>
+
+                <label>
+                <input type="checkbox" checked="checked" name="remember" style="margin-bottom:15px"> Remember me
+                </label>
+
+                <p>By creating an account you agree to our <a href="#" style="color:dodgerblue">Terms & Privacy</a>.</p>
+
+                <div class="clearfix">
+                <button type="button" class="cancelbtn">Cancel</button>
+                <button type="submit" class="signupbtn">Sign Up</button>
                 </div>
-                <div class="form-group">
-                    <label for="pwd">Prénom*</label>
-                    <input type="text" class="form-control" id="pwd">
-                </div>
-                <div class="form-group">
-                    <label for="pwd">Nom*</label>
-                    <input type="" class="form-control" id="pwd">
-                </div>
-                <div class="form-group">
-                    <label for="email">Email*</label>
-                    <input type="email" class="form-control" id="email">
-                </div>
-                <a href="construction.html" alt="Mot de passe oublié?">Mot de passe oublié?</a>
-                <br>
-                <button class=bouton-bleu type="submit" class="btn btn-default">Connexion</button>
-                <br>
-                <br>
-                <p>* Champs obligatoires</p>
+            </div>
             </form>
         </div>
-        <div class=panneau-droit>
-            <h3>Avez-vous des questions concernant votre compte utilisateur?</h3>
-            <br>
-            <p>N'hésitez pas à nous appeler ou à nous écrire un e-mail.</p>
-            <p>Email: service@ma-quete-de-reve.com</p>
-            <p>Tél: +33 (0) 1 55 65 53 67 (ESIEE-IT)</p>
-        </div>
-
     </div>
-
-
- 
     
 </body>
 </html>
