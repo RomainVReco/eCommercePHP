@@ -29,16 +29,17 @@
                 <div class="form-group">
                     <label for="email">Adresse mail*</label>
                     <input type="email" class="form-control" id="email">
+                    <br><br>
                 </div>
                 <div class="form-group">
                     <label for="pwd">Mot de passe*</label>
                     <input type="password" class="form-control" id="pwd">
+                    <br><br>
                 </div>
                 <a href="construction.html">Mot de passe oublié?</a>
-                <br>
+                <br><br>
                 <button class=bouton-bleu type="submit">Connexion</button>
-                <br>
-                <br>
+                <br><br>
                 <p>* Champs obligatoires</p>
             </form>
         </div>
