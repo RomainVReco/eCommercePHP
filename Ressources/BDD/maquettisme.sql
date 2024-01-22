@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost
--- Généré le : mer. 17 jan. 2024 à 14:56
+-- Généré le : lun. 22 jan. 2024 à 14:21
 -- Version du serveur : 10.4.28-MariaDB
 -- Version de PHP : 8.2.4
 
@@ -55,13 +55,21 @@ CREATE TABLE `clients` (
   `id_client` int(11) NOT NULL,
   `nom_client` varchar(50) NOT NULL,
   `prenom_client` varchar(50) NOT NULL,
-  `adresse` varchar(50) NOT NULL,
-  `code_postal` varchar(10) NOT NULL,
-  `id_pays` varchar(30) NOT NULL,
+  `adresse` varchar(50) DEFAULT NULL,
+  `code_postal` varchar(10) DEFAULT NULL,
+  `id_pays` varchar(30) DEFAULT NULL,
   `email` varchar(50) NOT NULL,
-  `telephone` varchar(20) NOT NULL,
-  `ville` varchar(30) NOT NULL
+  `telephone` varchar(20) DEFAULT NULL,
+  `ville` varchar(30) DEFAULT NULL,
+  `motdepasse` varchar(60) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Déchargement des données de la table `clients`
+--
+
+INSERT INTO `clients` (`id_client`, `nom_client`, `prenom_client`, `adresse`, `code_postal`, `id_pays`, `email`, `telephone`, `ville`, `motdepasse`) VALUES
+(1, 'Einstein', 'Albert', '', '', '', 'Albert.einstein@emc2.com', '', '', 'Eureka1905');
 
 -- --------------------------------------------------------
 
@@ -251,7 +259,7 @@ ALTER TABLE `roles`
 -- AUTO_INCREMENT pour la table `clients`
 --
 ALTER TABLE `clients`
-  MODIFY `id_client` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_client` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT pour la table `commentaires`
