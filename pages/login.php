@@ -12,19 +12,16 @@
         <?php require_once(__DIR__ . '/header.php'); ?>
     </header>
     <div class=partie-haute>
+        <br><br>
         <h2>Identifiez-vous ou créez un compte</h2>
         <div class = panneau-titre>
             <div class=panneau-gauche>
-                <!--<p class=encadrement-fonce-titre>Login client</p>-->
                 <p class="encadrement-fonce-titre">
                     <a href="login.php" class="lien-sans-soulignement-fonce">Login client</a>
                 </p>
-                <!--<a href="page_a_ouvrir.html" class=encadrement-fonce-titre label="Login client"><button style="background-color: blue; color: black;">Login client</button></a>
-                -->
             </div>
             <div class=panneau-droite>
                 <br>
-                <!--<p class=encadrement-clair-titre>Créer un compte utilisateur</p>-->
                 <p class="encadrement-clair-titre">
                 <a href="creation-compte.php" class="lien-sans-soulignement">Créer un compte utilisateur</a>
             </p>
