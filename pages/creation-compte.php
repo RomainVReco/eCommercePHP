@@ -26,6 +26,13 @@ if (isset($_GET["reference_client"])) {
     echo "Probleme de recuperation de la variable reference_client!";
 }    
 
+$_POST["reference_client"] = "1";
+if (isset($_POST["reference_client"])) {
+    $ref_client = intval($_POST["reference_client"]);
+} else {
+    echo "Probleme de recuperation de la variable reference_client!";
+}    
+
 //Récupération d'informations sur le client
 try {
     $dbh = new PDO('mysql:host=127.0.0.1;dbname=maquettisme;port=3306;charset=utf8mb4', 'root', '');
@@ -41,17 +48,22 @@ try {
 
 
 //$sql = "INSERT INTO `clients`(``, `nom_produit`, `echelle`, `id_categorie`, `quantite`, `prix`, `id_marque`, `description`, `age_recommande`, `reference_image`) VALUES  (:nom, :echelle, :categorie, :quantite, :prix, :marque, :description, :age_recommande, :reference_image);";
-/*
 
-$sql = "INSERT INTO `clients`(`nom_client`, `prenom_client`, `email`, `motdepasse`) VALUES (:nom, :prenom, :email, :motdepasse)";
-$stmt = $mysqlClient->prepare($sql);
-$stmt->bindValue(':nom', $_POST['nom']);
-$stmt->bindValue(':prenom', $_POST['prenom']);
-$stmt->bindValue(':email', $_POST['email']);
-$stmt->bindValue(':motdepasse', $_POST['motdepasse']);
-$stmt->execute();
-//$query_result[] = $_POST;
-*/
+try {
+    $mysqlClient = new PDO('mysql:host=127.0.0.1;dbname=maquettisme;port=3306;charset=utf8mb4', 'root', '');
+    $sql = "INSERT INTO `clients`(`nom_client`, `prenom_client`, `email`, `motdepasse`) VALUES (:nom, :prenom, :email, :motdepasse)";
+    $stmt = $mysqlClient->prepare($sql);
+    $stmt->bindValue(':nom', $_POST['nom']);
+    $stmt->bindValue(':prenom', $_POST['prenom']);
+    $stmt->bindValue(':email', $_POST['email']);
+    $stmt->bindValue(':motdepasse', $_POST['motdepasse']);
+    $stmt->execute();
+    //$query_result[] = $_POST;
+} catch (Exception $e) {
+    $message = $e->getMessage();
+    echo ''. $message .'';
+}   
+
 
 ?>
 <!DOCTYPE html>
@@ -88,17 +100,17 @@ $stmt->execute();
             <form action="action_page.php">
             <div class="container">
                 <label for="text">Prénom*</label>
-                <input type="text" name="prenom" required>
+                <input type="text" id="prenom" name="prenom" required>
                 <label for="text">Nom*</label>
-                <input type="text" name="nom" required>
+                <input type="text" id="nom" name="nom" required>
                 <label for="email">Adresse mail*</label>
-                <input type="email" name="email" required> 
+                <input type="email" id="email" name="email" required> 
                 <br><br>
                 <label for="psw">Mot de passe*</label>
-                <input type="password" name="psw" required>
+                <input type="password"id="psw" name="psw" required>
                 <br><br>
                 <label for="psw-repeat">Confirmation*</label>
-                <input type="password" name="psw-repeat" required>
+                <input type="password" id="psw-repeat" name="psw-repeat" required>
                 <br><br>
                 <button class=bouton-bleu type="submit">Enregistrement</button>
                 <br><br>
@@ -106,13 +118,6 @@ $stmt->execute();
             </div>
             </form>
     </div>
-    <h1>Informations produit</h1>
-    <?php
-            echo "<p>Nom article : " . $row['nom_produit'] . "</p>";
-            echo "<p>Référence article : " . $row['id_produit'] . "</p>";
-            echo "<p>Description : </p>";
-            echo "<p>" . $row['description'] . "</p>";
-    ?>
     <h1>Informations client</h1>
     <?php
             echo "<p>Nom : " . $row1['nom_client'] . "</p>";
