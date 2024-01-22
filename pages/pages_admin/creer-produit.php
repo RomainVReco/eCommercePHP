@@ -1,4 +1,6 @@
 <?php
+
+session_start();
 require_once(__DIR__ . '/../../Connexion/connexionBDD.php');
 require_once(__DIR__ . '/../../Connexion/functions.php');
 require_once(__DIR__ . '/../../Connexion/config.php');
@@ -8,6 +10,8 @@ $hasBeenCreated = false;
 $hasBeenSelected = true ;
 $status_image = "";
 $back_button = "Annuler";
+
+
 
 if (isset($_POST["nom"])) {
     if (isset($_FILES['ficphoto']) && ($_FILES["ficphoto"]["error"] == UPLOAD_ERR_OK)) {

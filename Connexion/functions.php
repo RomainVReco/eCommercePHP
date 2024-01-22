@@ -32,3 +32,21 @@ function selectorFromContent($content, $selected) {
     }
     return $html_selector;
 }
+
+function getEmployeeCategoryAccess($mysqlClient, $role) {
+    $sql = "SELECT l_c_a.page_php as page, l_c_a.nom_cat_admin as nom
+            FROM roles as r INNER JOIN role_cat_admin as r_c_a ON r.id_role = r_c_a.id_role
+            INNER JOIN liste_cat_admin as l_c_a ON l_c_a.id_cat_admin = r_c_a.id_cat_admin
+            WHERE r.id_role = :id";
+    $stmt = $mysqlClient->prepare($sql);
+    $stmt->bindValue(":id", $role, PDO::PARAM_INT);
+    $stmt->execute();
+    $admin_access = $stmt->fetchAll(PDO::FETCH_NUM);
+
+    $div_admin_access="";
+
+    foreach ($admin_access as $page_php => $nom_categorie) {
+        $div_admin_access .= "<a href=\"./ . $page_php. '\" class=\"btn btn-info\">$nom_categorie</a>";
+    }
+    return $div_admin_access;
+}
