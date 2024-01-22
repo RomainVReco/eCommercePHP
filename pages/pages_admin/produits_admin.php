@@ -7,8 +7,7 @@ require_once(__DIR__ . '/../../Connexion/connexionBDD.php');
     INNER JOIN marques as m ON p.id_marque = m.id_marque";
     $stmt = $mysqlClient->prepare($sql);
     $stmt->execute();
-    $query_result = $stmt->fetchAll();
-    var_dump($query_result).PHP_EOL;
+    $query_result = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
 <!DOCTYPE html>
@@ -25,6 +24,7 @@ require_once(__DIR__ . '/../../Connexion/connexionBDD.php');
                 <thead>
                     <tr>
                         <th class="text-center" colspan="11">Produits référencés</th>
+                        <a href="./index_admin.php" class="btn btn-outline-info">Revenir à l'accueil</a>
                     </tr>
                     <tr class="table-info">
                         <th>id</th>
@@ -57,7 +57,7 @@ require_once(__DIR__ . '/../../Connexion/connexionBDD.php');
                             <td><?= $produit["age_recommande"] ?></td>
                             <td><?= $produit["reference_image"] ?></td>
                             <td>
-                                <form action="./modifier-produit.php" method="post">
+                                <form action="./modifier-produit.php" method="get">
                                     <input type="hidden" name="id_produit" value="<?= $produit["id"] ?>">
                                     <button type="submit" class="btn btn-sm btn-info">Modifier</a>
                                 </form>
