@@ -64,7 +64,7 @@ require_once(__DIR__ . '/../../Connexion/connexionBDD.php');
                                 </form>
                             </td>
                             <td>
-                                <form action="./supprimer-produit.php" method="post">
+                                <form action="./supprimer-produit.php" method="get">
                                     <input type="hidden" name="id_produit" value="<?= $produit["id"] ?>">
                                     <input type="hidden" name="nom" value="<?= $produit["nom"] ?>">
                                     <button type="submit" class="btn btn-sm btn-danger">Supprimer</a>
