@@ -1,27 +1,34 @@
 <?php 
 require_once(__DIR__ . '/../../Connexion/connexionBDD.php');
+require_once(__DIR__ . '/../../Connexion/functions.php');
 
 session_start();
-$role = 0;
 
 if (isset($_POST['login'])){
     $username = $_POST['login'];
     $password = $_POST['password'];
-    $sql = "SELECT role FROM admin WHERE login_employe = :login AND mot_de_passe = :password";
+    $sql = "SELECT id_role FROM admin WHERE login_employe = :login AND mot_de_passe = :password";
+
     $stmt = $mysqlClient->prepare($sql);
     $stmt->bindValue(":login", $username);
     $stmt->bindValue(":password", $password);
     $stmt->execute();
-    $role = $stmt->fetch(PDO::FETCH_NUM );
-    var_dump($role[0]);
-    $_SESSION['role'] = $role[0];
+    $id_role= $stmt->fetch(PDO::FETCH_NUM );
+
+    if (is_null($id_role)){
+        echo "je suis nul";
+        $_SESSION["role"] = 0;
+    } else $_SESSION["role"] = $id_role[0];
 }
 
 if (isset($_SESSION["role"]) && ($_SESSION["role"] == 0 )) {
-    header("Location: ./connecter_admin.php");
+    header("Location: connexion_admin.php");
     exit;
-} else {
+} else if (isset($_SESSION["role"]) && ($_SESSION["role"] != 0 )) {
     $div_admin_access = getEmployeeCategoryAccess($mysqlClient, $_SESSION["role"]);
+} else {
+    header("Location: connexion_admin.php");
+    exit;
 }
 
 
@@ -45,7 +52,7 @@ if (isset($_SESSION["role"]) && ($_SESSION["role"] == 0 )) {
             <h1>Admin Ma Quête de Rêve</h1>
         </div>
             <div class="admin-grid">
-                <?= $div_admin_access ?>
+                <?=$div_admin_access ?>
             </div>
         </div>
         <!-- Bootstrap Bundle with Popper -->

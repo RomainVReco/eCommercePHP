@@ -1,8 +1,11 @@
 <?php
+session_start();
 require_once(__DIR__ . '/../../Connexion/connexionBDD.php');
 require_once(__DIR__ . '/../../Connexion/functions.php');
 require_once(__DIR__ . '/../../Connexion/config.php');
 $js_path = __DIR__ .'/../../javascript/functions_js.js';
+
+checkRoleAdmin($_SESSION);
 
 $hasBeenModified = false;
 $status_image = "";
@@ -83,7 +86,7 @@ if (isset($_POST["id"])) {
             echo "<div class=\"alert-info\">$message</div>";
         } ?>
         <div class="container-fluid">
-                <form action="modifier-produit.php" method="post" enctype="multipart/form-data">
+                <form action="modifier_produit.php" method="post" enctype="multipart/form-data">
                     <?php foreach ($query_result as $value): ?>
                     <div class="row m-2">
                         <div class="col-sm-2">

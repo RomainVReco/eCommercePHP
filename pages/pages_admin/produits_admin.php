@@ -1,4 +1,6 @@
 <?php
+session_start();
+
 require_once(__DIR__ . '/../../Connexion/connexionBDD.php');
 
     $sql = "SELECT p.id_produit as id, p.nom_produit as nom, p.echelle, c.nom_categorie as categorie, p.quantite, p.prix, m.nom_marque as marque,

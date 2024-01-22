@@ -45,8 +45,16 @@ function getEmployeeCategoryAccess($mysqlClient, $role) {
 
     $div_admin_access="";
 
-    foreach ($admin_access as $page_php => $nom_categorie) {
-        $div_admin_access .= "<a href=\"./ . $page_php. '\" class=\"btn btn-info\">$nom_categorie</a>";
+    foreach ($admin_access as $nom_categorie) {
+            $div_admin_access .= "<a href=\"./$nom_categorie[0]\" class=\"btn btn-info\">$nom_categorie[1]</a>";
     }
     return $div_admin_access;
+}
+
+function checkRoleAdmin($session){
+    if (isset($session["role"]) && ($session["role"] == 0 )) {
+        echo 'fonciton';
+        header("Location: connexion_admin.php");
+        exit;
+}
 }

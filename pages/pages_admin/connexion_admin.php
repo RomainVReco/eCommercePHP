@@ -1,8 +1,12 @@
 <?php
-session_start();
 
-if (isset($_SESSION[""]) && $_SESSION["role"]!=0) {
-    header("Location: ./index_admin.php");
+session_start();
+$role = 0;
+$_SESSION["role"] = $role;
+
+if (isset($_SESSION["role"]) && $_SESSION["role"]!=0) {
+    header("Location: index_admin.php");
+    exit;
 }
 
 ?>
@@ -35,7 +39,7 @@ if (isset($_SESSION[""]) && $_SESSION["role"]!=0) {
                         <label for="mdp" class="form-label">Mot de passe :</label>
                     </div>
                     <div class="col-sm-10">
-                        <input type="password" class="form-control" id="mdp" name="mdp" required>
+                        <input type="password" class="form-control" id="mdp" name="password" required>
                     </div>
                 </div>
                 <div class="row m-2">
