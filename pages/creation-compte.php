@@ -1,3 +1,59 @@
+<?php
+
+$_GET["reference_article"] = "10";
+if (isset($_GET["reference_article"])) {
+    $ref_article = intval($_GET["reference_article"]);
+} else {
+    echo "Probleme de recuperation de la variable reference_article!";
+}    
+//Récupération d'informations sur le produit
+try {
+    $dbh = new PDO('mysql:host=127.0.0.1;dbname=maquettisme;port=3306;charset=utf8mb4', 'root', '');
+    $stmt = $dbh->prepare('SELECT * FROM produits WHERE id_produit = :ref_article');
+    $stmt->bindParam(':ref_article', $ref_article, PDO::PARAM_INT);
+    $stmt->execute();
+    $row = $stmt->fetch(PDO::FETCH_ASSOC); // Récupère la première ligne du résultat
+    $dbh = null;
+} catch (Exception $e) {
+    $message = $e->getMessage();
+    echo ''. $message .'';
+}
+
+$_GET["reference_client"] = "1";
+if (isset($_GET["reference_client"])) {
+    $ref_client = intval($_GET["reference_client"]);
+} else {
+    echo "Probleme de recuperation de la variable reference_client!";
+}    
+
+//Récupération d'informations sur le client
+try {
+    $dbh = new PDO('mysql:host=127.0.0.1;dbname=maquettisme;port=3306;charset=utf8mb4', 'root', '');
+    $stmt = $dbh->prepare('SELECT * FROM clients WHERE id_client = :ref_client');
+    $stmt->bindParam(':ref_client', $ref_client, PDO::PARAM_INT);
+    $stmt->execute();
+    $row1 = $stmt->fetch(PDO::FETCH_ASSOC); // Récupère la première ligne du résultat
+    $dbh = null;
+} catch (Exception $e) {
+    $message = $e->getMessage();
+    echo ''. $message .'';
+}
+
+
+//$sql = "INSERT INTO `clients`(``, `nom_produit`, `echelle`, `id_categorie`, `quantite`, `prix`, `id_marque`, `description`, `age_recommande`, `reference_image`) VALUES  (:nom, :echelle, :categorie, :quantite, :prix, :marque, :description, :age_recommande, :reference_image);";
+/*
+
+$sql = "INSERT INTO `clients`(`nom_client`, `prenom_client`, `email`, `motdepasse`) VALUES (:nom, :prenom, :email, :motdepasse)";
+$stmt = $mysqlClient->prepare($sql);
+$stmt->bindValue(':nom', $_POST['nom']);
+$stmt->bindValue(':prenom', $_POST['prenom']);
+$stmt->bindValue(':email', $_POST['email']);
+$stmt->bindValue(':motdepasse', $_POST['motdepasse']);
+$stmt->execute();
+//$query_result[] = $_POST;
+*/
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -50,6 +106,20 @@
             </div>
             </form>
     </div>
+    <h1>Informations produit</h1>
+    <?php
+            echo "<p>Nom article : " . $row['nom_produit'] . "</p>";
+            echo "<p>Référence article : " . $row['id_produit'] . "</p>";
+            echo "<p>Description : </p>";
+            echo "<p>" . $row['description'] . "</p>";
+    ?>
+    <h1>Informations client</h1>
+    <?php
+            echo "<p>Nom : " . $row1['nom_client'] . "</p>";
+            echo "<p>Prénom : " . $row1['prenom_client'] . "</p>";
+            echo "<p>Email : " . $row1['email'] . "</p>";
+            echo "<p>Password : " . $row1['motdepasse'] . "</p>";
+    ?>
     
 </body>
 </html>

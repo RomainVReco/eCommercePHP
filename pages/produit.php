@@ -1,5 +1,5 @@
 <?php
-    $_GET["reference_article"] = "21";
+    $_GET["reference_article"] = "11";
     if (isset($_GET["reference_article"])) {
         $ref_article = intval($_GET["reference_article"]);
     } else {
