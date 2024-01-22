@@ -136,7 +136,7 @@ if (isset($_POST["id"])) {
                             <label for="prix" class="form-label">Prix :</label>
                         </div>
                         <div class="col-sm-10">
-                            <input type="number" class="form-control" id="prix" name="prix" value="<?= $value["prix"] ?>" required>
+                            <input type="number" class="form-control" id="prix" name="prix" value="<?= $value["prix"] ?>" step="0.01" required>
                         </div>
                     </div>                    <div class="row m-2">
                         <div class="col-sm-2">
