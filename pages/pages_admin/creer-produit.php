@@ -4,11 +4,11 @@ require_once(__DIR__ . '/../../Connexion/functions.php');
 require_once(__DIR__ . '/../../Connexion/config.php');
 $js_path = __DIR__ .'/../../javascript/functions_js.js';
 
-$hasBeenModified = false;
+$hasBeenCrated = false;
 $status_image = "";
+$back_button = "Annuler";
 
 if (isset($_POST["id"])) {
-    echo "POST OK";
     if (isset($_FILES['ficphoto']) && ($_FILES["ficphoto"]["error"] == UPLOAD_ERR_OK)) {
         echo"FILES OK";
         $image_type = explode('/', $_FILES["ficphoto"]["type"])[1];
@@ -26,10 +26,8 @@ if (isset($_POST["id"])) {
         }
     } 
     echo "requete sql update";
-    $sql = "UPDATE produits SET nom_produit = :nom, echelle = :echelle, id_categorie= :categorie, 
-            quantite = :quantite, prix = :prix, id_marque = :marque, description = :description,
-            age_recommande = :age_recommande, reference_image = :reference_image
-            WHERE id_produit = :id ;";
+    $sql = "INSERT INTO `produits`(`id_produit`, `nom_produit`, `echelle`, `id_categorie`, `quantite`, `prix`, `id_marque`, `description`, `age_recommande`, `reference_image`) 
+            VALUES  (:nom, :echelle, :categorie, :quantite, :prix, :marque, :description, :age_recommande, :reference_image);";
         $stmt = $mysqlClient->prepare($sql);
         $stmt->bindValue(':id', $_POST["id"]);
         $stmt->bindValue(':nom', $_POST['nom']);
@@ -48,21 +46,7 @@ if (isset($_POST["id"])) {
         {$status_image}" ;
         $hasBeenModified = true ;
         $back_button = "Revenir";
-
-} else {
-    var_dump($_GET);
-    $id = $_GET["id_produit"];
-    $sql = "SELECT p.id_produit as id, p.nom_produit as nom, p.echelle, c.nom_categorie as categorie, p.quantite, p.prix, m.nom_marque as marque,
-    p.description, p.age_recommande, p.reference_image as image
-    FROM produits as p INNER JOIN categories as c ON p.id_categorie = c.id_categorie
-    INNER JOIN marques as m ON p.id_marque = m.id_marque
-    WHERE p.id_produit = :id";
-    $stmt = $mysqlClient->prepare($sql);
-    $stmt->bindValue(":id", $id);
-    $stmt->execute();
-    $query_result = $stmt->fetchAll(PDO::FETCH_ASSOC);
-    $back_button = "Annuler";
-}
+} 
 
 ?>
 <!DOCTYPE html>
@@ -70,35 +54,26 @@ if (isset($_POST["id"])) {
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Modifier une fiche produit</title>
+        <title>Modifier un pays</title>
         <!-- Bootstrap 5.1 CSS -->
         <link href="/Lotra3/css/styles/bootstrap.min.css" rel="stylesheet" type="text/css">
         <link href="/Lotra3/css/styles/geo.css" rel="stylesheet" type="text/css">
     </head>
     <body>
         <div class="jumbotron text-center">
-            <h1>Modifier un produit</h1>
+            <h1>Créer une fiche produit</h1>
         </div>
         <?php if ($hasBeenModified) {
             echo "<div class=\"alert-info\">$message</div>";
         } ?>
         <div class="container-fluid">
-                <form action="modifier-produit.php" method="post" enctype="multipart/form-data">
-                    <?php foreach ($query_result as $value): ?>
-                    <div class="row m-2">
-                        <div class="col-sm-2">
-                            <label class="form-label">id :</label>
-                        </div>
-                        <div class="col-sm-10">
-                            <input type="text" class="form-control" name="id" value="<?= $value['id'] ?>" readonly>
-                        </div>
-                    </div>
+                <form action="creer-produit.php" method="post" enctype="multipart/form-data">
                     <div class="row m-2">
                         <div class="col-sm-2">
                             <label for="nom" class="form-label">Nom :</label>
                         </div>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" id="nom" name="nom" value="<?= $value["nom"] ?>">
+                            <input type="text" class="form-control" id="nom" name="nom" required>
                         </div>
                     </div>
                     <div class="row m-2">
@@ -106,7 +81,7 @@ if (isset($_POST["id"])) {
                             <label for="echelle" class="form-label">Echelle :</label>
                         </div>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" id="echelle" name="echelle" value="<?= $value["echelle"] ?>">
+                            <input type="text" class="form-control" id="echelle" name="echelle">
                         </div>
                     </div>
                     <div class="row m-2">
@@ -127,7 +102,7 @@ if (isset($_POST["id"])) {
                             <label for="quantite" class="form-label">Quantite :</label>
                         </div>
                         <div class="col-sm-10">
-                            <input type="number" class="form-control" id="quantite" name="quantite" value="<?= $value["quantite"] ?>" required>
+                            <input type="number" class="form-control" id="quantite" name="quantite"required>
                         </div>
                     </div>
                     <!-- zefsd -->
@@ -136,9 +111,10 @@ if (isset($_POST["id"])) {
                             <label for="prix" class="form-label">Prix :</label>
                         </div>
                         <div class="col-sm-10">
-                            <input type="number" class="form-control" id="prix" name="prix" value="<?= $value["prix"] ?>" required>
+                            <input type="number" class="form-control" id="prix" name="prix" required>
                         </div>
-                    </div>                    <div class="row m-2">
+                    </div>     
+                    <div class="row m-2">
                         <div class="col-sm-2">
                             <label for="Marque" class="form-label">Marque :</label>
                         </div>
@@ -157,31 +133,32 @@ if (isset($_POST["id"])) {
                             <label for="description" class="form-label">Description :</label>
                         </div>
                         <div class="col-sm-10">
-                            <input type="textarea" class="form-control" id="description" name="description" value="<?= $value["description"] ?>" required>
+                            <input type="textarea" class="form-control" id="description" name="description" required>
                         </div>
-                    </div>                    <div class="row m-2">
+                    </div>
+                    <div class="row m-2">
                         <div class="col-sm-2">
                             <label for="age_recommande" class="form-label">Age :</label>
                         </div>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" id="age_recommande" name="age_recommande" value="<?= $value["age_recommande"] ?>" required>
+                            <input type="text" class="form-control" id="age_recommande" name="age_recommande" required>
                         </div>
-                    </div>                    <div class="row m-2">
+                    </div>
+                    <div class="row m-2">
                         <div class="col-sm-2">
                             <label for="image" class="form-label">Image :</label>
                         </div>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" id="image" name="image" value="<?= $value["image"] ?>" required>
+                            <input type="text" class="form-control" id="image" name="image" required>
                             <input type="file" name="ficphoto" id="photo" accept="image/jpg, image/jpeg, image/png" required>
                         </div>
                     </div>
-                    <?php endforeach; ?>
                     <div class="row m-2">
                         <div class="col-sm-2">
                         </div>
                         <div class="col-sm-10">
                             <a href="./produits_admin.php" class="btn btn-outline-info"><?=$back_button?></a>
-                            <button type="submit" class="btn btn-info">Modifier</button>
+                            <button type="submit" class="btn btn-info">Créer le produit</button>
                         </div>
                     </div>
                 </form>
