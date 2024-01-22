@@ -50,3 +50,8 @@
 .lien-sans-soulignement {
     text-decoration: none; /* Supprimer le soulignement */
 }
+
+.lien-sans-soulignement-fonce {
+    text-decoration: none; /* Supprimer le soulignement */
+    /*color: white; */
+}

@@ -24,7 +24,7 @@
                 <br>
                 <!--<p class=encadrement-fonce-titre>Créer un compte utilisateur</p> -->
                 <p class="encadrement-fonce-titre">
-                    <a href="creation-compte.php" class="lien-sans-soulignement">Créer un compte utilisateur</a>
+                    <a href="creation-compte.php" class="lien-sans-soulignement-fonce">Créer un compte utilisateur</a>
                 </p>
             </div>
         </div>

@@ -17,7 +17,7 @@
             <div class=panneau-gauche>
                 <!--<p class=encadrement-fonce-titre>Login client</p>-->
                 <p class="encadrement-fonce-titre">
-                    <a href="login.php" class="lien-sans-soulignement">Login client</a>
+                    <a href="login.php" class="lien-sans-soulignement-fonce">Login client</a>
                 </p>
                 <!--<a href="page_a_ouvrir.html" class=encadrement-fonce-titre label="Login client"><button style="background-color: blue; color: black;">Login client</button></a>
                 -->
