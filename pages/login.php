@@ -33,12 +33,12 @@
             <form action="construction.html">
                 <div class="form-group">
                     <label for="email">Adresse mail*</label>
-                    <input type="email" class="form-control" id="email">
+                    <input type="email" class="form-control" id="email" required>
                     <br><br>
                 </div>
                 <div class="form-group">
                     <label for="pwd">Mot de passe*</label>
-                    <input type="password" class="form-control" id="pwd">
+                    <input type="password" class="form-control" id="pwd" required>
                     <br><br>
                 </div>
                 <a href="construction.html">Mot de passe oublié?</a>
