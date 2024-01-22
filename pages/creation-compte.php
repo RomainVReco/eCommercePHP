@@ -26,6 +26,7 @@ if (isset($_GET["reference_client"])) {
     echo "Probleme de recuperation de la variable reference_client!";
 }    
 
+
 $_POST["reference_client"] = "1";
 if (isset($_POST["reference_client"])) {
     $ref_client = intval($_POST["reference_client"]);
@@ -49,20 +50,25 @@ try {
 
 //$sql = "INSERT INTO `clients`(``, `nom_produit`, `echelle`, `id_categorie`, `quantite`, `prix`, `id_marque`, `description`, `age_recommande`, `reference_image`) VALUES  (:nom, :echelle, :categorie, :quantite, :prix, :marque, :description, :age_recommande, :reference_image);";
 
+if (isset($_POST["nom"])) {
 try {
     $mysqlClient = new PDO('mysql:host=127.0.0.1;dbname=maquettisme;port=3306;charset=utf8mb4', 'root', '');
-    $sql = "INSERT INTO `clients`(`nom_client`, `prenom_client`, `email`, `motdepasse`) VALUES (:nom, :prenom, :email, :motdepasse)";
-    $stmt = $mysqlClient->prepare($sql);
-    $stmt->bindValue(':nom', $_POST['nom']);
-    $stmt->bindValue(':prenom', $_POST['prenom']);
-    $stmt->bindValue(':email', $_POST['email']);
-    $stmt->bindValue(':motdepasse', $_POST['motdepasse']);
-    $stmt->execute();
-    //$query_result[] = $_POST;
+    $sql = "INSERT INTO `clients`(`nom_client`, `prenom_client`, `email`, `motdepasse`) VALUES (:nom, :prenom, :email,:motdepasse)";
+    //$sql = "INSERT INTO `clients`(`nom_client`, `prenom_client`, `email`, `motdepasse`) VALUES ( 'Rapeneau', 'Jean-Paul', 'jp.r@film.com', 'C1film')";
+    
+    $stmt1 = $mysqlClient->prepare($sql);
+    $stmt1->bindValue(':nom', $_POST['nom']);
+    $stmt1->bindValue(':prenom', $_POST['prenom']);
+    $stmt1->bindValue(':email', $_POST['email']);
+    $stmt1->bindValue(':motdepasse', $_POST['motdepasse']);
+    $stmt1->execute();
+    $query_result[] = $_POST;
 } catch (Exception $e) {
     $message = $e->getMessage();
     echo ''. $message .'';
-}   
+}  
+
+}
 
 
 ?>
@@ -97,25 +103,26 @@ try {
         </div>
     </div>
     <div class=panneau-login>
-            <form action="action_page.php">
-            <div class="container">
-                <label for="text">Prénom*</label>
-                <input type="text" id="prenom" name="prenom" required>
-                <label for="text">Nom*</label>
-                <input type="text" id="nom" name="nom" required>
-                <label for="email">Adresse mail*</label>
-                <input type="email" id="email" name="email" required> 
-                <br><br>
-                <label for="psw">Mot de passe*</label>
-                <input type="password"id="psw" name="psw" required>
-                <br><br>
-                <label for="psw-repeat">Confirmation*</label>
-                <input type="password" id="psw-repeat" name="psw-repeat" required>
-                <br><br>
-                <button class=bouton-bleu type="submit">Enregistrement</button>
-                <br><br>
-                <p>* Champs obligatoires</p>
-            </div>
+            <!--<form action="action_page.php"> -->
+            <form method='POST'>
+                <div class="container">
+                    <label for="text">Prénom*</label>
+                    <input type="text" id="prenom" name="prenom" required>
+                    <label for="text">Nom*</label>
+                    <input type="text" id="nom" name="nom" required>
+                    <label for="email">Adresse mail*</label>
+                    <input type="email" id="email" name="email" required> 
+                    <br><br>
+                    <label for="psw">Mot de passe*</label>
+                    <input type="password"id="motdepasse" name="motdepasse" required>
+                    <br><br>
+                    <label for="psw-repeat">Confirmation*</label>
+                    <input type="password" id="psw-repeat" name="psw-repeat" required>
+                    <br><br>
+                    <button class=bouton-bleu type="submit">Enregistrement</button>
+                    <br><br>
+                    <p>* Champs obligatoires</p>
+                </div>
             </form>
     </div>
     <h1>Informations client</h1>
