@@ -4,11 +4,12 @@ require_once(__DIR__ . '/../../Connexion/functions.php');
 require_once(__DIR__ . '/../../Connexion/config.php');
 $js_path = __DIR__ .'/../../javascript/functions_js.js';
 
-$hasBeenCrated = false;
+$hasBeenCreated = false;
+$hasBeenSelected = true ;
 $status_image = "";
 $back_button = "Annuler";
 
-if (isset($_POST["id"])) {
+if (isset($_POST["nom"])) {
     if (isset($_FILES['ficphoto']) && ($_FILES["ficphoto"]["error"] == UPLOAD_ERR_OK)) {
         echo"FILES OK";
         $image_type = explode('/', $_FILES["ficphoto"]["type"])[1];
@@ -24,28 +25,32 @@ if (isset($_POST["id"])) {
             (move_uploaded_file($_FILES["ficphoto"]['tmp_name'], $destination_path)) ;
             $status_image = "L'image a bien été enregistrée";
         }
-    } 
-    echo "requete sql update";
-    $sql = "INSERT INTO `produits`(`id_produit`, `nom_produit`, `echelle`, `id_categorie`, `quantite`, `prix`, `id_marque`, `description`, `age_recommande`, `reference_image`) 
-            VALUES  (:nom, :echelle, :categorie, :quantite, :prix, :marque, :description, :age_recommande, :reference_image);";
-        $stmt = $mysqlClient->prepare($sql);
-        $stmt->bindValue(':id', $_POST["id"]);
-        $stmt->bindValue(':nom', $_POST['nom']);
-        $stmt->bindValue(':echelle', $_POST['echelle']);
-        $stmt->bindValue(':categorie', $_POST['categorie']);
-        $stmt->bindValue(':quantite', $_POST['quantite']);
-        $stmt->bindValue(':prix', $_POST['prix']);
-        $stmt->bindValue(':marque', $_POST['marque']);
-        $stmt->bindValue(':description', $_POST['description']);
-        $stmt->bindValue(':age_recommande', $_POST['age_recommande']);
-        $stmt->bindValue(':reference_image', $uploaded_file_name);
-        $stmt->execute();
-        $query_result[] = $_POST;
-    
-        $message = "Modification effectuée avec succès du produit : {$_POST['id']} - {$_POST['nom']} <br/>
-        {$status_image}" ;
-        $hasBeenModified = true ;
-        $back_button = "Revenir";
+    }
+
+    if ($_POST['categorie']==0 || $_POST['marque']==0) {
+        $erreur_cat_mar = "Une catégorie ou une marque doit être sélectionnée";
+        $hasBeenSelected = false;
+    }
+    else {
+        $sql = "INSERT INTO `produits`(`nom_produit`, `echelle`, `id_categorie`, `quantite`, `prix`, `id_marque`, `description`, `age_recommande`, `reference_image`) 
+                VALUES  (:nom, :echelle, :categorie, :quantite, :prix, :marque, :description, :age_recommande, :reference_image);";
+            $stmt = $mysqlClient->prepare($sql);
+            $stmt->bindValue(':nom', $_POST['nom']);
+            $stmt->bindValue(':echelle', $_POST['echelle']);
+            $stmt->bindValue(':categorie', $_POST['categorie']);
+            $stmt->bindValue(':quantite', $_POST['quantite']);
+            $stmt->bindValue(':prix', $_POST['prix']);
+            $stmt->bindValue(':marque', $_POST['marque']);
+            $stmt->bindValue(':description', $_POST['description']);
+            $stmt->bindValue(':age_recommande', $_POST['age_recommande']);
+            $stmt->bindValue(':reference_image', $uploaded_file_name);
+            $stmt->execute();
+        
+            $message = "Création effectuée avec succès du produit : {$_POST['nom']} <br/>
+            {$status_image}" ;
+            $hasBeenCreated = true ;
+            $back_button = "Revenir";
+    }
 } 
 
 ?>
@@ -63,9 +68,13 @@ if (isset($_POST["id"])) {
         <div class="jumbotron text-center">
             <h1>Créer une fiche produit</h1>
         </div>
-        <?php if ($hasBeenModified) {
-            echo "<div class=\"alert-info\">$message</div>";
-        } ?>
+        <?php if ($hasBeenCreated) {
+            echo "<div class=\"alert-info\">$message</div>";       
+        } 
+            if (!$hasBeenSelected) {
+                echo "<div class=\"alert-info\">$erreur_cat_mar</div>"; 
+            }
+        ?>
         <div class="container-fluid">
                 <form action="creer-produit.php" method="post" enctype="multipart/form-data">
                     <div class="row m-2">
@@ -90,6 +99,7 @@ if (isset($_POST["id"])) {
                         </div>
                         <div class="col-sm-10">
                             <select name="categorie" id="categorie" class="form-control">
+                                <option value="0" selected>-- Choisir une catégorie --</option> 
                                 <?php 
                                     $categories = getAllCategories($mysqlClient);
                                     echo selectorFromContent($categories, $value["categorie"]);
@@ -111,7 +121,7 @@ if (isset($_POST["id"])) {
                             <label for="prix" class="form-label">Prix :</label>
                         </div>
                         <div class="col-sm-10">
-                            <input type="number" class="form-control" id="prix" name="prix" required>
+                            <input type="number" class="form-control" id="prix" name="prix" step="0.01" required>
                         </div>
                     </div>     
                     <div class="row m-2">
@@ -119,7 +129,8 @@ if (isset($_POST["id"])) {
                             <label for="Marque" class="form-label">Marque :</label>
                         </div>
                         <div class="col-sm-10">
-                            <select name="marque" id="Marque" class="form-control">
+                            <select name="marque" id="marque" class="form-control">
+                            <option value="0" selected>-- Choisir une marque --</option> 
                                 <?php 
                                     $brands = getAllBrands($mysqlClient);
                                     echo selectorFromContent($brands, $value["marque"]);
@@ -158,8 +169,8 @@ if (isset($_POST["id"])) {
                         </div>
                         <div class="col-sm-10">
                             <a href="./produits_admin.php" class="btn btn-outline-info"><?=$back_button?></a>
-                            <button type="submit" class="btn btn-info">Créer le produit</button>
-                        </div>
+                            <button type="submit" id="bouton-valider" class="btn btn-info">Créer le produit</button>
+                        </div> 
                     </div>
                 </form>
         </div>

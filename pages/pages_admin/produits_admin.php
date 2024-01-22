@@ -25,12 +25,13 @@ require_once(__DIR__ . '/../../Connexion/connexionBDD.php');
                     <tr>
                         <th class="text-center" colspan="11">Produits référencés</th>
                         <a href="./index_admin.php" class="btn btn-outline-info">Revenir à l'accueil</a>
+                        <a href="./creer-produit.php" class="btn btn-info">Ajouter produit</a>
                     </tr>
                     <tr class="table-info">
                         <th>id</th>
                         <th>nom du produit</th>
-                        <th>echelle</th>
-                        <th>nom catagorie</th>
+                        <th>échelle</th>
+                        <th>nom catégorie</th>
                         <th>quantité en stock</th>
                         <th>prix</th>
                         <th>marque</th>
@@ -65,6 +66,7 @@ require_once(__DIR__ . '/../../Connexion/connexionBDD.php');
                             <td>
                                 <form action="./supprimer-produit.php" method="post">
                                     <input type="hidden" name="id_produit" value="<?= $produit["id"] ?>">
+                                    <input type="hidden" name="nom" value="<?= $produit["nom"] ?>">
                                     <button type="submit" class="btn btn-sm btn-danger">Supprimer</a>
                                 </form>
                             </td>

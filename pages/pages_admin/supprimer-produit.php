@@ -1,28 +1,26 @@
 <?php
-require_once "./inc/outils.php";
+require_once(__DIR__ . '/../../Connexion/connexionBDD.php');
 
-try {
-    $sql = "DELETE FROM pays WHERE code=:code;";
 
-    $dbh = new PDO('mysql:host=127.0.0.1;dbname=geographie;port=3306;charset=utf8mb4', 'marco', 'polo');
-    $stmt = $dbh->prepare($sql);
-    $stmt->bindValue(':code', $_POST['code']);
-    $stmt->execute();
-    $dbh = null;
+if (isset($_GET["id_produit"])) {
+    $id = $_GET["id_produit"];
+    $sql = "DELETE FROM produits WHERE produits.id_produit = :id ;";
+    $stmt = $mysqlClient->prepare($sql);
+    $stmt->bindValue(":id", $id);
+    $hasBeenDeleted = $stmt->execute();
 
-    $message = "Réussite de la suppression du pays de code : {$_POST['code']}";
-    $feedback = alerte($message, 'alert-info');
-} catch (Exception $e) {
-    $message = $e->getMessage();
-    $feedback = alerte($message, 'alert-danger');
+    if ($hasBeenDeleted) $message = "Le produit {$_GET["id_produit"]} - {$_GET["nom"]} a été supprimé";
+    else $message = "Echec suppression du produit {$_GET["id_produit"]} - {$_GET["nom"]}";
 }
+
 ?>
+
 <!DOCTYPE html>
 <html lang="fr">
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Supprimer un pays - Résultat</title>
+        <title>Supprimer un produit</title>
         <!-- Bootstrap 5.1 CSS -->
         <link href="./styles/bootstrap.min.css" rel="stylesheet" type="text/css">
         <link href="./styles/geo.css" rel="stylesheet" type="text/css">
@@ -33,7 +31,7 @@ try {
         </div>
         <div class="container-fluid">
             <?= $feedback; ?>
-            <p><a href="./index.php" class="btn btn-outline-info">Accueil</a></p>
+            <p><a href="./index-admin.php" class="btn btn-outline-info">Accueil admin</a></p>
         </div>
         <!-- Bootstrap Bundle with Popper -->
         <script src="./js/bootstrap.bundle.min.js"></script>
