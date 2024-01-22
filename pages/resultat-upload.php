@@ -12,12 +12,12 @@ if (isset($_FILES["ficphoto"]) && $_FILES["ficphoto"]["error"] == UPLOAD_ERR_OK)
     var_dump($uploadedFileName);
     $destinationPath = DIR_IMG_PRODUIT . $uploadedFileName;
     var_dump($destinationPath);
-    
-    if (move_uploaded_file($_FILES["ficphoto"]['tmp_name'], $destinationPath)) {
-        $msg_copier = '<p>Copie réussie</p>';
+    if (file_exists($destinationPath)) {
+        echo "Le fichier existe déjà";
     } else {
-        $msg_copier = '<p>Echec de la copie du fichier téléversé</p>';
-    }
+        (move_uploaded_file($_FILES["ficphoto"]['tmp_name'], $destinationPath)) ;
+        echo "Copie réussie</p";
+    } 
 } else {
     $msg_tele = '<p>C\'est la cata !!!</p>';
 }

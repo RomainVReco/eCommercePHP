@@ -1,17 +1,32 @@
 <?php
 require_once(__DIR__ . '/../../Connexion/connexionBDD.php');
 require_once(__DIR__ . '/../../Connexion/functions.php');
+require_once(__DIR__ . '/../../Connexion/config.php');
 $js_path = __DIR__ .'/../../javascript/functions_js.js';
 
 $hasBeenModified = false;
 
+var_dump($_FILES);
+var_dump($_POST);
 
 if (isset($_POST["id"])) {
+    echo "POST OK";
     if (isset($_FILES['ficphoto']) && ($_FILES["ficphoto"]["error"] == UPLOAD_ERR_OK)) {
-        
-
-    }
-        $sql = "UPDATE produits SET nom_produit = :nom, echelle = :echelle, id_categorie= :categorie, 
+        echo"FILES OK";
+        $image_type = explode('/', $_FILES["ficphoto"]["type"])[1];
+        var_dump($image_type);
+        $uploaded_file_name = $_POST['image'] . "." . $image_type;
+        var_dump($uploaded_file_name);
+        $destination_path = DIR_IMG_PRODUIT . $uploaded_file_name;
+        var_dump($destination_path);
+        if (file_exists($destination_path)) {
+            $img_error = "Le fichier existe déjà";
+        } else {
+            (move_uploaded_file($_FILES["ficphoto"]['tmp_name'], $destination_path)) ;
+        }
+    } 
+    echo "requete sql update";
+    $sql = "UPDATE produits SET nom_produit = :nom, echelle = :echelle, id_categorie= :categorie, 
             quantite = :quantite, prix = :prix, id_marque = :marque, description = :description,
             age_recommande = :age_recommande, reference_image = :reference_image
             WHERE id_produit = :id ;";
@@ -25,13 +40,14 @@ if (isset($_POST["id"])) {
         $stmt->bindValue(':marque', $_POST['marque']);
         $stmt->bindValue(':description', $_POST['description']);
         $stmt->bindValue(':age_recommande', $_POST['age_recommande']);
-        $stmt->bindValue(':reference_image', $_POST['image']);
+        $stmt->bindValue(':reference_image', $uploaded_file_name);
         $stmt->execute();
         $query_result[] = $_POST;
     
         $message = "Modification effectuée avec succès du produit : {$_POST['id']} - {$_POST['nom']} " ;
         $hasBeenModified = true ;
         $back_button = "Revenir";
+
 } else {
     var_dump($_GET);
     $id = $_GET["id_produit"];
@@ -66,7 +82,7 @@ if (isset($_POST["id"])) {
             echo "<div class=\"alert-info\">$message</div>";
         } ?>
         <div class="container-fluid">
-                <form action="modifier-produit.php" method="post">
+                <form action="modifier-produit.php" method="post" enctype="multipart/form-data">
                     <?php foreach ($query_result as $value): ?>
                     <div class="row m-2">
                         <div class="col-sm-2">
