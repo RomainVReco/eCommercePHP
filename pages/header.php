@@ -1,16 +1,11 @@
 <?php
 
-
+//Si session transmet l'information d'un id_client, une connexion est en cours
 if ((isset($_SESSION["id_client"])) && ($_SESSION["id_client"] > 0)){
-    echo "Nous avons bien un id client";
     $isLogged=true;
 } else  { 
-    echo "Pas de client";
     $isLogged=false;
-    $_SESSION["id_client"] = 0;
 }
-var_dump($_SESSION["id_client"]);
-
 
 ?>
 <div class="container-entete">

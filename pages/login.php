@@ -1,6 +1,5 @@
 <?php  
 require_once(__DIR__ . '/../Connexion/connexionBDD.php');
-//require_once(__DIR__ . '/../../Connexion/functions.php');
 
 session_start();
 
@@ -14,17 +13,16 @@ if (isset($_POST['email'])){
     $stmt->bindValue(":pwd", $password);
     $stmt->execute();
     $id_client= $stmt->fetch(PDO::FETCH_NUM);
-    var_dump($id_client);
 
     if (!$id_client) {
-        echo "Pas de client";
         $_SESSION["id_client"] = 0;
     } else  { 
-        //$_SESSION["id_client"] = $id_client[0];
         echo "Nous avons bien un id client";
         $_SESSION["id_client"] = $id_client[0];
+
+        header("Location: index.php");
+        exit; // Assurez-vous de terminer le script après la redirection
     }
-    var_dump($id_client);
 }
 
 
