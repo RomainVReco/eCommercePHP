@@ -1,6 +1,6 @@
 <?php
 
-//Si session transmet l'information d'un id_client, une connexion est en cours
+//Si session transmet l'information d'un id_client alors une connexion est en cours
 if ((isset($_SESSION["id_client"])) && ($_SESSION["id_client"] > 0)){
     $isLogged=true;
 } else  { 

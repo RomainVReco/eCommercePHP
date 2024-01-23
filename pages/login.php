@@ -3,6 +3,7 @@ require_once(__DIR__ . '/../Connexion/connexionBDD.php');
 
 session_start();
 
+//tentative récupération id_client via la combinaison email-mot de passe saisie par l'utilisateur
 if (isset($_POST['email'])){
     $email = $_POST['email'];
     $password = $_POST['pwd'];
@@ -14,6 +15,7 @@ if (isset($_POST['email'])){
     $stmt->execute();
     $id_client= $stmt->fetch(PDO::FETCH_NUM);
 
+    //Test récupération id_client (ce qui valide que la combinaison email-mdp est correcte)
     if (!$id_client) {
         $_SESSION["id_client"] = 0;
     } else  { 
@@ -21,22 +23,12 @@ if (isset($_POST['email'])){
         $_SESSION["id_client"] = $id_client[0];
 
         header("Location: index.php");
-        exit; // Assurez-vous de terminer le script après la redirection
+        exit; // fin du script après la redirection
     }
 }
 
 
 ?>
-<!--
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Traitement des données du formulaire
-    
-    // Redirection vers index.php
-    header("Location: index.php");
-    exit; // Assurez-vous de terminer le script après la redirection
-}
-
-?> -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
