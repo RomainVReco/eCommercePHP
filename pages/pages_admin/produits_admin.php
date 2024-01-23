@@ -30,7 +30,9 @@ checkRoleAdmin($_SESSION);
                     <tr>
                         <th class="text-center" colspan="11">Produits référencés</th>
                         <a href="./index_admin.php" class="btn btn-outline-info">Revenir à l'accueil</a>
+                        <?php if ($_SESSION['role'] != 3) :?>
                         <a href="./creer_produit.php" class="btn btn-info">Ajouter produit</a>
+                        <?php endif; ?>
                     </tr>
                     <tr class="table-info">
                         <th>id</th>
@@ -62,19 +64,7 @@ checkRoleAdmin($_SESSION);
                             <td><?= $produit["description"] ?></td>
                             <td><?= $produit["age_recommande"] ?></td>
                             <td><?= $produit["reference_image"] ?></td>
-                            <td>
-                                <form action="./modifier_produit.php" method="get">
-                                    <input type="hidden" name="id_produit" value="<?= $produit["id"] ?>">
-                                    <button type="submit" class="btn btn-sm btn-info">Modifier</a>
-                                </form>
-                            </td>
-                            <td>
-                                <form action="./supprimer_produit.php" method="get">
-                                    <input type="hidden" name="id_produit" value="<?= $produit["id"] ?>">
-                                    <input type="hidden" name="nom" value="<?= $produit["nom"] ?>">
-                                    <button type="submit" class="btn btn-sm btn-danger">Supprimer</a>
-                                </form>
-                            </td>
+                            <?php echo defineEmployeeActions($_SESSION, $produit); ?>
                         </tr>
                     <?php endforeach?>
                 </tbody>

@@ -68,7 +68,7 @@ function defineEmployeeActions($session, $produit){
 </td>";
     if ($session['role']==1) return $modify_button . $delete_button;
     else if ($session['role']==2) return $modify_button;
-    else return "<td></td><td></td>"
+    else return "<td></td><td></td>";
 }
 
 function checkRoleAdmin($session){
