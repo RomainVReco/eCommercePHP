@@ -83,6 +83,8 @@ if (isset($_POST["nom"])) {
                 </div>
             </form>
     </div>
-    
+    <footer>
+        <?php require_once(__DIR__ . '/footer.php'); ?>
+    </footer>
 </body>
 </html>
