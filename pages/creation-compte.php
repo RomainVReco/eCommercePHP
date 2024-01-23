@@ -1,6 +1,8 @@
 <?php  
 require_once(__DIR__ . '/../Connexion/connexionBDD.php');
 
+
+
 if (isset($_POST["nom"])) {
     try {
         $sql = "INSERT INTO `clients`(`nom_client`, `prenom_client`, `email`, `motdepasse`) VALUES (:nom, :prenom, :email,:motdepasse)";
@@ -9,8 +11,19 @@ if (isset($_POST["nom"])) {
         $stmt->bindValue(':prenom', $_POST['prenom']);
         $stmt->bindValue(':email', $_POST['email']);
         $stmt->bindValue(':motdepasse', $_POST['motdepasse']);
-        $stmt->execute();
-        $mysqlClient= null;
+        $mdp=$_POST['motdepasse'];
+        $mdpbis=$_POST['mdp-repete'];
+
+        if ( $mdp == $mdpbis ) {
+            echo "Le mot de passe est bien répété 2 fois.";
+            $stmt->execute();
+            $mysqlClient= null;
+        } else {
+            echo 'Le mot de passe n a pas été saisie de manière identique lors de la re-saisie...';
+            $mysqlClient= null;
+        }
+
+
     } catch (Exception $e) {
         $message = $e->getMessage();
         echo ''. $message .'';
@@ -50,9 +63,9 @@ if (isset($_POST["nom"])) {
     <div class=panneau-login>
             <form method='POST'>
                 <div class="container">
-                    <label>>Prénom*</label>
+                    <label>Prénom*</label>
                     <input type="text" id="prenom" name="prenom" required>
-                    <label>>Nom*</label>
+                    <label>Nom*</label>
                     <input type="text" id="nom" name="nom" required>
                     <label>Adresse mail*</label>
                     <input type="email" id="email" name="email" required> 
