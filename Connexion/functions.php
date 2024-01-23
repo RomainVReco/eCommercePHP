@@ -51,6 +51,26 @@ function getEmployeeCategoryAccess($mysqlClient, $role) {
     return $div_admin_access;
 }
 
+function defineEmployeeActions($session, $produit){
+    $modify_button = "<td>
+    <form action=\"./modifier_produit.php\" method=\"get\">
+        <input type=\"hidden\" name=\"id_produit\" value=\"".$produit["id"]."\">
+        <button type=\"submit\" class=\"btn btn-sm btn-info\">Modifier</a>
+    </form>
+</td>";
+
+    $delete_button = "<td>
+    <form action=\"./supprimer_produit.php\" method=\"get\">
+        <input type=\"hidden\" name=\"id_produit\" value=\"".$produit["id"]."\">
+        <input type=\"hidden\" name=\"nom\" value=\"".$produit["nom"]."\">
+        <button type=\"submit\" class=\"btn btn-sm btn-danger\">Supprimer</a>
+    </form>
+</td>";
+    if ($session['role']==1) return $modify_button . $delete_button;
+    else if ($session['role']==2) return $modify_button;
+    else return "<td></td><td></td>"
+}
+
 function checkRoleAdmin($session){
     echo 'checkRoleAdmin' . PHP_EOL;
 

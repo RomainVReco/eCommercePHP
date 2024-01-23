@@ -10,24 +10,17 @@ $hasBeenModified = false;
 $status_image = "";
 
 if (isset($_POST["id"])) {
-    echo "POST OK";
     if (isset($_FILES['ficphoto']) && ($_FILES["ficphoto"]["error"] == UPLOAD_ERR_OK)) {
-        echo"FILES OK";
         $image_type = explode('/', $_FILES["ficphoto"]["type"])[1];
-        var_dump($image_type);
         $uploaded_file_name = $_POST['image'] . "." . $image_type;
-        var_dump($uploaded_file_name);
         $destination_path = DIR_IMG_PRODUIT . $uploaded_file_name;
-        var_dump($destination_path);
         if (file_exists($destination_path)) {
-            echo "Le fichier existe déjà";
             $status_image = "L'image existe déjà dans les assets";
         } else {
             (move_uploaded_file($_FILES["ficphoto"]['tmp_name'], $destination_path)) ;
             $status_image = "L'image a bien été enregistrée";
         }
     } 
-    echo "requete sql update";
     $sql = "UPDATE produits SET nom_produit = :nom, echelle = :echelle, id_categorie= :categorie, 
             quantite = :quantite, prix = :prix, id_marque = :marque, description = :description,
             age_recommande = :age_recommande, reference_image = :reference_image
@@ -52,7 +45,6 @@ if (isset($_POST["id"])) {
         $back_button = "Revenir";
 
 } else {
-    var_dump($_GET);
     $id = $_GET["id_produit"];
     $sql = "SELECT p.id_produit as id, p.nom_produit as nom, p.echelle, c.nom_categorie as categorie, p.quantite, p.prix, m.nom_marque as marque,
     p.description, p.age_recommande, p.reference_image as image
