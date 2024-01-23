@@ -36,13 +36,7 @@ if (isset($_GET["recherche"])) {
             <ol>
                 <li><a href="#">Maquettes de voiture</a></li>
                 <li><a href="#">Maquettes de moto</a></li>
-                <li><a href="#">Maquettes militaire</a>
-                    <ul>
-                        <li><a href="#">Maquettes militaire 1/16</a></li>
-                        <li><a href="#">Maquettes militaire 1/35</a></li>
-                        <li><a href="#">Maquettes militaire 1/48</a></li>
-                    </ul>
-                </li>
+                <li><a href="#">Maquettes militaire</a></li>
                 <li><a href="#">Peintures</a></li>
                 <li><a href="#">Accessoires</a></li>
             </ol>
@@ -56,7 +50,7 @@ if (isset($_GET["recherche"])) {
                 <?php else: ?>
                     <?php foreach ($query_result as $value): ?>
                         <div class="product">
-                            <a class="product_main_container_link" href="produit.php?<?= $value['id_produit'] ?>"
+                            <a style="text-decoration:none ; color:black" class="product_main_container_link" href="produit.php?<?= $value['id_produit'] ?>"
                                 title="<?= $value['nom_produit'] ?>">
                                 <img class="product__image-box" loading="lazy"
                                     src="../Ressources/assets_produits/<?= $value['reference_image'] ?>"
@@ -84,5 +78,4 @@ if (isset($_GET["recherche"])) {
         <?php require_once(__DIR__ . '/footer.php'); ?>
     </footer>
 </body>
-
 </html>

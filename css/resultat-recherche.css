@@ -9,16 +9,19 @@
     grid-column: 1 /span 3;
     grid-row: 1;
     height: 125px;
+    background-color: brown;
 }
 
 .sidebar-recherche{
     grid-column: 1;
     grid-row: 2/span 3;
+    background-color: coral;
 }
 
 .main-body-recherche{
     grid-column: 2/span 3;
     grid-row: 2/span 3;
+    background-color: darkgreen;
 }
 
 .product-detail-container{
@@ -41,7 +44,7 @@
 }
 
 .product__image-box{
-    width: max-content;
+        max-width: 200px;
     max-height: 200px;
 }
 
