@@ -15,11 +15,12 @@ if (isset($_POST["nom"])) {
         $mdpbis=$_POST['mdp-repete'];
 
         if ( $mdp == $mdpbis ) {
-            echo "Le mot de passe est bien répété 2 fois.";
+            
+            //echo "Le mot de passe est bien répété 2 fois.";
             $stmt->execute();
             $mysqlClient= null;
         } else {
-            echo 'Le mot de passe n a pas été saisie de manière identique lors de la re-saisie...';
+            //echo 'Le mot de passe n a pas été saisie de manière identique lors de la re-saisie...';
             $mysqlClient= null;
         }
 
