@@ -23,13 +23,16 @@
 
 .product-detail-container{
     display: flex;
-    justify-content: space-around;
+    width: 80vw;
+    justify-content: space-between;
+    flex-wrap: wrap;
 }
 
 .product{
     display: flex;
     flex-direction: column;
-    flex-wrap: wrap;
+    background-color: aquamarine;
+
 }
 
 .product__image{
@@ -38,8 +41,13 @@
 }
 
 .product__image-box{
-    max-width: 200px;
+    width: max-content;
     max-height: 200px;
+}
+
+.product_main_container_link {
+    text-decoration: none;
+    color: black;
 }
 
 

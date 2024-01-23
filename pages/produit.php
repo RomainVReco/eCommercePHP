@@ -4,7 +4,9 @@ require_once(__DIR__ . '/../Connexion/connexionBDD.php');
 require_once(__DIR__ . '/../Connexion/functions.php');
 
 session_start();
+$_SESSION = checkIfSessionHasPanier($_SESSION);
 $_SESSION["derniere_page_produit"] = getCurrentPage($_SERVER);
+
 
 $_GET["reference_article"] = "20";
 if (isset($_GET["reference_article"])) {

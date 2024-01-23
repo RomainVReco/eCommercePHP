@@ -68,8 +68,8 @@ if (isset($_POST['id_produit'])) {
                 </tbody>
     </table> 
     <div>Total de la commande : <?= $_SESSION['panier']->totalPanier() ?> €</div>
-    <a href="./produit.php" class="btn btn-outline-info">Continuer mes achats</a>
-    <button type="submit" class="btn btn-info">Modifier</button>
+    <a href="./<?=$_SESSION["derniere_page_produit"]?>" class="btn btn-outline-info">Continuer mes achats</a>
+    <button type="submit" class="btn btn-info">Passer au paiement</button>
 
     <footer>
         <?php require_once(__DIR__ . '/footer.php'); ?>
