@@ -1,7 +1,35 @@
 <?php  
 require_once(__DIR__ . '/../Connexion/connexionBDD.php');
+//require_once(__DIR__ . '/../../Connexion/functions.php');
+
+session_start();
+
+if (isset($_POST['email'])){
+    $email = $_POST['email'];
+    $password = $_POST['pwd'];
+    $sql = "SELECT id_client FROM clients WHERE email = :email AND motdepasse = :pwd";
+
+    $stmt = $mysqlClient->prepare($sql);
+    $stmt->bindValue(":email", $email);
+    $stmt->bindValue(":pwd", $password);
+    $stmt->execute();
+    $id_client= $stmt->fetch(PDO::FETCH_NUM);
+    var_dump($id_client);
+
+    if (!$id_client) {
+        echo "Pas de client";
+        $_SESSION["id_client"] = 0;
+    } else  { 
+        //$_SESSION["id_client"] = $id_client[0];
+        echo "Nous avons bien un id client";
+        $_SESSION["id_client"] = $id_client[0];
+    }
+    var_dump($id_client);
+}
 
 
+?>
+<!--
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Traitement des données du formulaire
     
@@ -10,7 +38,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     exit; // Assurez-vous de terminer le script après la redirection
 }
 
-?>
+?> -->
 <!DOCTYPE html>
 <html lang="en">
 <head>

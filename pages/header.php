@@ -1,4 +1,18 @@
+<?php
 
+
+if ((isset($_SESSION["id_client"])) && ($_SESSION["id_client"] > 0)){
+    echo "Nous avons bien un id client";
+    $isLogged=true;
+} else  { 
+    echo "Pas de client";
+    $isLogged=false;
+    $_SESSION["id_client"] = 0;
+}
+var_dump($_SESSION["id_client"]);
+
+
+?>
 <div class="container-entete">
       <div class="upper-zone">
         <div class="upper-zone-content">
@@ -38,6 +52,7 @@
             </div>
             <div class="img-entete">
               <a href="/page_login.html"><img src="/Lotra3/Ressources/ressources_entete/bx-user-circle.svg" alt="langue"></a>
+              <p><?php if ($isLogged == true) { echo "Connecté";} ?></p>
             </div>
             <div class="img-entete">
               <a href="/pages_produits/panier.html"><img src="/Lotra3/Ressources/ressources_entete/bx-cart.svg" alt="langue"></a>
