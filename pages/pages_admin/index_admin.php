@@ -55,6 +55,10 @@ if (isset($_SESSION["role"]) && ($_SESSION["role"] == 0 )) {
                 <?=$div_admin_access ?>
             </div>
         </div>
+        </br>
+        </br>
+        </br>
+        <a href="./connexion_admin.php" class="btn btn-outline-info">Se déconnecter</a>
         <!-- Bootstrap Bundle with Popper -->
         <script src="./js/bootstrap.bundle.min.js"></script>
     </body>

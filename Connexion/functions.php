@@ -52,9 +52,11 @@ function getEmployeeCategoryAccess($mysqlClient, $role) {
 }
 
 function checkRoleAdmin($session){
-    if (isset($session["role"]) && ($session["role"] == 0 )) {
-        echo 'fonciton';
+    echo 'checkRoleAdmin' . PHP_EOL;
+
+    if (!isset($session['role']) || (isset($session["role"]) && ($session["role"] == 0 ))) {
+        echo 'Renvoie vers la page connexion_admin.php' . PHP_EOL ;
         header("Location: connexion_admin.php");
         exit;
-}
+    }
 }

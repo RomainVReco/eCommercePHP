@@ -3,7 +3,6 @@ session_start();
 require_once(__DIR__ . '/../../Connexion/connexionBDD.php');
 require_once(__DIR__ . '/../../Connexion/functions.php');
 require_once(__DIR__ . '/../../Connexion/config.php');
-$js_path = __DIR__ .'/../../javascript/functions_js.js';
 
 checkRoleAdmin($_SESSION);
 

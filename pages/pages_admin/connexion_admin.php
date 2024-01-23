@@ -1,6 +1,7 @@
 <?php
 
 session_start();
+unset($_SESSION["role"]);
 $role = 0;
 $_SESSION["role"] = $role;
 

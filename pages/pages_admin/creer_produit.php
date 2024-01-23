@@ -6,6 +6,8 @@ require_once(__DIR__ . '/../../Connexion/functions.php');
 require_once(__DIR__ . '/../../Connexion/config.php');
 $js_path = __DIR__ .'/../../javascript/functions_js.js';
 
+checkRoleAdmin($_SESSION);
+
 $hasBeenCreated = false;
 $hasBeenSelected = true ;
 $status_image = "";
@@ -80,7 +82,7 @@ if (isset($_POST["nom"])) {
             }
         ?>
         <div class="container-fluid">
-                <form action="creer-produit.php" method="post" enctype="multipart/form-data">
+                <form action="creer_produit.php" method="post" enctype="multipart/form-data">
                     <div class="row m-2">
                         <div class="col-sm-2">
                             <label for="nom" class="form-label">Nom :</label>
