@@ -4,7 +4,6 @@ require_once(__DIR__ . '/../Connexion/connexionBDD.php');
 require_once(__DIR__ . '/../Connexion/functions.php');
 
 session_start();
-checkIfSessionHasPanier($_SESSION);
 $_SESSION["derniere_page_produit"] = getCurrentPage($_SERVER);
 
 $_GET["reference_article"] = "20";
@@ -56,6 +55,7 @@ $row = $stmt->fetch(PDO::FETCH_ASSOC); // Récupère la première ligne du résu
                     ?>
                 </select>
                 <input type="hidden" name="nom" value="<?= $row['nom_produit']?>">
+                <input type="hidden" name="prix" value="<?= $row['prix']?>">
                 <input type="hidden" name="id_produit" value="<?= $row['id_produit']?>">
                 <input type="hidden" name="image" value="<?= $row['reference_image']?>">
                 <button type="submit">Ajouter au panier</button>

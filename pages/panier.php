@@ -4,10 +4,16 @@ require_once(__DIR__ . '/../Connexion/connexionBDD.php');
 require_once(__DIR__ . '/../Connexion/functions.php');
 
 session_start();
-checkIfSessionHasPanier($_SESSION);
-if (isset($_SESSION['panier']) && (count($_SESSION['panier']->getContenuPanier()) != 0)) {
-    $contenu_panier = $_SESSION['panier']->getContenuPanier();
-    } else $contenu_panier =[];
+$_SESSION = checkIfSessionHasPanier($_SESSION);
+
+if (isset($_POST['id_produit'])) {
+    $produit = new Produit($_POST['nom'], intval($_POST['id_produit']), 
+    $_POST['nombre'], $_POST['prix'], $_POST['image']);
+    if (checkIfDuplicate($produit)) {
+        echo "Doublon {$produit->getNom()}. Quantité ajouté au produit";
+    } else $_SESSION['panier']->addItemtoPanier($produit);
+}
+
 
 
 
@@ -41,22 +47,29 @@ if (isset($_SESSION['panier']) && (count($_SESSION['panier']->getContenuPanier()
                     </tr>
                 </thead>
                 <tbody>
-                    <?php if (count($contenu_panier) != 0): ?>
-                        <?php foreach ($contenu_panier as $item): ?>
+                    <?php if (count($_SESSION['panier']->getContenuPanier()) != 0 ): ?>
+                        <?php foreach ($_SESSION['panier']->getContenuPanier() as $item): ?>
                         <tr>
-                            <td><?php echo "<img style=\"width=100px\" src=\"../Ressources/assets_produits/{$item->getImage()}\"
+                            <td><?php echo "<img style=\"width:50px\" style=\"width:50px\" src=\"../Ressources/assets_produits/{$item->getImage()}\"
                 title=\"{$item->getNom()}\" alt=\"{$item->getNom()}\"/>"; ?></td>
                             <td><?= $item->getNom() ?></td>
                             <td><?= $item->getQuantite() ?></td>
-                            <td><?= $item->getPrix() ?></td>
-                            <td><?= $item->getTotalProduit() ?></td>
+                            <td><?= $item->getPrix() ?> €</td>
+                            <td><?= $item->getTotalProduit() ?> €</td>
                         </tr>
                     <?php endforeach?>
                     <?php else: ?>
-                        <tr colspan="5"><td>Votre panier est vide</td></tr>
+                        <tr colspan="5">
+                            <td></td>
+                            <td></td>
+                            <td>Votre panier est vide</td>
+                        </tr>
                     <?php endif; ?>
                 </tbody>
     </table> 
+    <div>Total de la commande : <?= $_SESSION['panier']->totalPanier() ?> €</div>
+    <a href="./produit.php" class="btn btn-outline-info">Continuer mes achats</a>
+    <button type="submit" class="btn btn-info">Modifier</button>
 
     <footer>
         <?php require_once(__DIR__ . '/footer.php'); ?>

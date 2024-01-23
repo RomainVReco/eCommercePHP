@@ -98,4 +98,23 @@ function checkIfSessionHasPanier($session){
     if (!isset($session["panier"])) {
         $session["panier"] = new Panier();
     }
+    return $session;
+}
+
+function checkIfDuplicate($produit): bool {
+    var_dump($produit);
+    var_dump($produit->getId());
+
+    if (count($_SESSION['panier']->getContenuPanier()) == 0) {
+        echo "FALSE";
+        return false ; 
+    }
+    
+    foreach($_SESSION['panier']->getContenuPanier() as $item) {
+        if ($item->getId() == $produit->getId()) {
+            $item->ajouterQuantite($produit->getQuantite());
+            return true;
+        }
+    }
+    return false;
 }

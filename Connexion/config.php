@@ -19,7 +19,7 @@ class Produit {
     }
 
     public String $nom;
-    public String $id;
+    public int $id;
     public int $quantite;
     public float $prix;
     public String $image;
@@ -28,7 +28,7 @@ class Produit {
         return $this->nom;
     }
 
-    public function getId(): String {
+    public function getId(): int {
         return $this->id;
     }
 
@@ -52,15 +52,27 @@ class Produit {
         return $this->quantite*$this->prix;
     }
 
+    public function ajouterQuantite($adding) {  
+        $this->quantite += $adding;
+    }
+
 }
 
 class Panier {
+
+    public int $nb;
     public $contenu_panier = [];
+    function __construct() {
+        $this->nb = 1 ;
+    }
+
 
     public function totalPanier(): float {    
         $total = 0;
         foreach ($this->contenu_panier as $item) {
-            $total = $item->getQuantite()*$item->getPrix();
+            $q =  $item->getQuantite();
+            $prix = $item->getPrix();
+            $total += $q*$prix;
         }
         return $total;
     }
