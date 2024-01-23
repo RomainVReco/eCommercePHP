@@ -73,7 +73,6 @@ function defineEmployeeActions($session, $produit){
 
 function checkRoleAdmin($session){
     echo 'checkRoleAdmin' . PHP_EOL;
-
     if (!isset($session['role']) || (isset($session["role"]) && ($session["role"] == 0 ))) {
         echo 'Renvoie vers la page connexion_admin.php' . PHP_EOL ;
         header("Location: connexion_admin.php");
@@ -87,4 +86,16 @@ function getStockQuantity($mysqlClient, $id_produit){
     $stmt->execute();
     $result = $stmt->fetch(PDO::FETCH_NUM);
     return $result[0];
+}
+
+function getCurrentPage($server){
+    $path = $server['PHP_SELF'];
+    $file = basename ($path);
+    return $file; 
+}
+
+function checkIfSessionHasPanier($session){
+    if (!isset($session["panier"])) {
+        $session["panier"] = new Panier();
+    }
 }

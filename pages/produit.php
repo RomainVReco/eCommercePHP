@@ -1,7 +1,11 @@
 <?php
-session_start();
+
 require_once(__DIR__ . '/../Connexion/connexionBDD.php');
 require_once(__DIR__ . '/../Connexion/functions.php');
+
+session_start();
+checkIfSessionHasPanier($_SESSION);
+$_SESSION["derniere_page_produit"] = getCurrentPage($_SERVER);
 
 $_GET["reference_article"] = "20";
 if (isset($_GET["reference_article"])) {
@@ -41,7 +45,7 @@ $row = $stmt->fetch(PDO::FETCH_ASSOC); // Récupère la première ligne du résu
             echo "<p>Age recommandé : " . $row['age_recommande'] . " ans</p>";
             echo "<p>Prix : €" . $row['prix'] . " </p>";
             ?>
-            <form>
+            <form action="./panier.php" method="post">
                 <label for="nombre">Qté :</label>
                 <select id="nombre" name="nombre">
                     <?php
@@ -51,7 +55,10 @@ $row = $stmt->fetch(PDO::FETCH_ASSOC); // Récupère la première ligne du résu
                     }
                     ?>
                 </select>
-                <input type="submit" value="Ajouter au panier">
+                <input type="hidden" name="nom" value="<?= $row['nom_produit']?>">
+                <input type="hidden" name="id_produit" value="<?= $row['id_produit']?>">
+                <input type="hidden" name="image" value="<?= $row['reference_image']?>">
+                <button type="submit">Ajouter au panier</button>
             </form>
         </div>
     </div>
@@ -65,7 +72,7 @@ $row = $stmt->fetch(PDO::FETCH_ASSOC); // Récupère la première ligne du résu
         echo "<p>" . $row['description'] . "</p>";
         ?>
     </div>
-    
+
     <footer>
         <?php require_once(__DIR__ . '/footer.php'); ?>
     </footer>

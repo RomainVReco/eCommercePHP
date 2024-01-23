@@ -1,5 +1,16 @@
 <?php
 
+require_once(__DIR__ . '/../Connexion/connexionBDD.php');
+require_once(__DIR__ . '/../Connexion/functions.php');
+
+session_start();
+checkIfSessionHasPanier($_SESSION);
+if (isset($_SESSION['panier']) && (count($_SESSION['panier']->getContenuPanier()) != 0)) {
+    $contenu_panier = $_SESSION['panier']->getContenuPanier();
+    } else $contenu_panier =[];
+
+
+
 ?>
 
 <!DOCTYPE html>
@@ -30,23 +41,20 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <?php foreach ($query_result as $produit): ?>
+                    <?php if (count($contenu_panier) != 0): ?>
+                        <?php foreach ($contenu_panier as $item): ?>
                         <tr>
-                            <td><?= $produit["id"] ?></td>
-                            <td><?= $produit["nom"] ?></td>
-                            <td><?php if (is_null($produit["echelle"])) echo "-";
-                            else echo $produit["echelle"] ?> 
-                            </td>
-                            <td><?= $produit["categorie"] ?></td>
-                            <td><?= $produit["quantite"] ?></td>
-                            <td><?= $produit["prix"]." €" ?></td>
-                            <td><?= $produit["marque"] ?></td>
-                            <td><?= $produit["description"] ?></td>
-                            <td><?= $produit["age_recommande"] ?></td>
-                            <td><?= $produit["reference_image"] ?></td>
-                            <?php echo defineEmployeeActions($_SESSION, $produit); ?>
+                            <td><?php echo "<img style=\"width=100px\" src=\"../Ressources/assets_produits/{$item->getImage()}\"
+                title=\"{$item->getNom()}\" alt=\"{$item->getNom()}\"/>"; ?></td>
+                            <td><?= $item->getNom() ?></td>
+                            <td><?= $item->getQuantite() ?></td>
+                            <td><?= $item->getPrix() ?></td>
+                            <td><?= $item->getTotalProduit() ?></td>
                         </tr>
                     <?php endforeach?>
+                    <?php else: ?>
+                        <tr colspan="5"><td>Votre panier est vide</td></tr>
+                    <?php endif; ?>
                 </tbody>
     </table> 
 
