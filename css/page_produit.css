@@ -9,3 +9,9 @@
 .infos_generales {
     width  : 400px;
 }
+
+.description-produit {
+    display: flex;
+    flex-direction: column;
+    margin: 1em;
+}

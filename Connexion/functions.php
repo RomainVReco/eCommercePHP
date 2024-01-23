@@ -80,3 +80,11 @@ function checkRoleAdmin($session){
         exit;
     }
 }
+
+function getStockQuantity($mysqlClient, $id_produit){
+    $sql= "SELECT quantite FROM produits WHERE id_produit = $id_produit";
+    $stmt = $mysqlClient->prepare($sql);
+    $stmt->execute();
+    $result = $stmt->fetch(PDO::FETCH_NUM);
+    return $result[0];
+}
