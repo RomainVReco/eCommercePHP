@@ -1,16 +1,15 @@
 <?php
-session_start();
 
-if (isset($_POST["compte"]) and isset($_POST["mdp"])) {
-    // Vérification de l'authentification
-    if ($_POST["compte"] == "john" and $_POST["mdp"] == "Doe" ) {
-        // Réussite de l'authentification
-        $_SESSION["role"] = "administrateur";
-        header("Location: ./index.php");
-        exit;
-    }
-    // Échec de l'authentification
+session_start();
+unset($_SESSION["role"]);
+$role = 0;
+$_SESSION["role"] = $role;
+
+if (isset($_SESSION["role"]) && $_SESSION["role"]!=0) {
+    header("Location: index_admin.php");
+    exit;
 }
+
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -19,21 +18,21 @@ if (isset($_POST["compte"]) and isset($_POST["mdp"])) {
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Se connecter</title>
         <!-- Bootstrap 5.1 CSS -->
-        <link href="./styles/bootstrap.min.css" rel="stylesheet" type="text/css">
-        <link href="./styles/geo.css" rel="stylesheet" type="text/css">
+        <link href="/Lotra3/css/styles/bootstrap.min.css" rel="stylesheet" type="text/css">
+        <link href="/Lotra3/css/styles/geo.css" rel="stylesheet" type="text/css">
     </head>
     <body>
         <div class="jumbotron text-center">
             <h1>Se connecter</h1>
         </div>
         <div class="container-fluid">
-            <form action="./connecter.php" method="post">
+            <form action="./index_admin.php" method="post">
                 <div class="row m-2">
                     <div class="col-sm-2">
                         <label for="compte" class="form-label">Compte :</label>
                     </div>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control" id="compte" name="compte" required>
+                        <input type="text" class="form-control" id="login" name="login" required>
                     </div>
                 </div>
                 <div class="row m-2">
@@ -41,7 +40,7 @@ if (isset($_POST["compte"]) and isset($_POST["mdp"])) {
                         <label for="mdp" class="form-label">Mot de passe :</label>
                     </div>
                     <div class="col-sm-10">
-                        <input type="password" class="form-control" id="mdp" name="mdp" required>
+                        <input type="password" class="form-control" id="mdp" name="password" required>
                     </div>
                 </div>
                 <div class="row m-2">

@@ -1,5 +1,10 @@
 <?php
+session_start();
+
 require_once(__DIR__ . '/../../Connexion/connexionBDD.php');
+require_once(__DIR__ . '/../../Connexion/functions.php');
+
+checkRoleAdmin($_SESSION);
 
 $message = 'Message ';
 if (isset($_GET["id_produit"])) {

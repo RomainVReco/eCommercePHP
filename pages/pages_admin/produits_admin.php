@@ -1,5 +1,10 @@
 <?php
+session_start();
+
 require_once(__DIR__ . '/../../Connexion/connexionBDD.php');
+require_once(__DIR__ . '/../../Connexion/functions.php');
+
+checkRoleAdmin($_SESSION);
 
     $sql = "SELECT p.id_produit as id, p.nom_produit as nom, p.echelle, c.nom_categorie as categorie, p.quantite, p.prix, m.nom_marque as marque,
     p.description, p.age_recommande, p.reference_image
@@ -25,7 +30,9 @@ require_once(__DIR__ . '/../../Connexion/connexionBDD.php');
                     <tr>
                         <th class="text-center" colspan="11">Produits référencés</th>
                         <a href="./index_admin.php" class="btn btn-outline-info">Revenir à l'accueil</a>
-                        <a href="./creer-produit.php" class="btn btn-info">Ajouter produit</a>
+                        <?php if ($_SESSION['role'] != 3) :?>
+                        <a href="./creer_produit.php" class="btn btn-info">Ajouter produit</a>
+                        <?php endif; ?>
                     </tr>
                     <tr class="table-info">
                         <th>id</th>
@@ -57,19 +64,7 @@ require_once(__DIR__ . '/../../Connexion/connexionBDD.php');
                             <td><?= $produit["description"] ?></td>
                             <td><?= $produit["age_recommande"] ?></td>
                             <td><?= $produit["reference_image"] ?></td>
-                            <td>
-                                <form action="./modifier-produit.php" method="get">
-                                    <input type="hidden" name="id_produit" value="<?= $produit["id"] ?>">
-                                    <button type="submit" class="btn btn-sm btn-info">Modifier</a>
-                                </form>
-                            </td>
-                            <td>
-                                <form action="./supprimer-produit.php" method="get">
-                                    <input type="hidden" name="id_produit" value="<?= $produit["id"] ?>">
-                                    <input type="hidden" name="nom" value="<?= $produit["nom"] ?>">
-                                    <button type="submit" class="btn btn-sm btn-danger">Supprimer</a>
-                                </form>
-                            </td>
+                            <?php echo defineEmployeeActions($_SESSION, $produit); ?>
                         </tr>
                     <?php endforeach?>
                 </tbody>
