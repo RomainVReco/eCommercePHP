@@ -1,8 +1,6 @@
 <?php  
 require_once(__DIR__ . '/../Connexion/connexionBDD.php');
 
-
-
 if (isset($_POST["nom"])) {
     try {
         $sql = "INSERT INTO `clients`(`nom_client`, `prenom_client`, `email`, `motdepasse`) VALUES (:nom, :prenom, :email,:motdepasse)";
