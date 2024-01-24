@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost
--- Généré le : mer. 24 jan. 2024 à 09:57
+-- Généré le : mer. 24 jan. 2024 à 12:03
 -- Version du serveur : 10.4.28-MariaDB
 -- Version de PHP : 8.2.4
 
@@ -94,9 +94,34 @@ CREATE TABLE `clients` (
 CREATE TABLE `commandes` (
   `id_commande` int(11) NOT NULL,
   `date_commande` date NOT NULL,
-  `total` decimal(8,0) NOT NULL,
-  `id_client` int(11) DEFAULT NULL
+  `total_commande` decimal(8,2) NOT NULL,
+  `id_client` int(11) DEFAULT NULL,
+  `hash_code` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Déchargement des données de la table `commandes`
+--
+
+INSERT INTO `commandes` (`id_commande`, `date_commande`, `total_commande`, `id_client`, `hash_code`) VALUES
+(24, '2024-01-24', 67.97, 0, '37fd41afb73990b29a2c8cd07a7bd82c711b0c382b837507bc3488ea68dfa6ad'),
+(25, '2024-01-24', 0.00, 0, '2a7bf1bbf9b8055ef1de56afc11276e25204b16c49e1ede89f7b19b16d5130c8'),
+(26, '2024-01-24', 0.00, 0, '2a7bf1bbf9b8055ef1de56afc11276e25204b16c49e1ede89f7b19b16d5130c8'),
+(27, '2024-01-24', 0.00, 0, '2a7bf1bbf9b8055ef1de56afc11276e25204b16c49e1ede89f7b19b16d5130c8'),
+(28, '2024-01-24', 0.00, 0, '2a7bf1bbf9b8055ef1de56afc11276e25204b16c49e1ede89f7b19b16d5130c8'),
+(29, '2024-01-24', 0.00, 0, '2a7bf1bbf9b8055ef1de56afc11276e25204b16c49e1ede89f7b19b16d5130c8'),
+(30, '2024-01-24', 0.00, 0, '2a7bf1bbf9b8055ef1de56afc11276e25204b16c49e1ede89f7b19b16d5130c8'),
+(31, '2024-01-24', 0.00, 0, '2a7bf1bbf9b8055ef1de56afc11276e25204b16c49e1ede89f7b19b16d5130c8'),
+(32, '2024-01-24', 0.00, 0, '2a7bf1bbf9b8055ef1de56afc11276e25204b16c49e1ede89f7b19b16d5130c8'),
+(33, '2024-01-24', 0.00, 0, '2a7bf1bbf9b8055ef1de56afc11276e25204b16c49e1ede89f7b19b16d5130c8'),
+(34, '2024-01-24', 0.00, 0, '2a7bf1bbf9b8055ef1de56afc11276e25204b16c49e1ede89f7b19b16d5130c8'),
+(35, '2024-01-24', 0.00, 0, '2a7bf1bbf9b8055ef1de56afc11276e25204b16c49e1ede89f7b19b16d5130c8'),
+(36, '2024-01-24', 0.00, 0, '2a7bf1bbf9b8055ef1de56afc11276e25204b16c49e1ede89f7b19b16d5130c8'),
+(37, '2024-01-24', 0.00, 0, '2a7bf1bbf9b8055ef1de56afc11276e25204b16c49e1ede89f7b19b16d5130c8'),
+(38, '2024-01-24', 0.00, 0, '2a7bf1bbf9b8055ef1de56afc11276e25204b16c49e1ede89f7b19b16d5130c8'),
+(39, '2024-01-24', 0.00, 0, '2a7bf1bbf9b8055ef1de56afc11276e25204b16c49e1ede89f7b19b16d5130c8'),
+(40, '2024-01-24', 0.00, 0, '2a7bf1bbf9b8055ef1de56afc11276e25204b16c49e1ede89f7b19b16d5130c8'),
+(41, '2024-01-24', 70.99, 0, '7da128d2af6ffa30bb03db98b7a2b78018feebc3f299b8986c610b4181854482');
 
 -- --------------------------------------------------------
 
@@ -111,6 +136,15 @@ CREATE TABLE `commande_produit` (
   `prix` decimal(8,2) NOT NULL,
   `total_ligne` decimal(8,2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Déchargement des données de la table `commande_produit`
+--
+
+INSERT INTO `commande_produit` (`id_commande`, `id_produit`, `quantite`, `prix`, `total_ligne`) VALUES
+(24, 15, 1, 21.99, 21.99),
+(24, 16, 2, 22.99, 45.98),
+(41, 17, 1, 70.99, 70.99);
 
 -- --------------------------------------------------------
 
@@ -346,8 +380,8 @@ ALTER TABLE `commandes`
 -- Index pour la table `commande_produit`
 --
 ALTER TABLE `commande_produit`
-  ADD KEY `id_commande` (`id_commande`),
-  ADD KEY `id_produit` (`id_produit`);
+  ADD KEY `id_produit` (`id_produit`),
+  ADD KEY `commande_produit_ibfk_1` (`id_commande`);
 
 --
 -- Index pour la table `commentaires`
@@ -416,7 +450,7 @@ ALTER TABLE `clients`
 -- AUTO_INCREMENT pour la table `commandes`
 --
 ALTER TABLE `commandes`
-  MODIFY `id_commande` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_commande` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
 
 --
 -- AUTO_INCREMENT pour la table `commentaires`
@@ -462,7 +496,7 @@ ALTER TABLE `roles`
 -- Contraintes pour la table `commande_produit`
 --
 ALTER TABLE `commande_produit`
-  ADD CONSTRAINT `commande_produit_ibfk_1` FOREIGN KEY (`id_commande`) REFERENCES `commandes` (`id_commande`) ON DELETE NO ACTION ON UPDATE CASCADE,
+  ADD CONSTRAINT `commande_produit_ibfk_1` FOREIGN KEY (`id_commande`) REFERENCES `commandes` (`id_commande`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `commande_produit_ibfk_2` FOREIGN KEY (`id_produit`) REFERENCES `produits` (`id_produit`) ON DELETE NO ACTION ON UPDATE CASCADE;
 
 --
