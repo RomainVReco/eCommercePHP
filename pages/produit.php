@@ -7,12 +7,10 @@ session_start();
 $_SESSION = checkIfSessionHasPanier($_SESSION);
 $_SESSION["derniere_page_produit"] = getCurrentPage($_SERVER);
 
-
-$_GET["reference_article"] = "20";
-if (isset($_GET["reference_article"])) {
-    $ref_article = intval($_GET["reference_article"]);
+if (isset($_GET["id_produit"])) {
+    $ref_article = intval($_GET["id_produit"]);
 } else {
-    echo "Probleme de recuperation de la variable reference_article!";
+    echo "Probleme de recuperation de la variable id_produit!";
 }
 //Récupération d'informations dans la base
 $stmt = $mysqlClient->prepare('SELECT * FROM produits WHERE id_produit = :ref_article');

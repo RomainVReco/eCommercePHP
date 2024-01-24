@@ -89,7 +89,7 @@ function getStockQuantity($mysqlClient, $id_produit){
 }
 
 function getCurrentPage($server){
-    $path = $server['PHP_SELF'];
+    $path = $server['REQUEST_URI'];
     $file = basename ($path);
     return $file; 
 }
@@ -102,9 +102,6 @@ function checkIfSessionHasPanier($session){
 }
 
 function checkIfDuplicate($produit): bool {
-    var_dump($produit);
-    var_dump($produit->getId());
-
     if (count($_SESSION['panier']->getContenuPanier()) == 0) {
         echo "FALSE";
         return false ; 
