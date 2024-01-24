@@ -1,6 +1,9 @@
 <?php
 require_once(__DIR__ . "/connexionBDD.php");
 
+/**
+ * Retourne l'ensemble des couples id_marque et nom_marque depuis la base de données
+ */
 function getAllBrands($mysqlClient) {
     $sql = "SELECT id_marque, nom_marque FROM marques;";
     $stmt = $mysqlClient->prepare($sql);
@@ -9,6 +12,9 @@ function getAllBrands($mysqlClient) {
     return $brands;
 }
 
+/**
+ * Retourne l'ensemble des couples id_categorie et nom_categorie depuis la base de données
+ */
 function getAllCategories($mysqlClient) {
     $sql = "SELECT id_categorie, nom_categorie FROM categories;";
     $stmt = $mysqlClient->prepare($sql);
@@ -18,8 +24,8 @@ function getAllCategories($mysqlClient) {
 }
 
 /*
-La fonction permet, à partir d'un résultat de requete SQL $content, de récupérer les deux premiers éléments de chaque tableau pour créer
-des balises <options> à placer dans une balise <selector>, soit l'id et et le nom.
+La fonction permet, à partir d'un résultat de requete SQL $content, par exemple un ensemble de couples id_marque et nom_marque, de récupérer les deux premiers éléments 
+de chaque tableau pour créer des balises <options> à placer dans une balise <selector>, soit l'id et et le nom.
 
 Return : une chaine de caractères contenant les balises options créées
 */
@@ -33,6 +39,12 @@ function selectorFromContent($content, $selected) {
     return $html_selector;
 }
 
+/**
+ * A partir d'un id role, issue de la connexion d'un employé, recupère les accès autorisés pour ne proposer sur l'interface 
+ * uniquement les catégories auquel il peut accéder
+ * 
+ * Return : un bloc HTML affichant les catégories autorisées
+ */
 function getEmployeeCategoryAccess($mysqlClient, $role) {
     $sql = "SELECT l_c_a.page_php as page, l_c_a.nom_cat_admin as nom
             FROM roles as r INNER JOIN role_cat_admin as r_c_a ON r.id_role = r_c_a.id_role
@@ -51,6 +63,10 @@ function getEmployeeCategoryAccess($mysqlClient, $role) {
     return $div_admin_access;
 }
 
+
+/**
+ * En fonction du rôle de l'employé renvoie ou non des boutons permettant la modification ou le suppression d'un élément listé sur la page
+ */
 function defineEmployeeActions($session, $produit){
     $modify_button = "<td>
     <form action=\"./modifier_produit.php\" method=\"get\">
@@ -71,6 +87,10 @@ function defineEmployeeActions($session, $produit){
     else return "<td></td><td></td>";
 }
 
+
+/**
+ * Vérifie d'après la variable globale $_SESSION, si l'employé est connecté à l'admin. Si ce n'est pas le cas, alors il est renvoyé vers la page de connexion
+ */
 function checkRoleAdmin($session){
     echo 'checkRoleAdmin' . PHP_EOL;
     if (!isset($session['role']) || (isset($session["role"]) && ($session["role"] == 0 ))) {
@@ -80,20 +100,18 @@ function checkRoleAdmin($session){
     }
 }
 
-function getStockQuantity($mysqlClient, $id_produit){
-    $sql= "SELECT quantite FROM produits WHERE id_produit = $id_produit";
-    $stmt = $mysqlClient->prepare($sql);
-    $stmt->execute();
-    $result = $stmt->fetch(PDO::FETCH_NUM);
-    return $result[0];
-}
-
+/**
+ * Renvoie la page web sur laquelle se trouve l'utilisateur
+ */
 function getCurrentPage($server){
     $path = $server['REQUEST_URI'];
     $file = basename ($path);
     return $file; 
 }
 
+/**
+ * Vérifie si 
+ */
 function checkIfSessionHasPanier($session){
     if (!isset($session["panier"])) {
         $session["panier"] = new Panier();
