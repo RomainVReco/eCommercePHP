@@ -73,10 +73,45 @@ function defineEmployeeActions($session, $produit){
 
 function checkRoleAdmin($session){
     echo 'checkRoleAdmin' . PHP_EOL;
-
     if (!isset($session['role']) || (isset($session["role"]) && ($session["role"] == 0 ))) {
         echo 'Renvoie vers la page connexion_admin.php' . PHP_EOL ;
         header("Location: connexion_admin.php");
         exit;
     }
+}
+
+function getStockQuantity($mysqlClient, $id_produit){
+    $sql= "SELECT quantite FROM produits WHERE id_produit = $id_produit";
+    $stmt = $mysqlClient->prepare($sql);
+    $stmt->execute();
+    $result = $stmt->fetch(PDO::FETCH_NUM);
+    return $result[0];
+}
+
+function getCurrentPage($server){
+    $path = $server['REQUEST_URI'];
+    $file = basename ($path);
+    return $file; 
+}
+
+function checkIfSessionHasPanier($session){
+    if (!isset($session["panier"])) {
+        $session["panier"] = new Panier();
+    }
+    return $session;
+}
+
+function checkIfDuplicate($produit): bool {
+    if (count($_SESSION['panier']->getContenuPanier()) == 0) {
+        echo "FALSE";
+        return false ; 
+    }
+    
+    foreach($_SESSION['panier']->getContenuPanier() as $item) {
+        if ($item->getId() == $produit->getId()) {
+            $item->ajouterQuantite($produit->getQuantite());
+            return true;
+        }
+    }
+    return false;
 }

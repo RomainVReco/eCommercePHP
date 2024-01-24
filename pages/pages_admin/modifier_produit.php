@@ -165,8 +165,8 @@ if (isset($_POST["id"])) {
                             <label for="image" class="form-label">Image :</label>
                         </div>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" id="image" name="image" value="<?= $value["image"] ?>" required>
-                            <input type="file" name="ficphoto" id="photo" accept="image/jpg, image/jpeg, image/png" required>
+                            <input type="text" class="form-control" id="image" name="image" value="<?= $value["image"] ?>" >
+                            <input type="file" name="ficphoto" id="photo" accept="image/jpg, image/jpeg, image/png" >
                         </div>
                     </div>
                     <?php endforeach; ?>

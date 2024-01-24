@@ -58,7 +58,7 @@ if ((isset($_SESSION["id_client"])) && ($_SESSION["id_client"] > 0)){
       <div class="bottom-zone">
         <nav class="menu-nav">
           <ol class="list-nav">
-            <a class="categorie_nav" href="">
+            <a class="categorie_nav" href="index.php">
               <li>Tous nos produits</li>
             </a>
             <a class="categorie_nav" href="">
