@@ -110,7 +110,7 @@ function getCurrentPage($server){
 }
 
 /**
- * Vérifie si 
+ * Vérifie si la session en cours contient un panier. Dans le cas contraire, un panier vide est créé.
  */
 function checkIfSessionHasPanier($session){
     if (!isset($session["panier"])) {
@@ -119,6 +119,9 @@ function checkIfSessionHasPanier($session){
     return $session;
 }
 
+/**
+ * Vérifie si produit ajouté au panier y est déjà. Le cas échéant, la quantité du produit est modifiée.
+ */
 function checkIfDuplicate($produit): bool {
     if (count($_SESSION['panier']->getContenuPanier()) == 0) {
         echo "FALSE";
