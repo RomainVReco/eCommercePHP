@@ -1,3 +1,34 @@
+<?php  
+require_once(__DIR__ . '/../Connexion/connexionBDD.php');
+
+session_start();
+
+//tentative récupération id_client via la combinaison email-mot de passe saisie par l'utilisateur
+if (isset($_POST['email'])){
+    $email = $_POST['email'];
+    $password = $_POST['pwd'];
+    $sql = "SELECT id_client FROM clients WHERE email = :email AND motdepasse = :pwd";
+
+    $stmt = $mysqlClient->prepare($sql);
+    $stmt->bindValue(":email", $email);
+    $stmt->bindValue(":pwd", $password);
+    $stmt->execute();
+    $id_client= $stmt->fetch(PDO::FETCH_NUM);
+
+    //Test récupération id_client (ce qui valide que la combinaison email-mdp est correcte)
+    if (!$id_client) {
+        $_SESSION["id_client"] = 0;
+    } else  { 
+        echo "Nous avons bien un id client";
+        $_SESSION["id_client"] = $id_client[0];
+
+        header("Location: index.php");
+        exit; // fin du script après la redirection
+    }
+}
+
+
+?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -30,20 +61,28 @@
     </div>
     <div class=panneau-login>
         <div class=panneau-gauche>
-            <form action="construction.html">
+
+            <!--<form action="construction.html"> -->
+            <form method="post">
+                <!-- Vos champs de formulaire ici -->
                 <div class="form-group">
                     <label for="email">Adresse mail*</label>
-                    <input type="email" class="form-control" id="email" required>
+                    <input type="email" class="form-control" id="email" name="email" required>
                     <br><br>
                 </div>
                 <div class="form-group">
                     <label for="pwd">Mot de passe*</label>
-                    <input type="password" class="form-control" id="pwd" required>
+                    <input type="password" class="form-control" id="pwd" name="pwd" required>
                     <br><br>
                 </div>
                 <a href="construction.html">Mot de passe oublié?</a>
                 <br><br>
-                <button class=bouton-bleu type="submit">Connexion</button>
+                
+
+                    <button class="bouton-bleu" type="submit">Connexion</button>
+                </form>
+
+                <!--<button class=bouton-bleu type="submit">Connexion</button> -->
                 <br><br>
                 <p>* Champs obligatoires</p>
             </form>
@@ -57,9 +96,8 @@
         </div>
 
     </div>
-
-
- 
-    
+    <footer>
+        <?php require_once(__DIR__ . '/footer.php'); ?>
+    </footer> 
 </body>
 </html>

@@ -1,3 +1,34 @@
+<?php  
+require_once(__DIR__ . '/../Connexion/connexionBDD.php');
+
+if (isset($_POST["nom"])) {
+    try {
+        $sql = "INSERT INTO `clients`(`nom_client`, `prenom_client`, `email`, `motdepasse`) VALUES (:nom, :prenom, :email,:motdepasse)";
+        $stmt = $mysqlClient->prepare($sql);
+        $stmt->bindValue(':nom', $_POST['nom']);
+        $stmt->bindValue(':prenom', $_POST['prenom']);
+        $stmt->bindValue(':email', $_POST['email']);
+        $stmt->bindValue(':motdepasse', $_POST['motdepasse']);
+        $mdp=$_POST['motdepasse'];
+        $mdpbis=$_POST['mdp-repete'];
+
+        if ( $mdp == $mdpbis ) {
+            
+            //echo "Le mot de passe est bien répété 2 fois.";
+            $stmt->execute();
+            $mysqlClient= null;
+        } else {
+            //echo 'Le mot de passe n a pas été saisie de manière identique lors de la re-saisie...';
+            $mysqlClient= null;
+        }
+
+
+    } catch (Exception $e) {
+        $message = $e->getMessage();
+        echo ''. $message .'';
+    }
+}
+?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -29,27 +60,29 @@
         </div>
     </div>
     <div class=panneau-login>
-            <form action="action_page.php">
-            <div class="container">
-                <label for="text">Prénom*</label>
-                <input type="text" name="prenom" required>
-                <label for="text">Nom*</label>
-                <input type="text" name="nom" required>
-                <label for="email">Adresse mail*</label>
-                <input type="email" name="email" required> 
-                <br><br>
-                <label for="psw">Mot de passe*</label>
-                <input type="password" name="psw" required>
-                <br><br>
-                <label for="psw-repeat">Confirmation*</label>
-                <input type="password" name="psw-repeat" required>
-                <br><br>
-                <button class=bouton-bleu type="submit">Enregistrement</button>
-                <br><br>
-                <p>* Champs obligatoires</p>
-            </div>
+            <form method='POST'>
+                <div class="container">
+                    <label>Prénom*</label>
+                    <input type="text" id="prenom" name="prenom" required>
+                    <label>Nom*</label>
+                    <input type="text" id="nom" name="nom" required>
+                    <label>Adresse mail*</label>
+                    <input type="email" id="email" name="email" required> 
+                    <br><br>
+                    <label>Mot de passe*</label>
+                    <input type="password" id="motdepasse" name="motdepasse" required>
+                    <br><br>
+                    <label>Confirmation*</label>
+                    <input type="password" id="mdp-repete" name="mdp-repete" required>
+                    <br><br>
+                    <button class=bouton-bleu type="submit">Enregistrement</button>
+                    <br><br>
+                    <p>* Champs obligatoires</p>
+                </div>
             </form>
     </div>
-    
+    <footer>
+        <?php require_once(__DIR__ . '/footer.php'); ?>
+    </footer>
 </body>
 </html>
