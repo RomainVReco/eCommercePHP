@@ -8,7 +8,6 @@ try {
     $les_categories = $stmt->fetchAll(PDO::FETCH_ASSOC);
     $nb = count($les_categories);
     $dbh = null;
-    var_dump($les_categories).PHP_EOL;
 } catch (Exception $e) {
     $message = $e->getMessage();
     echo ''. $message .'';
