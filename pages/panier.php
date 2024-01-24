@@ -14,7 +14,9 @@ if (isset($_POST['id_produit'])) {
     } else $_SESSION['panier']->addItemtoPanier($produit);
 }
 
-
+$last_visited_page = "";
+if (!isset($_SESSION["derniere_page_produit"])) $last_visited_page = "index.php";
+else $last_visited_page = $_SESSION["derniere_page_produit"];
 
 
 ?>
@@ -68,8 +70,8 @@ if (isset($_POST['id_produit'])) {
                 </tbody>
     </table> 
     <div>Total de la commande : <?= $_SESSION['panier']->totalPanier() ?> €</div>
-    <a href="./<?=$_SESSION["derniere_page_produit"]?>" class="btn btn-outline-info">Continuer mes achats</a>
-    <button type="submit" class="btn btn-info">Passer au paiement</button>
+    <a href="./<?=$last_visited_page?>" class="btn btn-outline-info">Continuer mes achats</a>
+    <a href="commande_terminee.php" type="submit" class="btn btn-info">Passer au paiement</a>
 
     <footer>
         <?php require_once(__DIR__ . '/footer.php'); ?>

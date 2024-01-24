@@ -1,12 +1,8 @@
 <?php
-define("DIR_IMG_PRODUIT", "/Applications/XAMPP/xamppfiles/htdocs/Lotra3/Ressources/assets_produits/"); 
-define("DIR_IMG_CATEGORIE","/Applications/XAMPP/xamppfiles/htdocs/Lotra3/Ressources/assets_categories/");
+define("DIR_IMG_PRODUIT", "{$_SERVER["DOCUMENT_ROOT"]}/Lotra3/Ressources/assets_produits/"); 
+define("DIR_IMG_CATEGORIE","{$_SERVER["DOCUMENT_ROOT"]}/Lotra3/Ressources/assets_categories/");
 
-const MYSQL_HOST = 'localhost';
-const MYSQL_PORT = 3306;
-const MYSQL_NAME = 'maquettisme';
-const MYSQL_USER = 'root';
-const MYSQL_PASSWORD = '';
+require_once("db_config_access.php");
 
 class Produit {
 
@@ -62,6 +58,8 @@ class Panier {
 
     public int $nb;
     public $contenu_panier = [];
+    public bool $hasBeenOrdered = false;
+
     function __construct() {
         $this->nb = 1 ;
     }
@@ -83,6 +81,14 @@ class Panier {
 
     public function getContenuPanier(): array {
         return $this->contenu_panier;
+    }
+
+    public function validatePanier(){
+        $this->hasBeenOrdered = true;
+    }
+
+    public function getHasBeenOrdered() {
+        return $this->hasBeenOrdered;
     }
 
 }
