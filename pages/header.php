@@ -50,7 +50,7 @@ if ((isset($_SESSION["id_client"])) && ($_SESSION["id_client"] > 0)){
               <p><?php if ($isLogged == true) { echo "Connecté";} ?></p>
             </div>
             <div class="img-entete">
-              <a href="/pages_produits/panier.html"><img src="/Lotra3/Ressources/ressources_entete/bx-cart.svg" alt="langue"></a>
+              <a href="panier.php"><img src="/Lotra3/Ressources/ressources_entete/bx-cart.svg" alt="langue"></a>
             </div>
           </div>
         </div>

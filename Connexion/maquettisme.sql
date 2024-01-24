@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost
--- Généré le : mar. 23 jan. 2024 à 16:21
+-- Généré le : mer. 24 jan. 2024 à 09:57
 -- Version du serveur : 10.4.28-MariaDB
 -- Version de PHP : 8.2.4
 
@@ -83,6 +83,33 @@ CREATE TABLE `clients` (
   `email` varchar(50) NOT NULL,
   `telephone` varchar(20) NOT NULL,
   `ville` varchar(30) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `commandes`
+--
+
+CREATE TABLE `commandes` (
+  `id_commande` int(11) NOT NULL,
+  `date_commande` date NOT NULL,
+  `total` decimal(8,0) NOT NULL,
+  `id_client` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `commande_produit`
+--
+
+CREATE TABLE `commande_produit` (
+  `id_commande` int(11) NOT NULL,
+  `id_produit` int(11) NOT NULL,
+  `quantite` int(11) NOT NULL,
+  `prix` decimal(8,2) NOT NULL,
+  `total_ligne` decimal(8,2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -310,6 +337,19 @@ ALTER TABLE `clients`
   ADD PRIMARY KEY (`id_client`);
 
 --
+-- Index pour la table `commandes`
+--
+ALTER TABLE `commandes`
+  ADD PRIMARY KEY (`id_commande`);
+
+--
+-- Index pour la table `commande_produit`
+--
+ALTER TABLE `commande_produit`
+  ADD KEY `id_commande` (`id_commande`),
+  ADD KEY `id_produit` (`id_produit`);
+
+--
 -- Index pour la table `commentaires`
 --
 ALTER TABLE `commentaires`
@@ -373,6 +413,12 @@ ALTER TABLE `clients`
   MODIFY `id_client` int(11) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT pour la table `commandes`
+--
+ALTER TABLE `commandes`
+  MODIFY `id_commande` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT pour la table `commentaires`
 --
 ALTER TABLE `commentaires`
@@ -411,6 +457,13 @@ ALTER TABLE `roles`
 --
 -- Contraintes pour les tables déchargées
 --
+
+--
+-- Contraintes pour la table `commande_produit`
+--
+ALTER TABLE `commande_produit`
+  ADD CONSTRAINT `commande_produit_ibfk_1` FOREIGN KEY (`id_commande`) REFERENCES `commandes` (`id_commande`) ON DELETE NO ACTION ON UPDATE CASCADE,
+  ADD CONSTRAINT `commande_produit_ibfk_2` FOREIGN KEY (`id_produit`) REFERENCES `produits` (`id_produit`) ON DELETE NO ACTION ON UPDATE CASCADE;
 
 --
 -- Contraintes pour la table `commentaires`
