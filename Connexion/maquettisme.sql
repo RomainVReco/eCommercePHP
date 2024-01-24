@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost
--- Généré le : mer. 24 jan. 2024 à 12:43
+-- Généré le : mer. 24 jan. 2024 à 16:24
 -- Version du serveur : 10.4.28-MariaDB
 -- Version de PHP : 8.2.4
 
@@ -102,9 +102,17 @@ INSERT INTO `clients` (`id_client`, `nom_client`, `prenom_client`, `adresse`, `c
 CREATE TABLE `commandes` (
   `id_commande` int(11) NOT NULL,
   `date_commande` date NOT NULL,
-  `total` decimal(8,0) NOT NULL,
-  `id_client` int(11) DEFAULT NULL
+  `total_commande` decimal(8,2) NOT NULL,
+  `id_client` int(11) DEFAULT NULL,
+  `hash_code` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Déchargement des données de la table `commandes`
+--
+
+INSERT INTO `commandes` (`id_commande`, `date_commande`, `total_commande`, `id_client`, `hash_code`) VALUES
+(1, '2024-01-24', 472.71, 0, 'ec8b526a1aff962fcefc722490ecf5e126bf58ca1290dff94c19166d6892fc47');
 
 -- --------------------------------------------------------
 
@@ -119,6 +127,15 @@ CREATE TABLE `commande_produit` (
   `prix` decimal(8,2) NOT NULL,
   `total_ligne` decimal(8,2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Déchargement des données de la table `commande_produit`
+--
+
+INSERT INTO `commande_produit` (`id_commande`, `id_produit`, `quantite`, `prix`, `total_ligne`) VALUES
+(1, 20, 5, 35.95, 179.75),
+(1, 17, 3, 70.99, 212.97),
+(1, 12, 1, 79.99, 79.99);
 
 -- --------------------------------------------------------
 
@@ -268,7 +285,7 @@ INSERT INTO `produits` (`id_produit`, `nom_produit`, `echelle`, `id_categorie`, 
 (17, '1:35 WWII Dt. Panzerjäger Nashorn', '1/35', 1, 5, 70.99, 1, 'This is a highly detailed model of the WWII German tank destroyer Nashorn. The full size vehicle featured an 8.8cm gun also known as a PAK 43 and it was fitted to the upper surface of a light turret less chassis. Even though the vehicle was lightly armored, the PAK43 weapon was capable of penetrating 190mm of armor at 1,000 meters. The Nashorn saw action with German heavy antitank battalions fighting Soviet and Allied forces during much of the conflict. Due to its relatively low cost and superior mobility compared to heavier tanks it remained in production until the end of the WWII war.Decals included.Features:• The model accurately recreates the powerful form of the Nashorn, thanks to detailed research performed using an actual example of the vehicle in a museum in Russia.• Features faithful reproductions of the 71-caliber 8.8cm gun and complex fighting compartment.• Metal parts are used to ensure that the gun has authentic movement and weight.• Comes with 3 marking options, including winter and Eastern front versions.• 4 included figures depict driver and 3 crew members in a variety of realistic poses.', '14+', '1-35-wwii-dt-panzerjaeger-nashorn.jpeg'),
 (18, '1/16 M551 Sheridan', '1/16', 1, 2, 500.00, 1, 'This large-scale 1/16 static display tank recreates the unique M551 Sheridan. The actual Sheridan began development in 1959 and would go on to serve in major conflicts such as the Vietnam and Gulf Wars. It was a lightweight, air liftable vehicle that contributed to the more mobile U.S. forces that were necessary as America took on a more major global security role in the post-WW2 years. This model uses components from the R/C model, for a highly detailed finish.• 1/16 scale plastic model assembly kit. Length: 408mm, width: 177mm, height: 186mm (including gun shield).• The powerful form of the Sheridan with 152mm gun/launcher is recreated in excellent detail.• Features a precision aluminum gun barrel, plus other metal components including lower hull, drive sprockets, coil-sprung suspension arms and more.• Pre-assembled plastic tracks offer wonderful detail, and have soft resin depictions of rubber pads.• Soft photo-etched metal parts are included to recreate the anti-RPG net often seen as an impromptu addition to Sheridan’s deployed in Vietnam.', '14+', '116-m551-sheridan-display.jpeg'),
 (19, '1/48 JGSDF Type 16 MCV', '1/48', 1, 23, 31.99, 1, 'his scale model assembly kit recreates the Japan Ground Self Defense Force (JGSDF) Type 16, which reached units beginning in 2017. An 8-wheel vehicle, the JGSDF classify it as a Maneuver Combat Vehicle (MCV), a highly mobile and well-armed vehicle intended to provide supporting fire and take on enemy armor as a part of rapid response units. Its domestically designed L/52 105mm rifled gun is a low-recoil piece with perforated muzzle brake and a fire control system to enable accurate firing on the move. Rolled steel turret and hull employ modular and spaced armor estimated to be able to survive frontal hits from 20-30mm class guns and portable anti-tank weapons. Thanks to its 570hp engine, the 26-ton Type 16 has a top speed of around 100km/h and significant range; it looks set to provide a major boost to JGSDF units as its rollout continues.• 1/48 scale plastic model assembly kit. Length: 176mm, width: 63mm.Model has a dedicated parts breakdown for a hassle-free build without sacrificing accuracy.• An accurate rendering is based upon extensive research of the actual Type 16, authentically capturing the modern silhouette with a moving depiction of the 105mm gun.• Features crisp molding on details such as non-slip surfaces, plus multi-piece machine gun and mount.• The 8-wheel suspension is depicted in style, with fixed wheels. Elastomer tires have a realistic tread pattern.• Decals are included to recreate periscope openings and muzzle brake perforations.• Comes with one commander figure and two marking options.', '14+', '148-jgsdf-type-16.jpeg'),
-(20, 'Leopard 2 A6M+ 1/35', '1/35', 1, 12, 35.95, 2, 'Kit de modélisme complet d\'un char d\'assaut moderne à réaliserContenu de la boîte de modélisme Revell :1 Maquette Leopard 2 A6M+ 1/35Notice de montageAutocollantInformations sur la maquette de véhicule blidé de ce coffret cadeau Revell :La maquette Revell 03342 représente le char blindé innovant Leopard 2A6M+, un véhicule militaire de pointe utilisé par les forces armées du monde entier. Ce kit de modélisme à l\'échelle 1/35 permet aux passionnés de découvrir en détail cette évolution remarquable du Leopard 2A6M.Le Leopard 2A6M+ se distingue par sa puissance de feu améliorée, son blindage exceptionnel et ses systèmes avancés. Il incarne l\'élite des forces armées et est reconnu pour sa mobilité et sa précision optimisées. Cette maquette offre une représentation fidèle de ces caractéristiques, avec des structures de surface finement détaillées, une tourelle rotative et une chaîne facile à monter.Le Leopard 2A6M+ est un exemple hors-pair de l\'évolution des chars blindés, illustrant les avancées technologiques et les performances améliorées au fil du temps. Les modélistes et les passionnés d\'histoire militaire apprécieront ce kit de modélisme pour son réalisme et son attention aux détails. C\'est une occasion unique de construire et de mettre en valeur ce véhicule emblématique dans sa version améliorée.', '14+', 'Leopard-2-A6M.jpeg'),
+(20, 'Leopard 2 A6M+ 1/35', '1/35', 1, 12, 35.95, 2, 'Kit de modélisme complet d\'un char d\'assaut moderne à réaliserContenu de la boîte de modélisme Revell :1 Maquette Leopard 2 A6M+ 1/35Notice de montageAutocollantInformations sur la maquette de véhicule blidé de ce coffret cadeau Revell :La maquette Revell 03342 représente le char blindé innovant Leopard 2A6M+, un véhicule militaire de pointe utilisé par les forces armées du monde entier. Ce kit de modélisme à l\'échelle 1/35 permet aux passionnés de découvrir en détail cette évolution remarquable du Leopard 2A6M.Le Leopard 2A6M+ se distingue par sa puissance de feu améliorée, son blindage exceptionnel et ses systèmes avancés. Il incarne l\'élite des forces armées et est reconnu pour sa mobilité et sa précision optimisées. Cette maquette offre une représentation fidèle de ces caractéristiques, avec des structures de surface finement détaillées, une tourelle rotative et une chaîne facile à monter.Le Leopard 2A6M+ est un exemple hors-pair de l\'évolution des chars blindés, illustrant les avancées technologiques et les performances améliorées au fil du temps. Les modélistes et les passionnés d\'histoire militaire apprécieront ce kit de modélisme pour son réalisme et son attention aux détails. C\'est une occasion unique de construire et de mettre en valeur ce véhicule emblématique dans sa version améliorée.', '14+', '148-jgsdf-type-16.jpeg'),
 (21, 'Model set Land Rover Series III', '1/24', 3, 23, 34.50, 2, 'La Land Rover Series III sont des véhicules tout-terrain fabriqués à partir de 1948 par le constructeur anglais Land Rover. Ce modèle est inspiré de la Jeep américaine Willys.', '8+', 'landrover-revelle-1-24.jpeg');
 
 -- --------------------------------------------------------
@@ -424,7 +441,7 @@ ALTER TABLE `clients`
 -- AUTO_INCREMENT pour la table `commandes`
 --
 ALTER TABLE `commandes`
-  MODIFY `id_commande` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_commande` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT pour la table `commentaires`

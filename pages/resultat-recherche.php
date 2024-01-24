@@ -4,10 +4,9 @@ require_once(__DIR__ . '/../Connexion/connexionBDD.php');
 $query_result = null;
 if (isset($_GET["recherche"])) {
     $query = $_GET["recherche"];
-    $query = 1;
     $sql = "SELECT * 
     FROM produits as p
-    WHERE p.id_categorie LIKE :query";
+    WHERE p.nom_produit LIKE :query";
     $stmt = $mysqlClient->prepare($sql);
     $stmt->bindParam(':query', $param_query, PDO::PARAM_STR);
     $param_query = '%' . $query . '%';
@@ -76,6 +75,7 @@ if (isset($_GET["recherche"])) {
     </div>
     <footer>
         <?php require_once(__DIR__ . '/footer.php'); ?>
+
     </footer>
 </body>
 </html>
