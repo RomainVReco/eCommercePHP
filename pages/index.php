@@ -34,19 +34,19 @@ $tab_classe = ["main-category", "simple-1-category", "simple-2-category", "other
     <div class="container text-center">
       <div class="row row-cols-2">
         <div class="col">
-          <h3>Voitures</h3>
+          <h3 class="modern-sans-serif">Voiture</h3>
           <img src="../Ressources/assets_categories/maquette-voiture.jpg" alt="Image 1">
         </div>
         <div class="col">
-          <h3>Motos</h3>
+          <h3 class="modern-sans-serif">Motos</h3>
           <img src="../Ressources/assets_categories/maquette-moto.jpg" alt="Image 2">
         </div>
         <div class="col">
-          <h3>Militaire</h3>
+          <h3 class="modern-sans-serif">Militaire</h3>
           <img src="../Ressources/assets_categories/maquette-char.jpg" alt="Image 3">
         </div>
         <div class="col">
-          <h3>Peinture</h3>
+          <h3 class="modern-sans-serif">Peinture</h3>
           <img src="../Ressources/assets_categories/pinceaux.jpg" alt="Image 4">
         </div>
       </div>
