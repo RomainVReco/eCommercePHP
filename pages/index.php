@@ -21,7 +21,7 @@ $tab_classe = ["main-category", "simple-1-category", "simple-2-category", "other
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ma quête de rêve</title>
+    <title>Ma Quête de Rêve</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <?php require_once(__DIR__ . '/importCSS.php'); ?>
 </head>
@@ -34,7 +34,7 @@ $tab_classe = ["main-category", "simple-1-category", "simple-2-category", "other
     <div class="container text-center">
       <div class="row row-cols-2">
         <div class="col">
-          <h3 class="modern-sans-serif">Voiture</h3>
+          <h3 class="modern-sans-serif">Voitures</h3>
           <img src="../Ressources/assets_categories/maquette-voiture.jpg" alt="Image 1">
         </div>
         <div class="col">
