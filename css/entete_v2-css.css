@@ -9,7 +9,8 @@ html body {
 }
 
 .container-entete {
-    background: lightgray;
+    /*background: lightgray;*/
+    background: blue;
 }
 
 .upper-zone {
