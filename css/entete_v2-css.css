@@ -10,7 +10,8 @@ html body {
 
 .container-entete {
     /*background: lightgray;*/
-    background: blue;
+    /*background: #0A85ED;*/
+    background: linear-gradient(to right, #0A85ED, #0430e1);
 }
 
 .upper-zone {

@@ -8,6 +8,10 @@ if ((isset($_SESSION["id_client"])) && ($_SESSION["id_client"] > 0)){
 }
 
 ?>
+<head>
+  <!-- Autres balises meta, liens CSS, etc. -->
+  <title>Mon Super Site Web</title>
+</head>
 <div class="container-entete">
       <div class="upper-zone">
         <div class="upper-zone-content">
