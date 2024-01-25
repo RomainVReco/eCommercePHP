@@ -50,7 +50,7 @@ if ((isset($_SESSION["id_client"])) && ($_SESSION["id_client"] > 0)){
               <a href="#"><img src="/Lotra3/Ressources/ressources_entete/bxs-flag-alt.svg" alt="langue"></a>
             </div>
             <div class="img-entete">
-              <a href="/page_login.html"><img src="/Lotra3/Ressources/ressources_entete/bx-user-circle.svg" alt="langue"></a>
+              <a href="login.php"><img src="/Lotra3/Ressources/ressources_entete/bx-user-circle.svg" alt="langue"></a>
               <p><?php if ($isLogged == true) { echo "Connecté";} ?></p>
             </div>
             <div class="img-entete">
