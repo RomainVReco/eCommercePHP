@@ -18,7 +18,7 @@ if (isset($_POST["nom"])) {
             $stmt->execute();
             $mysqlClient= null;
         } else {
-            //echo 'Le mot de passe n a pas été saisie de manière identique lors de la re-saisie...';
+            echo 'Le mot de passe n a pas été saisi de manière identique lors de la re-saisie...';
             $mysqlClient= null;
         }
 
@@ -61,7 +61,6 @@ if (isset($_POST["nom"])) {
     </div>
     <div class=panneau-login>
             <form method='POST'>
-                <!-- <div class="container-creation"> -->
                     <label>Prénom*</label>
                     <input type="text" id="prenom" name="prenom" required>
                     <label>Nom*</label>
@@ -81,7 +80,6 @@ if (isset($_POST["nom"])) {
                     </div>
                     <br><br>
                     <p>* Champs obligatoires</p>
-                <!--</div> -->
             </form>
     </div>
     <footer>
