@@ -59,7 +59,7 @@
                             <form action="" method="post">
                                 <label for="newsletter" class="label-newsletter">Recevoir la newsletter : </label>
                                     <input type="text" name="champ-mail" id="newsletter" 
-                                        placeholder="  jean.bonbeurre@email.com" class="input-newsletter">
+                                        placeholder="  prenom.nom@email.com" class="input-newsletter">
                                     <button id="Envoyer" class="button-newsletter">Inscrivez-moi !</button>
                             </form>
                         </div>

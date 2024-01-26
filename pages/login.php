@@ -18,8 +18,9 @@ if (isset($_POST['email'])){
     //Test récupération id_client (ce qui valide que la combinaison email-mdp est correcte)
     if (!$id_client) {
         $_SESSION["id_client"] = 0;
+        echo "Cette combinaison compte/mot de passe n'existe pas. Veuillez recommencer.";
     } else  { 
-        echo "Nous avons bien un id client";
+        //echo "Nous avons bien un id client";
         $_SESSION["id_client"] = $id_client[0];
 
         header("Location: index.php");

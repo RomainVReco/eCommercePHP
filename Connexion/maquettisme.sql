@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost
--- Généré le : mer. 24 jan. 2024 à 16:24
+-- Généré le : ven. 26 jan. 2024 à 12:19
 -- Version du serveur : 10.4.28-MariaDB
 -- Version de PHP : 8.2.4
 
@@ -85,13 +85,6 @@ CREATE TABLE `clients` (
   `ville` varchar(30) DEFAULT NULL,
   `motdepasse` varchar(60) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Déchargement des données de la table `clients`
---
-
-INSERT INTO `clients` (`id_client`, `nom_client`, `prenom_client`, `adresse`, `code_postal`, `id_pays`, `email`, `telephone`, `ville`, `motdepasse`) VALUES
-(2, 'Lefèvre', 'Frédéric', NULL, NULL, NULL, 'f.lefevre@tuto.com', NULL, NULL, 'azerty12');
 
 -- --------------------------------------------------------
 
@@ -435,7 +428,7 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT pour la table `clients`
 --
 ALTER TABLE `clients`
-  MODIFY `id_client` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_client` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT pour la table `commandes`
