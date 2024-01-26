@@ -61,13 +61,15 @@ if (isset($_POST["nom"])) {
     </div>
     <div class=panneau-login>
             <form method='POST'>
-                <div class="container">
+                <!-- <div class="container-creation"> -->
                     <label>Prénom*</label>
                     <input type="text" id="prenom" name="prenom" required>
                     <label>Nom*</label>
                     <input type="text" id="nom" name="nom" required>
                     <label>Adresse mail*</label>
                     <input type="email" id="email" name="email" required> 
+                    
+                    <div class="container-creation">
                     <br><br>
                     <label>Mot de passe*</label>
                     <input type="password" id="motdepasse" name="motdepasse" required>
@@ -76,9 +78,10 @@ if (isset($_POST["nom"])) {
                     <input type="password" id="mdp-repete" name="mdp-repete" required>
                     <br><br>
                     <button class=bouton-bleu type="submit">Enregistrement</button>
+                    </div>
                     <br><br>
                     <p>* Champs obligatoires</p>
-                </div>
+                <!--</div> -->
             </form>
     </div>
     <footer>

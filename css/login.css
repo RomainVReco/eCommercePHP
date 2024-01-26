@@ -30,6 +30,12 @@
     padding: 20px;
 }
 
+.container-creation {
+    display : flex;
+    flex-direction: column;
+    padding: 20px;
+}
+
 .panneau-gauche {
     width : 400px;
     padding: 20px;
