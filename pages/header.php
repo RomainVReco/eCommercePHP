@@ -51,7 +51,11 @@ if ((isset($_SESSION["id_client"])) && ($_SESSION["id_client"] > 0)){
             </div>
             <div class="img-entete">
               <a href="login.php"><img src="/Lotra3/Ressources/ressources_entete/bx-user-circle.svg" alt="langue"></a>
-              <p><?php if ($isLogged == true) { echo "Connecté";} ?></p>
+              <p><?php if ($isLogged == true) : echo "Connecté"; ?></p>
+              <a href="logout.php">Se déconnecter</a>
+              <?php else : ?>
+                <a href="login.php">Se connecter</a>
+              <?php endif; ?>
             </div>
             <div class="img-entete">
               <a href="panier.php"><img src="/Lotra3/Ressources/ressources_entete/bx-cart.svg" alt="langue"></a>
