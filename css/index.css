@@ -53,10 +53,12 @@ ol > a{
 
 /* Style de base pour les images */
 .image {
-  width: 600px; /* Largeur de l'image */
-  height: 500px; /* Hauteur de l'image */
+  /* width: 600px; /* Largeur de l'image */
+  /* height: 500px; /* Hauteur de l'image */
+  max-width: 100%; /* Largeur maximale de l'image par rapport à son conteneur */
+  height: auto; /* Hauteur automatique pour maintenir le rapport hauteur/largeur */
   transition: transform 0.3s; /* Transition pour l'effet de survol */
-  padding: 30px;
+  /* padding: 30px;
 }
 
 /* Style de survol pour les images */
