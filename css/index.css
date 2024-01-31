@@ -51,5 +51,16 @@ ol > a{
   font-family: Montserrat, Helvetica, sans-serif;
 }
 
+/* Style de base pour les images */
+.image {
+  width: 600px; /* Largeur de l'image */
+  height: 500px; /* Hauteur de l'image */
+  transition: transform 0.3s; /* Transition pour l'effet de survol */
+  padding: 30px;
+}
 
+/* Style de survol pour les images */
+.image:hover {
+  transform: scale(1.1); /* Agrandir l'image de 10% lorsqu'on survole */
+}
 
