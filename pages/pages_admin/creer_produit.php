@@ -20,7 +20,8 @@ if (isset($_POST["nom"])) {
         echo"FILES OK";
         $image_type = explode('/', $_FILES["ficphoto"]["type"])[1];
         var_dump($image_type);
-        $uploaded_file_name = $_POST['image'] . "." . $image_type;
+        $uploaded_file_name = $_POST['image'];
+        //$uploaded_file_name = $_POST['image'] . "." . $image_type;
         var_dump($uploaded_file_name);
         $destination_path = DIR_IMG_PRODUIT . $uploaded_file_name;
         var_dump($destination_path);
@@ -49,7 +50,8 @@ if (isset($_POST["nom"])) {
             $stmt->bindValue(':marque', $_POST['marque']);
             $stmt->bindValue(':description', $_POST['description']);
             $stmt->bindValue(':age_recommande', $_POST['age_recommande']);
-            $stmt->bindValue(':reference_image', $uploaded_file_name);
+            $stmt->bindValue(':reference_image', $_POST['image']);
+            //$stmt->bindValue(':reference_image', $uploaded_file_name);
             $stmt->execute();
         
             $message = "Création effectuée avec succès du produit : {$_POST['nom']} <br/>
