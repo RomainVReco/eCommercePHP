@@ -5,8 +5,12 @@ $query_result = null;
 if (isset($_GET["recherche"])) {
     $query = $_GET["recherche"];
     $sql = "SELECT * 
-    FROM produits as p
-    WHERE p.nom_produit LIKE :query";
+    /*FROM produits as p */
+    FROM produits as p INNER JOIN categories as c
+    ON p.id_categorie = c.id_categorie
+    WHERE c.nom_categorie LIKE :query";
+    /*WHERE p.id_categorie LIKE :query";*/
+    /*WHERE p.nom_produit LIKE :query"; */
     $stmt = $mysqlClient->prepare($sql);
     $stmt->bindParam(':query', $param_query, PDO::PARAM_STR);
     $param_query = '%' . $query . '%';

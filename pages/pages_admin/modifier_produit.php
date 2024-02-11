@@ -14,6 +14,8 @@ if (isset($_POST["id"])) {
         $image_type = explode('/', $_FILES["ficphoto"]["type"])[1];
         $uploaded_file_name = $_POST['image'] . "." . $image_type;
         $destination_path = DIR_IMG_PRODUIT . $uploaded_file_name;
+        var_dump(DIR_IMG_PRODUIT);
+        var_dump($destination_path);
         if (file_exists($destination_path)) {
             $status_image = "L'image existe déjà dans les assets";
         } else {
@@ -35,7 +37,8 @@ if (isset($_POST["id"])) {
         $stmt->bindValue(':marque', $_POST['marque']);
         $stmt->bindValue(':description', $_POST['description']);
         $stmt->bindValue(':age_recommande', $_POST['age_recommande']);
-        $stmt->bindValue(':reference_image', $uploaded_file_name);
+        $stmt->bindValue(':reference_image', $_POST['image']);
+        //$stmt->bindValue(':reference_image', $uploaded_file_name);
         $stmt->execute();
         $query_result[] = $_POST;
     

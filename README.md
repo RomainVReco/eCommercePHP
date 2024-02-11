@@ -1,4 +1,8 @@
-Voici les informations pour mettre en place le site de e-commerce "Ma Quête de Rêve".
+Voici les informations pour mettre en place le site "Ma Quête de Rêve".
+
+Remarque importante: les images présentes sur ce site sont à un usage de démonstration uniquement. 
+ Il est strictement interdit de les utiliser à des fins commerciales ou personnelles  
+ sans l'autorisation préalable du détenteur des droits d'auteur.
 
 0. Le contexte
 
@@ -10,7 +14,7 @@ Nous sommes en filière de reconversion professionnelle pour devenir développeu
 La formation a débuté en octobre 2023.
 
 Nous avons été initié à PHP le lundi 15/1/24 et notre projet s'est déroulé
-du 16 au 23/1 (soit un total de 6 jours ouvrés) avec présentation devant nos pairs le 24/1/24.
+du 17 au 23/1 (soit un total de 5 jours ouvrés) avec présentation devant nos pairs le 24/1/24.
 
 Nous avons travaillé sur le projet dans le cadre d'un sprint:
     - définition des users stories
@@ -87,7 +91,10 @@ Notre site n'est pas parfait bien évidemment, mais nous avons à coeur de trava
 
 Merci pour vos retours concernant les axes de progrès.
 
-Notre formation est intense, et nous aurons peu de temps disponible dans l'immédiat, mais nous aimerions pouvoir poursuivre ce projet pour le pousser plus loin.
+Notre formation est intense, et nous aurons peu de temps disponible dans l'immédiat, mais nous aimerions pouvoir
+poursuivre ce projet pour le pousser plus loin.
+
+
 
 
 

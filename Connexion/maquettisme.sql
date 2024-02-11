@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost
--- Généré le : ven. 26 jan. 2024 à 12:19
+-- Généré le : dim. 11 fév. 2024 à 15:07
 -- Version du serveur : 10.4.28-MariaDB
 -- Version de PHP : 8.2.4
 
@@ -85,6 +85,13 @@ CREATE TABLE `clients` (
   `ville` varchar(30) DEFAULT NULL,
   `motdepasse` varchar(60) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Déchargement des données de la table `clients`
+--
+
+INSERT INTO `clients` (`id_client`, `nom_client`, `prenom_client`, `adresse`, `code_postal`, `id_pays`, `email`, `telephone`, `ville`, `motdepasse`) VALUES
+(4, 'Horn', 'Mike', NULL, NULL, NULL, 'm.horn@email.com', NULL, NULL, 'azerty123');
 
 -- --------------------------------------------------------
 
@@ -271,7 +278,7 @@ INSERT INTO `produits` (`id_produit`, `nom_produit`, `echelle`, `id_categorie`, 
 (10, 'Product 2', 'Small', 2, 50, 29.99, 1, 'A description for Product 2.', '3-8', '1-12-ducati-superleggera.jpeg'),
 (11, 'Pinceaux Lot 3', '', 6, 76, 19.99, 3, 'Un lot de 3 magnifiques pinceaux', '10+', 'weather-master-applicatorpinsel.jpeg'),
 (12, 'Une belle voiture', '', 3, 4, 79.99, 9, 'A description for Product 4.', '16+', '711aWYuUXpL.jpeg'),
-(13, 'Jambon', '1/35', 5, 15, 9.99, 3, 'Description Jambon', '9+', 'x-11-chrome-silver-gloss-10ml.jpeg'),
+(13, 'Chrome', '1/35', 5, 15, 9.99, 3, 'Description Chrome', '9+', 'x-11-chrome-silver-gloss-10ml.jpeg'),
 (14, '1:35 Bundeswehr Flak-Panzer Gepard', '1/35', 1, 10, 26.49, 1, 'This is a 1/35 scale plastic model assembly kit depicting the Gepard, a post-WWII anti-aircraft tank operated by West Germany.★From the 4km-range 35mm cannons to the radar equipment front and rear, the form of the tank is captured in style. ★Features moving barrel and radar depictions, plus opening turret rear hatches. ★Metal net is included in the kit to recreate engine deck grille details. ★Comes with a commander figure in beret.', '14+', '1_35 Bundeswehr Flak-Panzer-Gepard.jpeg'),
 (15, '1:35 WWII Ger.SdKfz.171 Panther A', '1/35', 1, 35, 21.99, 1, 'In the beginning of 1942, in order to fight against the T-34, the German military ordered a new tank from Dymler-Benz and M.A.N. companies with the following specifications:Weight- 35 tons; speed- 60 km/h; armament 75mm long gun and armour, 60mm thick in front hull, 35mm thick in the rear and 100 mm at the front of the gun turret.Lastly, it was specified that the tank be equipped with a Maiback HL210, water-cooled, V-type 12 cylinder engine. In May of the same year, M.A.N.\'s model was chosen without waiting for completion of a prototype tank. However, there were 2 important modifications. First, in order to meet the military\'s demand, considerably more than the original 35 ton weight was needed. Second, the military ordered a change in the thickness of the frontal armour from 60mm to 80mm.Because of these changes, the engine type had to be chanded from HL210 to HL230. Then, in order to accommodate this engine, a much better gear was needed, but mass production began without this last change, which resulted in frequent gear malfunctions and related trouble. This became the Panther\'s greatest defect. In the same year, Dymler-Benz and Henschel were ordered to produce the Panther. Therefore, production was greatly increased and a total of 6283 Panther Tanks were produced, second only to P2KW-4 in number.The first mass produced Panther type D was not equipped with a machine gun but after the experience of close battle. A 7.92mm MG 34 was added to the Panther\'s right front hull armament beginning with its type A. The special feature of the Panther was the left and right driving mechanism. This created an interchangeability of movements, using the torsion bar system. By 1944, the Panther was further improved from Type A to Type G with a change in its side shape.The Panther continued its activities against the Allied Forces throughout the latter half of the war. One of the famed battles it waged during this latter period probably is the one against the new Soviet JS II heavy tank on the eastern front.The Panther at that time, was the main strength tank of the Gross Deutschland, the strongest German Mechanized Division, under the command of General Hasso Von Manteuffel. The Panther reportedly destroyed 350 JS II tanks and 20 other armoured vehicles in the battle. It was a complete one-sided victory for the Panther and one for the book of military history. The Panther, therefore, was an extremely balanced tactical tank and should be called a masterpiece destined to bear the last glory of German war technology. It\'s glorious name will forever remain in the records of the 2nd World War.Since 1943, during World War II, thee appeared an unusually fast tank on the European Front that silhoueted among its German Mechanized Division. This was the ', '14+', '1-35-wwii-gersdkfz171-panther.jpeg'),
 (16, '1:35 WWII Sdkfz.251/1 Halft. Hanomag', '1/35', 1, 3, 22.99, 1, 'In 1938, the German Army decided to develop an armoured personnel carrier on the basis of the 3-ton half track (HL-KL-9p). Hanomag Hannoversch Machinenbau (AG) in Hannover was ordered to develop the running gear and Bussing-NAG in Berlin was to develop the superstructure to be armoured. Design work was hastened on the model of existing armoured cars and a prototype was completed at the end of 1938. The Germans tested the prototype in the Kumahsdorf Proving Ground and accepted it for mass production. Thus was born the Armoured Personnel Carrier Hanomag Sdkfz 251/1 which, we may safely say, was a synonym for the German mechanized corps that showed activity in all battlefields throughout the war.', '14+', '1-35-wwii-sdkfz2511-halft-hanomag.jpeg'),
@@ -279,7 +286,12 @@ INSERT INTO `produits` (`id_produit`, `nom_produit`, `echelle`, `id_categorie`, 
 (18, '1/16 M551 Sheridan', '1/16', 1, 2, 500.00, 1, 'This large-scale 1/16 static display tank recreates the unique M551 Sheridan. The actual Sheridan began development in 1959 and would go on to serve in major conflicts such as the Vietnam and Gulf Wars. It was a lightweight, air liftable vehicle that contributed to the more mobile U.S. forces that were necessary as America took on a more major global security role in the post-WW2 years. This model uses components from the R/C model, for a highly detailed finish.• 1/16 scale plastic model assembly kit. Length: 408mm, width: 177mm, height: 186mm (including gun shield).• The powerful form of the Sheridan with 152mm gun/launcher is recreated in excellent detail.• Features a precision aluminum gun barrel, plus other metal components including lower hull, drive sprockets, coil-sprung suspension arms and more.• Pre-assembled plastic tracks offer wonderful detail, and have soft resin depictions of rubber pads.• Soft photo-etched metal parts are included to recreate the anti-RPG net often seen as an impromptu addition to Sheridan’s deployed in Vietnam.', '14+', '116-m551-sheridan-display.jpeg'),
 (19, '1/48 JGSDF Type 16 MCV', '1/48', 1, 23, 31.99, 1, 'his scale model assembly kit recreates the Japan Ground Self Defense Force (JGSDF) Type 16, which reached units beginning in 2017. An 8-wheel vehicle, the JGSDF classify it as a Maneuver Combat Vehicle (MCV), a highly mobile and well-armed vehicle intended to provide supporting fire and take on enemy armor as a part of rapid response units. Its domestically designed L/52 105mm rifled gun is a low-recoil piece with perforated muzzle brake and a fire control system to enable accurate firing on the move. Rolled steel turret and hull employ modular and spaced armor estimated to be able to survive frontal hits from 20-30mm class guns and portable anti-tank weapons. Thanks to its 570hp engine, the 26-ton Type 16 has a top speed of around 100km/h and significant range; it looks set to provide a major boost to JGSDF units as its rollout continues.• 1/48 scale plastic model assembly kit. Length: 176mm, width: 63mm.Model has a dedicated parts breakdown for a hassle-free build without sacrificing accuracy.• An accurate rendering is based upon extensive research of the actual Type 16, authentically capturing the modern silhouette with a moving depiction of the 105mm gun.• Features crisp molding on details such as non-slip surfaces, plus multi-piece machine gun and mount.• The 8-wheel suspension is depicted in style, with fixed wheels. Elastomer tires have a realistic tread pattern.• Decals are included to recreate periscope openings and muzzle brake perforations.• Comes with one commander figure and two marking options.', '14+', '148-jgsdf-type-16.jpeg'),
 (20, 'Leopard 2 A6M+ 1/35', '1/35', 1, 12, 35.95, 2, 'Kit de modélisme complet d\'un char d\'assaut moderne à réaliserContenu de la boîte de modélisme Revell :1 Maquette Leopard 2 A6M+ 1/35Notice de montageAutocollantInformations sur la maquette de véhicule blidé de ce coffret cadeau Revell :La maquette Revell 03342 représente le char blindé innovant Leopard 2A6M+, un véhicule militaire de pointe utilisé par les forces armées du monde entier. Ce kit de modélisme à l\'échelle 1/35 permet aux passionnés de découvrir en détail cette évolution remarquable du Leopard 2A6M.Le Leopard 2A6M+ se distingue par sa puissance de feu améliorée, son blindage exceptionnel et ses systèmes avancés. Il incarne l\'élite des forces armées et est reconnu pour sa mobilité et sa précision optimisées. Cette maquette offre une représentation fidèle de ces caractéristiques, avec des structures de surface finement détaillées, une tourelle rotative et une chaîne facile à monter.Le Leopard 2A6M+ est un exemple hors-pair de l\'évolution des chars blindés, illustrant les avancées technologiques et les performances améliorées au fil du temps. Les modélistes et les passionnés d\'histoire militaire apprécieront ce kit de modélisme pour son réalisme et son attention aux détails. C\'est une occasion unique de construire et de mettre en valeur ce véhicule emblématique dans sa version améliorée.', '14+', '148-jgsdf-type-16.jpeg'),
-(21, 'Model set Land Rover Series III', '1/24', 3, 23, 34.50, 2, 'La Land Rover Series III sont des véhicules tout-terrain fabriqués à partir de 1948 par le constructeur anglais Land Rover. Ce modèle est inspiré de la Jeep américaine Willys.', '8+', 'landrover-revelle-1-24.jpeg');
+(21, 'Model set Land Rover Series III', '1/24', 3, 23, 34.50, 2, 'La Land Rover Series III sont des véhicules tout-terrain fabriqués à partir de 1948 par le constructeur anglais Land Rover. Ce modèle est inspiré de la Jeep américaine Willys.', '8+', 'landrover-revelle-1-24.jpeg'),
+(23, 'Opel Calibra Bundle', '1:24', 3, 14, 36.99, 1, 'Superbe Opel Calibra', '14+', 'voiture-tamiya-rc-opel-calibra-bundle-BDL-300058701-en_01a.jpeg'),
+(24, 'Test', '1:16', 3, 2, 36.99, 1, 'Opel Calibra', '+14', 'voiture-tamiya-rc-opel-calibra-bundle-BDL-300058701-en_01a.jpeg'),
+(25, 'MB CLK', '1:32', 3, 16, 276.00, 1, 'Très belle voiture MB CLK', '14+', 'a1-10-rc-mb-clk-gt-r-1997-tc-01-300058731-en_00.jpeg'),
+(26, 'AU TOMS', '1:16', 3, 7, 276.00, 1, 'Très belle voiture', '14+', 'a1-10-rc-au-toms-gr-supra-tt-02-300058703-en_00.jpeg'),
+(27, 'Mercedes', '1:32', 3, 23, 289.00, 1, 'Très belle Mercédes', '+14', 'a1-10-rc-mercedes-amg-gt3-tt-02-300058639-en_00.jpeg');
 
 -- --------------------------------------------------------
 
@@ -428,7 +440,7 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT pour la table `clients`
 --
 ALTER TABLE `clients`
-  MODIFY `id_client` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_client` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT pour la table `commandes`
@@ -464,7 +476,7 @@ ALTER TABLE `pays`
 -- AUTO_INCREMENT pour la table `produits`
 --
 ALTER TABLE `produits`
-  MODIFY `id_produit` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `id_produit` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- AUTO_INCREMENT pour la table `roles`
