@@ -15,7 +15,7 @@ ol > a{
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: 1fr 1fr;
   gap: 1em;
-  background-color: lightblue;
+  /*background-color: lightblue; */
   color: chocolate;
 }
 
