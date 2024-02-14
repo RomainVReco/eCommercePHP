@@ -6,7 +6,7 @@ Remarque importante: les images présentes sur ce site sont à un usage de démo
 
 0. Le contexte
 
-Ce site a été réalisé dans le cadre d'un projet d'étude avec un de mes camarades.
+Ce site a été réalisé dans le cadre de notre reconversion à la Coding Factory (rattachée à l'ESIEE-IT)
 
 Le but du projet : nous mettre en condition réelle pour mettre en oeuvre nos connaissances.
 
@@ -93,9 +93,5 @@ Merci pour vos retours concernant les axes de progrès.
 
 Notre formation est intense, et nous aurons peu de temps disponible dans l'immédiat, mais nous aimerions pouvoir
 poursuivre ce projet pour le pousser plus loin.
-
-
-
-
 
 
