@@ -40,21 +40,12 @@ Pour démarrer MySQL, cliquez sur le bouton "Start" à côté de "MySQL".
 Depuis une fenêtre terminal:
 Se positionner dans le répertoire racine du serveur web:
 (htdocs pour XAMPP)
-Cloner l'arborescence depuis GitHub:
-git clone git@github.com:Lotratemi/Lotra3.git
+Cloner le repo git
 
 
 3. Base de données
 
 Sur le dépôt GitHub, le fichier d'export de la base se trouve dans Connexion/maquettisme.sql
-
-Dans un environnement mysql, exécuter les opérations suivantes:
-CREATE DATABASE maquettisme;
-    (par défaut elle est en utf8mb4_general_ci ce qui reviendrai en explicitant à executer: 
-    CREATE DATABASE maquettisme DEFAULT CHARACTER SET utf8mb4_general_ci;)
-USE maquettisme;
-source chemin_du_fichier/maquettisme.sql
-
 
 4. Connexion à la base de données
 
@@ -73,25 +64,5 @@ données:
 
 5. Connexion au site
 
-L’URL pour se connecter sur notre site est : http://localhost/Lotra3/pages/index.php
-
-
-6. Evolutions à venir
-
-Ce site de e-commerce nous a permis de voir des notions très intéressantes dans le cadre de PHP, notamment :
-    - les formulaires (GET, POST)
-    - les sessions (transmission d'informations d'une page web à une autre)
-Nous avons pu interagir avec la base de données dans les différents aspects fondamentaux possibles :
-    CRUD: Create, Read, Update, Delete
-
-La réalisation d'un site web dynamique avec stockage des informations dans une base de données nous ouvre beaucoup
-de perspectives. Nous avons hâte de les explorer à présent.
-
-Notre site n'est pas parfait bien évidemment, mais nous avons à coeur de travailler pour l'améliorer.
-
-Merci pour vos retours concernant les axes de progrès.
-
-Notre formation est intense, et nous aurons peu de temps disponible dans l'immédiat, mais nous aimerions pouvoir
-poursuivre ce projet pour le pousser plus loin.
-
+L’URL pour se connecter sur notre site est : http://localhost/{nom_du_dossier}/pages/index.php
 

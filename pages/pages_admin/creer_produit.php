@@ -69,8 +69,8 @@ if (isset($_POST["nom"])) {
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Modifier un pays</title>
         <!-- Bootstrap 5.1 CSS -->
-        <link href="/Lotra3/css/styles/bootstrap.min.css" rel="stylesheet" type="text/css">
-        <link href="/Lotra3/css/styles/geo.css" rel="stylesheet" type="text/css">
+        <link href="../css/styles/bootstrap.min.css" rel="stylesheet" type="text/css">
+        <link href="../css/styles/geo.css" rel="stylesheet" type="text/css">
     </head>
     <body>
         <div class="jumbotron text-center">
@@ -184,6 +184,6 @@ if (isset($_POST["nom"])) {
         </div>
         <!-- Bootstrap Bundle with Popper -->
         <script src="./js/bootstrap.bundle.min.js"></script>
-        <script type="module" src="/Lotra3/javascript/functions_js.js"></script>
+        <script type="module" src="../javascript/functions_js.js"></script>
     </body>
 </html>

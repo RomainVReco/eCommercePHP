@@ -2,8 +2,8 @@
 /**
  * Constantes utilisées pour la gestion des répertoires d'images
  */
-define("DIR_IMG_PRODUIT", "{$_SERVER["DOCUMENT_ROOT"]}/Lotra3/Ressources/assets_produits/"); 
-define("DIR_IMG_CATEGORIE","{$_SERVER["DOCUMENT_ROOT"]}/Lotra3/Ressources/assets_categories/");
+define("DIR_IMG_PRODUIT", "{$_SERVER["DOCUMENT_ROOT"]}../Ressources/assets_produits/"); 
+define("DIR_IMG_CATEGORIE","{$_SERVER["DOCUMENT_ROOT"]}../Ressources/assets_categories/");
 
 require_once("db_config_access.php");
 

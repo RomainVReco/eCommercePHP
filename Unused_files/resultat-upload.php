@@ -1,7 +1,7 @@
 <?php
 
 // Modification de produit 
-define("DIR_IMG_PRODUIT", "/Applications/XAMPP/xamppfiles/htdocs/Lotra3/Ressources/assets_produits/");
+define("DIR_IMG_PRODUIT", "/Applications/XAMPP/xamppfiles/htdocs../Ressources/assets_produits/");
 
 
 if (isset($_FILES["ficphoto"]) && $_FILES["ficphoto"]["error"] == UPLOAD_ERR_OK) {

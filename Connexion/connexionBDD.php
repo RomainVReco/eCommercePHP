@@ -1,5 +1,6 @@
 <?php
 require_once(__DIR__  . "/config.php");
+require_once(__DIR__ . "/db_config_access.php");
 
 try {
     $mysqlClient = new PDO(

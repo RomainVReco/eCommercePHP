@@ -36,7 +36,9 @@ if (isset($_POST['email'])){
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ma Quête de Rêve</title>
-    <?php require_once(__DIR__ . '/importCSS.php'); ?>
+    <?php require_once(__DIR__ . '/importCSS.php'); 
+    echo "<pre>"; var_dump(__DIR__ . '/importCSS.php'); echo "</pre>";?>
+
     <link rel="stylesheet" type="text/css" href="../css/login.css"> 
 </head>
 <body>

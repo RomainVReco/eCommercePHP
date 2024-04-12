@@ -16,24 +16,24 @@
                         <div class="reseaux-sociaux">
                             <div class="rs-row-1">
                                 <a href="#">
-                                    <div class="icon-rs"><img src="/Lotra3/Ressources/ressources_footer/instagram-svgrepo-com.svg" alt="Insta"></div>
+                                    <div class="icon-rs"><img src="../Ressources/ressources_footer/instagram-svgrepo-com.svg" alt="Insta"></div>
                                 </a>
                                 <a href="#">
-                                    <div class="icon-rs"><img src="/Lotra3/Ressources/ressources_footer/pinterest-v2-svgrepo-com.svg" alt="Pinterest"></div>
+                                    <div class="icon-rs"><img src="../Ressources/ressources_footer/pinterest-v2-svgrepo-com.svg" alt="Pinterest"></div>
                                 </a>
                                 <a href="#">
-                                    <div class="icon-rs"><img src="/Lotra3/Ressources/ressources_footer/facebook-v2-svgrepo-com.svg" alt="Facebook"></div>
+                                    <div class="icon-rs"><img src="../Ressources/ressources_footer/facebook-v2-svgrepo-com.svg" alt="Facebook"></div>
                                 </a>
                             </div>
                             <div class="rs-row-2">
                                 <a href="#">
-                                    <div class="icon-rs"><img src="/Lotra3/Ressources/ressources_footer/rockstar-games-svgrepo-com.svg" alt="Rockstar"></div>
+                                    <div class="icon-rs"><img src="../Ressources/ressources_footer/rockstar-games-svgrepo-com.svg" alt="Rockstar"></div>
                                 </a>
                                 <a href="#">
-                                    <div class="icon-rs"><img src="/Lotra3/Ressources/ressources_footer/tesla-svgrepo-com.svg" alt="Tesla"></div>
+                                    <div class="icon-rs"><img src="../Ressources/ressources_footer/tesla-svgrepo-com.svg" alt="Tesla"></div>
                                 </a>
                                 <a href="#">
-                                    <div class="icon-rs"><img src="/Lotra3/Ressources/ressources_footer/sync-svgrepo-com.svg" alt="sync">
+                                    <div class="icon-rs"><img src="../Ressources/ressources_footer/sync-svgrepo-com.svg" alt="sync">
                                     </div>
                                 </a>
                             </div>
@@ -49,10 +49,10 @@
                     <div class="copyright">
                         <div class="stores">
                             <div class="store">
-                                <a href="#"><img src="/Lotra3/Ressources/ressources_footer/apple_store_icon.svg" alt=""></a>
+                                <a href="#"><img src="../Ressources/ressources_footer/apple_store_icon.svg" alt=""></a>
                             </div>
                             <div class="store">
-                                <a href="#"><img src="/Lotra3/Ressources/ressources_footer/play_store_icon.svg" alt=""></a>
+                                <a href="#"><img src="../Ressources/ressources_footer/play_store_icon.svg" alt=""></a>
                             </div>
                         </div>
                         <div class="formulaire-newsletter">

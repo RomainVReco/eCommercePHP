@@ -27,8 +27,8 @@ if (isset($_GET["id_produit"])) {
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Supprimer un produit</title>
         <!-- Bootstrap 5.1 CSS -->
-        <link href="/Lotra3/css/styles/bootstrap.min.css" rel="stylesheet" type="text/css">
-        <link href="/Lotra3/css/styles/geo.css" rel="stylesheet" type="text/css">
+        <link href="../css/styles/bootstrap.min.css" rel="stylesheet" type="text/css">
+        <link href="../css/styles/geo.css" rel="stylesheet" type="text/css">
     </head>
     <body>
         <div class="jumbotron text-center">

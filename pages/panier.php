@@ -26,8 +26,8 @@ else $last_visited_page = $_SESSION["derniere_page_produit"];
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="/Lotra3/css/styles/bootstrap.min.css" rel="stylesheet" type="text/css">
-    <link href="/Lotra3/css/styles/geo.css" rel="stylesheet" type="text/css">
+    <link href="../css/styles/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="../css/styles/geo.css" rel="stylesheet" type="text/css">
     <?php require_once(__DIR__ . '/importCSS.php'); ?>
     <title>Panier</title>
 </head>

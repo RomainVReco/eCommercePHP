@@ -21,7 +21,7 @@ if ((isset($_SESSION["id_client"])) && ($_SESSION["id_client"] > 0)){
           </div>
           <div class="zone-1-lower">
             <button id="button-open" class="style-button-open">
-              <img src="/Lotra3/Ressources/ressources_entete/bx-menu.svg" alt="menu">
+              <img src="../Ressources/ressources_entete/bx-menu.svg" alt="menu">
             </button>
             <a href="/index.html#nouveautes" class="link-zone-1-lower">Nouveautés</a>
             <a href="/index.html#best_sellers" class="link-zone-1-lower">Best-seller</a>
@@ -47,10 +47,10 @@ if ((isset($_SESSION["id_client"])) && ($_SESSION["id_client"] > 0)){
           </div>
           <div class="zone-3-lower">
             <div class="img-entete">
-              <a href="#"><img src="/Lotra3/Ressources/ressources_entete/bxs-flag-alt.svg" alt="langue"></a>
+              <a href="#"><img src="../Ressources/ressources_entete/bxs-flag-alt.svg" alt="langue"></a>
             </div>
             <div class="img-entete">
-              <a href="login.php"><img src="/Lotra3/Ressources/ressources_entete/bx-user-circle.svg" alt="langue"></a>
+              <a href="login.php"><img src="../Ressources/ressources_entete/bx-user-circle.svg" alt="langue"></a>
               <p><?php if ($isLogged == true) : echo "Connecté"; ?></p>
               <a href="logout.php">Se déconnecter</a>
               <?php else : ?>
@@ -58,7 +58,7 @@ if ((isset($_SESSION["id_client"])) && ($_SESSION["id_client"] > 0)){
               <?php endif; ?>
             </div>
             <div class="img-entete">
-              <a href="panier.php"><img src="/Lotra3/Ressources/ressources_entete/bx-cart.svg" alt="langue"></a>
+              <a href="panier.php"><img src="../Ressources/ressources_entete/bx-cart.svg" alt="langue"></a>
             </div>
           </div>
         </div>

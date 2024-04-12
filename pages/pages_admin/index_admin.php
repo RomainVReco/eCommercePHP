@@ -42,8 +42,8 @@ if (isset($_SESSION["role"]) && ($_SESSION["role"] == 0 )) {
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Admin</title>
         <!-- Bootstrap 5.1 CSS -->
-        <link href="/Lotra3/css/styles/bootstrap.min.css" rel="stylesheet" type="text/css">
-        <link href="/Lotra3/css/styles/geo.css" rel="stylesheet" type="text/css">
+        <link href="../css/styles/bootstrap.min.css" rel="stylesheet" type="text/css">
+        <link href="../css/styles/geo.css" rel="stylesheet" type="text/css">
         <link rel="stylesheet" href="style.css">
     </head>
     <body>
